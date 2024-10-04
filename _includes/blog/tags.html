@@ -13,7 +13,8 @@
 <div class="py-3">
   <h4 id="{{ tag | slugify }}">{{ tag }}</h4>
   <ol>
-  {% for post in site.posts %}
+  {%- assign sorted_posts = site.posts | sort: 'date' -%} <!-- Sorting posts by date -->
+  {% for post in sorted_posts %}
     {%- if post.tags contains tag -%}
       {%- if post.external_url -%}
         {%- assign url = post.external_url -%}
