@@ -16,10 +16,15 @@ Results
 {% endcapture %}
 {% include elements/list.html title="Table of Contents" type="toc" %}
 
-## How to use
-- by WEB : [https://tonnonssi.github.io/Minesweeper/](https://tonnonssi.github.io/Minesweeper/)
-- by Packages : [pack](pack)
-- on GitHub : [https://github.com/Tonnonssi/-RL-Minesweeper.git](https://github.com/Tonnonssi/-RL-Minesweeper.git)
+## How to use 
+{% include url.html num="01" title="Website" description="" url="https://tonnonssi.github.io/Minesweeper/" %}  
+학습 SOTA를 기준으로 제작했으며, 지뢰찾기를 도와주는 기능을 갖고 있다.  
+
+{% include url.html num="02" title="Packages" description="" url="https://tonnonssi.github.io/Minesweeper/" %}  
+강화학습용 지뢰찾기 환경이 제작되어져 있는 라이브러리다. 임포트해 사용할 수 있다. 
+
+{% include url.html num="03" title="GitHub" description="" url="https://github.com/Tonnonssi/-RL-Minesweeper.git" %}  
+학습에 사용된 모든 코드를 확인할 수 있다. 
 
 ## About Minesweeper 
 <table>
@@ -55,11 +60,11 @@ DQN 방법론을 이용했으며, 구체적인 내용 및 구현은 Ch.03에 기
 
 
 ## Related Articles
-{% include url.html num="01" title="Environment" description="Description of the project. This is a short summary that explains what the project is about." url="https://example.com" %}
-{% include url.html num="02" title="DQN" description="Description of the project. This is a short summary that explains what the project is about." url="https://example.com" %}
-{% include url.html num="03" title="Train / Valid / Test " description="Description of the project. This is a short summary that explains what the project is about." url="https://example.com" %}
-{% include url.html num="04" title="Trouble Shooting" description="Description of the project. This is a short summary that explains what the project is about." url="https://example.com" %}
-{% include url.html num="05" title="Rule-based" description="Description of the project. This is a short summary that explains what the project is about." url="https://example.com" %}
+{% include url.html num="01" title="Environment" description="Resolved several issues with the Minesweeper environment implementation and implemented various states. 지뢰찾기 환경 구현에서 발생한 여러 문제점을 해결하고, 다양한 state를 구현했다." url="https://tonnonssi.github.io/blog/MinesweeperEnv" %}
+{% include url.html num="02" title="DQN" description="Implemented a CNN neural network specialized for spatial recognition, modified the replay memory to improve performance, and implemented two different DQN implementations. <br>공간 인식에 특화된 CNN 신경망을 구현하고, 성능 향상을 위해 리플레이 메모리를 수정했으며, 두 가지 방식의 DQN 구현을 진행했다." url="https://tonnonssi.github.io/blog/MinesweeperNet" %}
+{% include url.html num="03" title="Train / Valid / Test" description="Chose metrics that would tell us about learning trends, and the right number of sample sizes for valid and test. <br>학습 동향을 알려줄 수 있는 지표를 선택하고, valid 및 test에 적절한 수의 표본량을 선택했다." url="https://tonnonssi.github.io/blog/MinesweeperTrainValidTest" %}
+{% include url.html num="04" title="Trouble Shooting" description="Solved multiple problems and applied different methodologies during the course of learning.<br>학습 중에 있었던 여러 문제를 해결하고 다양한 방법론을 적용했다." url="https://tonnonssi.github.io/blog/MinesweeperTroubleShooting" %}
+{% include url.html num="05" title="Rule-based" description="To find a training baseline, we solved an optimal number of minesweepers and calculated the win rate.<br>baseline을 찾기 위해 최적의 수로 지뢰찾기를 풀고, 승률을 계산했다." url="https://tonnonssi.github.io/blog/MinesweeperRuleBase" %}
 
 
 ## Results

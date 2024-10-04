@@ -4,7 +4,7 @@ tags: [Minesweeper]
 pages: papers
 style: border  # fill / border 
 color: dark
-description: 환경
+description: "Solved multiple problems and applied different methodologies during the course of learning.<br>-<br>학습 중에 있었던 여러 문제를 해결하고 다양한 방법론을 적용했다."
 ---
 
 ## 04. Trouble Shooting 

@@ -4,7 +4,7 @@ tags: [Minesweeper]
 pages: papers
 style: border  # fill / border 
 color: dark
-description: 지뢰찾기 환경 구현에서 발생한 여러 문제점을 해결하고, 다양한 state를 구현했다. 
+description: "Resolved several issues with the Minesweeper environment implementation and implemented various states. <br>-<br>지뢰찾기 환경 구현에서 발생한 여러 문제점을 해결하고, 다양한 state를 구현했다."
 ---
 
 ## 01. Environment
