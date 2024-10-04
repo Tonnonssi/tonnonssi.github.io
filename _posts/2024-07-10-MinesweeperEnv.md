@@ -8,10 +8,6 @@ description: "Resolved several issues with the Minesweeper environment implement
 ---
 
 ## 01. Environment
-### Package
-``` 
-0.0.0
-```
 
 ### State 
 #### Single Channel 
@@ -32,7 +28,8 @@ description: "Resolved several issues with the Minesweeper environment implement
 초반 학습에서는 다차원 state를 사용할 때 승률이 더 빠르게 올랐다. 하지만 10만 이후부터는 state 표현 차이로 인한 승률 차이는 거의 없었다. 
 
 
-### Reward Design
+### Reward Design  
+
 | Reward | Description & Purpose | Weight | Done | 
 | - | - | - | - | 
 | Win | 지뢰가 아닌 모든 타일을 깐 경우 | 1 | True |
