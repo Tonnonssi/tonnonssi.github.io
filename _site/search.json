@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "[Omok/02] 로봇팔 회로 제작",
+      "category" : "",
+      "tags"     : "Omok",
+      "url"      : "/blog/OmokRobotCircuit-copy",
+      "date"     : "2024-10-03 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[Omok/01] 로봇팔 제작",
+      "category" : "",
+      "tags"     : "Omok",
+      "url"      : "/blog/OmokRobot_1",
+      "date"     : "2024-10-02 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "[Minesweeper/05] Rule Base",
       "category" : "",
       "tags"     : "Minesweeper",

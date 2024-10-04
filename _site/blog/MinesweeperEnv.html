@@ -96,9 +96,6 @@
     </p>
 
 <h2 id="01-environment">01. Environment</h2>
-<h3 id="package">Package</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0.0
-</code></pre></div></div>
 
 <h3 id="state">State</h3>
 <h4 id="single-channel">Single Channel</h4>
@@ -119,13 +116,49 @@
 <p>초반 학습에서는 다차원 state를 사용할 때 승률이 더 빠르게 올랐다. 하지만 10만 이후부터는 state 표현 차이로 인한 승률 차이는 거의 없었다.</p>
 
 <h3 id="reward-design">Reward Design</h3>
-<p>| Reward | Description &amp; Purpose | Weight | Done | 
-| - | - | - | - | 
-| Win | 지뢰가 아닌 모든 타일을 깐 경우 | 1 | True |
-| Lose | 깐 타일이 지뢰인 경우 | -1 |True |
-| Progress | 주변부에 까진 타일이 있고, 지뢰가 아닌 타일을 깐 경우 | 0.3 | False |
-| Guess | 주변부가 까져 있지 않지만, 지뢰가 아닌 타일을 깐 경우 | -0.3 ~ 0.3 | False |
-| No Progress | 이미 누른 타일을 또 누른 경우 | -0.5 / -1 | T/F |</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reward</th>
+      <th>Description &amp; Purpose</th>
+      <th>Weight</th>
+      <th>Done</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Win</td>
+      <td>지뢰가 아닌 모든 타일을 깐 경우</td>
+      <td>1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>Lose</td>
+      <td>깐 타일이 지뢰인 경우</td>
+      <td>-1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>Progress</td>
+      <td>주변부에 까진 타일이 있고, 지뢰가 아닌 타일을 깐 경우</td>
+      <td>0.3</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>Guess</td>
+      <td>주변부가 까져 있지 않지만, 지뢰가 아닌 타일을 깐 경우</td>
+      <td>-0.3 ~ 0.3</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>No Progress</td>
+      <td>이미 누른 타일을 또 누른 경우</td>
+      <td>-0.5 / -1</td>
+      <td>T/F</td>
+    </tr>
+  </tbody>
+</table>
 
 <ul>
   <li>보상 디자인의 변화는 <a href="#4-trouble-shooting">Ch.04 Troulbe Shooting</a>  에서 확인할 수 있다.</li>
