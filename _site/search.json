@@ -1,0 +1,51 @@
+[
+  
+    {
+      "title"    : "[Minesweeper/05] Rule Base",
+      "category" : "",
+      "tags"     : "Minesweeper",
+      "url"      : "/blog/MinesweeperRuleBase",
+      "date"     : "2024-07-14 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[Minesweeper/04] Trouble Shooting",
+      "category" : "",
+      "tags"     : "Minesweeper",
+      "url"      : "/blog/MinesweeperTroubleShooting",
+      "date"     : "2024-07-13 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[Minesweeper/03] Train, Valid, Test",
+      "category" : "",
+      "tags"     : "Minesweeper",
+      "url"      : "/blog/MinesweeperTrainValidTest",
+      "date"     : "2024-07-12 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[Minesweeper/02] DQN",
+      "category" : "",
+      "tags"     : "Minesweeper",
+      "url"      : "/blog/MinesweeperNet",
+      "date"     : "2024-07-11 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[Minesweeper/01] 환경",
+      "category" : "",
+      "tags"     : "Minesweeper",
+      "url"      : "/blog/MinesweeperEnv",
+      "date"     : "2024-07-10 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Articles in KanghwaSisters",
+      "category" : "",
+      "tags"     : "RL",
+      "url"      : "https://kanghwasisters.github.io/tags/#%EC%9D%B4%EC%A7%80%EB%AF%BC",
+      "date"     : "2024-03-02 00:00:00 +0900"
+    } 
+  
+]

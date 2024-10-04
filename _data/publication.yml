@@ -1,0 +1,11 @@
+  - title: "Deep Learning for Molecular Graphs"
+    authors: 
+      - "Jimin Lee"
+      - "Jane Smith"
+    category: 
+    source: "AI Journal, 2023"
+    presented_at: "Presented at NeurIPS 2023"
+    abstract: "WannaBe"
+    links:
+      - html: "https://example.com/fulltext2"
+      - pdf: "https://example.com/fulltext2"

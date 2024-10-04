@@ -1,0 +1,179 @@
+### Site Settings ###
+title               : tonnonssi
+description         : >-
+                      안녕 :Hi:
+baseurl             : ""            # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
+repository          : tonnonssi/tonnonssi.github.io      # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
+remote_theme        : yousinix/portfolYOU
+open_new_tab        : false                    # Opens external URLs in new tab (works for posts, projects and navbar only)
+
+
+### Plugins ###
+plugins:
+  - jemoji
+  - jekyll/scholar
+
+
+### Navbar Settings ###
+nav_exclude:                                            # The following paths are excluded from navbar
+  - pages/tags.html
+  - pages/404.html
+  - pages/index.md
+  - documentation/partials/**                           # For Documentation Only
+
+# Conversion
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+### Author Info ###
+author:
+  name              : Jimin Lee
+  image             : ./assets/images/Profile/Jimin.png
+  # behance           : your_username
+# dribbble          : your_username
+  email             : tonnonssi@gmail.com
+  # facebook          : your_username
+  github            : tonnonssi
+# gitlab            : your_username
+  instagram         : jiringsi
+# kaggle            : your_username
+  linkedin          : tonnonssi
+  # medium            : your_username
+# soundcloud        : your_username
+# spotify           : your_username
+# stackoverflow     : your_user_id
+# tumblr            : your_username.tumblr.com
+# twitch            : your_username
+  # twitter           : your_username
+# vimeo             : your_username
+# youtube           : your_channel_name
+# keybase           : your_username
+
+
+### Posts ###
+permalink: /blog/:title
+
+
+### Collections ###
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name
+  elements:                                             # For Documentation Only
+    output: true                                        # For Documentation Only
+
+
+### Disqus ###
+disqus:
+  shortname: your-short-name-disqus                     # Your website Shortname on disqus
+
+
+### Analytics ###
+analytics:
+  enabled: false                                        # Set true to enable analytics
+  google:
+    tracking_id: your-google-tracking-id
+
+
+### Buy me a coffee ###
+# See https://www.buymeacoffee.com/
+# buymeacoffee:
+#   enabled: false
+#   username: your_username
+#   color: "#007bff"
+#   message: "Thank you for visiting."                    # Message to be displayed aside from the button for a few seconds.
+#   description: "Support me on Buy me a coffee!"
+
+
+### Defaults for collections ###
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "page"
+  - scope:                                              # For Documentation Only
+      path: ""                                          # For Documentation Only
+      type: "elements"                                  # For Documentation Only
+    values:                                             # For Documentation Only
+      layout: "element"                                 # For Documentation Only
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: true                                   # Set to true to enable disqus comments
+
+
+### Exclude from processing ###
+exclude:
+  - README.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - "*.log"
+
+## 논문이용,,
+
+scholar:
+  last_name: [Lee]
+  first_name: [Jimin]
+
+  style: apa
+  locale: en
+
+  source: /_bibliography/
+  bibliography: papers.bib
+  bibliography_template: bib
+  # Note: if you have latex math in your bibtex, the latex filter
+  # preprocessing may conflict with MathJAX if the latter is enabled.
+  # See https://github.com/alshedivat/al-folio/issues/357.
+  bibtex_filters: [latex, smallcaps, superscript]
+
+  replace_strings: true
+  join_strings: true
+
+  details_dir: bibliography
+  details_link: Details
+
+  query: "@*"
+  group_by: year
+  group_order: descending
+
+# Display different badges withs stats for your publications
+enable_publication_badges:
+  altmetric: true # Altmetric badge (https://www.altmetric.com/products/altmetric-badges/)
+  dimensions: true # Dimensions badge (https://badge.dimensions.ai/)
+  google_scholar: true # Google Scholar badge (https://scholar.google.com/intl/en/scholar/citations.html)
+
+# Filter out certain bibtex entry keywords used internally from the bib output
+filtered_bibtex_keywords:
+  [
+    abbr,
+    abstract,
+    additional_info,
+    altmetric,
+    arxiv,
+    award,
+    award_name,
+    bibtex_show,
+    blog,
+    code,
+    html,
+    pdf,
+    poster,
+    preview,
+    selected,
+    slides,
+    supp,
+    video,
+    website,
+  ]
+
+# Maximum number of authors to be shown for each publication (more authors are visible on click)
+max_author_limit: 3 # leave blank to always show all authors
+more_authors_animation_delay: 10 # more authors are revealed on click using animation; smaller delay means faster animation
+
+# Enables publication thumbnails. If disabled, none of the publications will display thumbnails, even if specified in the bib entry.
+enable_publication_thumbnails: true

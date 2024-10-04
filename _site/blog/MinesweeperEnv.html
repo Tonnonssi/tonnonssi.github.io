@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[Minesweeper/01] 환경">
+  <meta property="og:description" content="지뢰찾기 환경 구현에서 발생한 여러 문제점을 해결하고, 다양한 state를 구현했다.">
+  <meta property="og:image" content="./assets/images/Profile/Jimin.png">
+
+  <title>[Minesweeper/01] 환경</title>
+  <meta name="description" content="지뢰찾기 환경 구현에서 발생한 여러 문제점을 해결하고, 다양한 state를 구현했다.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<!--  -->
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/categories">Categories</a>
+
+      <a class="nav-item nav-link " href="/publications">Publications</a>
+
+      <a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/articles/">Articles</a>
+
+      <a class="nav-item nav-link " href="/about/">AboutME</a>
+
+      <a class="nav-item nav-link " href="https://github.com/tonnonssi"><i class="fab fa-1x fa-github"></i></a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>[Minesweeper/01] 환경</b></h1>
+
+<p class="post-metadata text-muted">
+  10 July 2024 -  
+  <b>less than 1 min read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#minesweeper">
+      <span class="tag badge badge-pill text-primary border border-primary">Minesweeper</span>
+    </a>
+    </p>
+
+<h2 id="01-environment">01. Environment</h2>
+<h3 id="package">Package</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0.0
+</code></pre></div></div>
+
+<h3 id="state">State</h3>
+<h4 id="single-channel">Single Channel</h4>
+<p>9*9(easy의 맵 규격)의 arr에 주변부 지뢰의 개수를 센 타일의 수(0-8)를 그대로 반영하고, 아직 까지지 않은 타일을 -1, 지뢰를 -2로 표현했다. 최댓값인 8로 전체 state arr를 나누어 state를 정규화했다. 정규화를 하지 않았을 때엔 학습이 거의 되지 않았지만, 정규화 이후에 승률이 극적으로 상승했다. 
+<img src="../assets/images/Minesweeper/image-2.png" alt="Alt text" /></p>
+
+<h4 id="multi-channel">Multi Channel</h4>
+<p><code class="language-plaintext highlighter-rouge">env.dim2</code> 클래스 파라미터에서 False값을 주면 다차원 state를 이용할 수 있다. 다차원 state는 단일 차원 state에서 지뢰(-2), 까짐 여부(-1), 주변 지뢰 개수의 합을 각각의 채널로 받고, 원핫인코딩으로 값을 표현한다. 
+<img src="../assets/images/Minesweeper/image-15.png" alt="Alt text" /></p>
+
+<h3 id="타입별-학습">타입별 학습</h3>
+<table>
+  <tr>
+    <td><img src="../assets/images/Minesweeper/image-24.png" alt="Alt text" /></td>
+    <td><img src="../assets/images/Minesweeper/image-25.png" alt="Alt text" /></td>
+  </tr>
+</table>
+<p>초반 학습에서는 다차원 state를 사용할 때 승률이 더 빠르게 올랐다. 하지만 10만 이후부터는 state 표현 차이로 인한 승률 차이는 거의 없었다.</p>
+
+<h3 id="reward-design">Reward Design</h3>
+<p>| Reward | Description &amp; Purpose | Weight | Done | 
+| - | - | - | - | 
+| Win | 지뢰가 아닌 모든 타일을 깐 경우 | 1 | True |
+| Lose | 깐 타일이 지뢰인 경우 | -1 |True |
+| Progress | 주변부에 까진 타일이 있고, 지뢰가 아닌 타일을 깐 경우 | 0.3 | False |
+| Guess | 주변부가 까져 있지 않지만, 지뢰가 아닌 타일을 깐 경우 | -0.3 ~ 0.3 | False |
+| No Progress | 이미 누른 타일을 또 누른 경우 | -0.5 / -1 | T/F |</p>
+
+<ul>
+  <li>보상 디자인의 변화는 <a href="#4-trouble-shooting">Ch.04 Troulbe Shooting</a>  에서 확인할 수 있다.</li>
+</ul>
+
+<h3 id="속도-개선">속도 개선</h3>
+<p>n0만 번 단위로 에피소드를 진행하다보니, 환경 코드의 시간 효율이 중요했다. 시간 효율을 높이기 위해 0을 눌렀을 때 연쇄로 터지는 코드, 주변 지뢰의 개수를 세는 코드를 리팩토링했다.</p>
+
+<h4 id="1-0을-눌렀을-때-주변-타일이-까지는-현상">1. 0을 눌렀을 때 주변 타일이 까지는 현상</h4>
+<p>기존 코드는 재귀형으로 구현했지만, 무한 루프에 빠지는 문제가 있었다. 무한 루프 문제를 해결하고 속도를 향상시키기 위해서 BFS 알고리즘을 이용해 코드를 수정했다.</p>
+
+<h4 id="2-주변-지뢰-개수-세기-로직">2. 주변 지뢰 개수 세기 로직</h4>
+<p>기존 코드는 특정 타일을 기준으로 주변 타일을 탐색하는 방식을 이중 for문으로 구현했다. for문을 사용을 최소화 하고자, 겉에 0 패딩을 두른 후 3*3로 arr를 순서대로 탐색하며 M의 개수를 세는 방식으로 코드를 수정했다.</p>
+<h4 id="3-cython">3. cython</h4>
+<p>-&gt; 추가할 예정</p>
+
+
+
+<div class="pt-5">
+  
+</div>
+
+<script src="https://utteranc.es/client.js"
+        repo="tonnonssi/tonnonssi.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</div>
+
+<script src="https://utteranc.es/client.js"
+        repo="tonnonssi/tonnonssi.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Jimin Lee</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:tonnonssi@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.instagram.com/jiringsi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#405de6'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-instagram fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>

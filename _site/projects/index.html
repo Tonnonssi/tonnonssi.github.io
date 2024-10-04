@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects">
+  <meta property="og:description" content="안녕 :Hi:">
+  <meta property="og:image" content="./assets/images/Profile/Jimin.png">
+
+  <title>Projects</title>
+  <meta name="description" content="안녕 :Hi:">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<!--  -->
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/categories">Categories</a>
+
+      <a class="nav-item nav-link " href="/publications">Publications</a>
+
+      <a class="nav-item nav-link active" href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/articles/">Articles</a>
+
+      <a class="nav-item nav-link " href="/about/">AboutME</a>
+
+      <a class="nav-item nav-link " href="https://github.com/tonnonssi"><i class="fab fa-1x fa-github"></i></a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    
+<div class="card-columns m-3 mt-5">
+
+  <!-- Remote Projects -->
+  
+
+  <!-- Local Projects -->
+  <div class="wow animated fadeIn" data-wow-delay=".15s">
+  <a href="/projects/1-minesweeper" class="project card text-themed"><img id="minesweeper-img" class="card-img-top" src="../assets/images/ProjectThumbnail/Minesweeper.png" alt="Minesweeper" /><div class="card-body">
+      <h5 id="minesweeper-name" class="card-title">Minesweeper
+      </h5>
+      <p id="minesweeper-desc" class="card-text">Solved Minesweeper using RL. Trained a model with an average win rate of 84%(easy level). Solved theoretical minesweeper, web for deployment. <br>-<br>강화학습으로 지뢰찾기 문제를 해결했다. 초급 기준 평균 승률 84% 모델을 학습시켰고 배포를 위한 웹, 지뢰찾기의 이론적 풀이를 진행했다.</p>
+      <p id="minesweeper-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">python</span><span class="badge badge-pill text-primary border border-primary ml-1">web</span><span class="badge badge-pill text-primary border border-primary ml-1">RL</span></p>
+    </div>
+  </a>
+</div>
+
+  <div class="wow animated fadeIn" data-wow-delay=".15s">
+  <a href="/projects/2-suzume" class="project card text-themed"><img id="suzume-souta-img" class="card-img-top" src="https://www.sketchappsources.com/resources/source-image/coo-app-concept-subgaurav.jpg" alt="Suzume-Souta" /><div class="card-body">
+      <h5 id="suzume-souta-name" class="card-title">Suzume-Souta
+      </h5>
+      <p id="suzume-souta-desc" class="card-text">Implemented a three-legged chair from the movie 'Suzume'. Controlled by an Arduino and simulated using issac Sim.<br>-<br>영화 스즈메의 문단속에 나오는 3족 의자를 구현했다. 아두이노로 몸체를 제어했으며, issac Sim을 이용해 시뮬레이션을 진행했다.</p>
+      <p id="suzume-souta-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">python</span><span class="badge badge-pill text-primary border border-primary ml-1">RL</span><span class="badge badge-pill text-primary border border-primary ml-1">issacSim</span><span class="badge badge-pill text-primary border border-primary ml-1">Robotics</span><span class="badge badge-pill text-primary border border-primary ml-1">Arduino</span><span class="badge badge-pill text-primary border border-primary ml-1">C++</span></p>
+    </div>
+  </a>
+</div>
+
+  <div class="wow animated fadeIn" data-wow-delay=".15s">
+  <a href="https://github.com/yousinix" class="project card text-themed"><div class="card-body">
+      <h5 id="tic-tac-toe-name" class="card-title">Tic-Tac-Toe
+      </h5>
+      <p id="tic-tac-toe-desc" class="card-text">From classical learning strategies to AlphaZero to study tic-tac-toe. Implemented a CNC robot to interact with humans in the real world.<br>-<br>고전적인 학습 전략부터 알파제로까지를 전부 사용해 틱택토를 학습했다. CNC 로봇을 구현해 현실에서 인간과 상호작용할 수 있게 만들었다.</p>
+      <p id="tic-tac-toe-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">python</span><span class="badge badge-pill text-primary border border-primary ml-1">RL</span><span class="badge badge-pill text-primary border border-primary ml-1">Robotics</span><span class="badge badge-pill text-primary border border-primary ml-1">Arduino</span><span class="badge badge-pill text-primary border border-primary ml-1">C++</span><span class="badge badge-pill text-primary border border-primary ml-1">web</span></p>
+    </div>
+  </a>
+</div>
+
+  <div class="wow animated fadeIn" data-wow-delay=".15s">
+  <a href="https://github.com/yousinix" class="project card text-themed"><div class="card-body">
+      <h5 id="omok-name" class="card-title">Omok
+      </h5>
+      <p id="omok-desc" class="card-text">Trained an 'Omok' model based on AlphaZero. To interact with humans in the real world, an Arduino-controlled robotic arm was built and taught to move. <br>-<br>알파제로를 기반으로 오목을 두는 모델을 만들었다. 현실에서 인간과 상호작용하기 위해 아두이노로 제어하는 로봇팔을 제작하고 수를 두도록 학습시켰다. </p>
+      <p id="omok-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">python</span><span class="badge badge-pill text-primary border border-primary ml-1">RL</span><span class="badge badge-pill text-primary border border-primary ml-1">Robotics</span><span class="badge badge-pill text-primary border border-primary ml-1">IssacSim</span><span class="badge badge-pill text-primary border border-primary ml-1">Arduino</span><span class="badge badge-pill text-primary border border-primary ml-1">C++</span><span class="badge badge-pill text-primary border border-primary ml-1">web</span></p>
+    </div>
+  </a>
+</div>
+
+  
+
+</div>
+
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Jimin Lee</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:tonnonssi@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.instagram.com/jiringsi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#405de6'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-instagram fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>
