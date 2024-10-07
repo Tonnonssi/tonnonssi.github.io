@@ -1,6 +1,38 @@
 [
   
     {
+      "title"    : "[Suzume/01] 몸체 제작 및 회로 구성",
+      "category" : "",
+      "tags"     : "Suzume",
+      "url"      : "/blog/Suzume_body_circuit",
+      "date"     : "2024-10-07 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[RL] Monte Carlo Tree Search",
+      "category" : "",
+      "tags"     : "RL",
+      "url"      : "/blog/MonteCarloTreeSearch",
+      "date"     : "2024-10-07 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[IssacSim] 기초",
+      "category" : "",
+      "tags"     : "IssacSim",
+      "url"      : "/blog/IssacSimBasic",
+      "date"     : "2024-10-07 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[Arduino] 아두이노 기초",
+      "category" : "",
+      "tags"     : "Arduino",
+      "url"      : "/blog/ArduinoBasic",
+      "date"     : "2024-10-07 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "[Omok/02] 로봇팔 회로 제작",
       "category" : "",
       "tags"     : "Omok",

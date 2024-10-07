@@ -84,6 +84,26 @@
     <!-- Collect tags from all posts --><!-- List tags & related posts -->
 
 <div class="py-3">
+  <h4 id="arduino">Arduino</h4>
+  <ol><!-- Sorting posts by date -->
+  <a href="/blog/ArduinoBasic"><li>[Arduino] 아두이노 기초</li></a>
+    <small class="text-muted"> - 07 October 2024</small>
+    <br/>
+  </ol>
+</div>
+<hr class="bg-light">
+
+<div class="py-3">
+  <h4 id="issacsim">IssacSim</h4>
+  <ol><!-- Sorting posts by date -->
+  <a href="/blog/IssacSimBasic"><li>[IssacSim] 기초</li></a>
+    <small class="text-muted"> - 07 October 2024</small>
+    <br/>
+  </ol>
+</div>
+<hr class="bg-light">
+
+<div class="py-3">
   <h4 id="minesweeper">Minesweeper</h4>
   <ol><!-- Sorting posts by date -->
   <a href="/blog/MinesweeperEnv"><li>[Minesweeper/01] 환경</li></a>
@@ -118,6 +138,18 @@
   <ol><!-- Sorting posts by date -->
   <a href="https://kanghwasisters.github.io/tags/#%EC%9D%B4%EC%A7%80%EB%AF%BC"><li>Articles in KanghwaSisters</li></a>
     <small class="text-muted"> - 02 March 2024</small>
+    <br/><a href="/blog/MonteCarloTreeSearch"><li>[RL] Monte Carlo Tree Search</li></a>
+    <small class="text-muted"> - 07 October 2024</small>
+    <br/>
+  </ol>
+</div>
+<hr class="bg-light">
+
+<div class="py-3">
+  <h4 id="suzume">Suzume</h4>
+  <ol><!-- Sorting posts by date -->
+  <a href="/blog/Suzume_body_circuit"><li>[Suzume/01] 몸체 제작 및 회로 구성</li></a>
+    <small class="text-muted"> - 07 October 2024</small>
     <br/>
   </ol>
 </div>
@@ -182,6 +214,23 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 </script>
-</body>
+
+<!-- Add LaTex function -->
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script></body>
 
 </html>
