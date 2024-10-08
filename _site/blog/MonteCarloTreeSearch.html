@@ -105,7 +105,7 @@
 
 <h2 id="mcts의-지표">MCTS의 지표</h2>
 <p>MCTS는 시뮬레이션을 사용해 각 노드의 가치를 구한다. 이때 노드의 가치는 각 노드를 거친 시뮬레이션의 수 $n$와 누적 보상 $w$로 표현한다.<br />
-\(value = \frac{w} {n}\)</p>
+<img src="../assets/images/RL/MCTS/MCTS1.png" alt="img" /></p>
 
 <h2 id="기본-notation">기본 Notation</h2>
 <p><img src="../assets/images/RL/MCTS/node.png" alt="img" /></p>
@@ -161,16 +161,21 @@ MCTS는 <code class="language-plaintext highlighter-rouge">1. Selection -&gt; 2.
 
 <h2 id="mcts-selection의-기준--uct1">MCTS Selection의 기준 : UCT1</h2>
 <h3 id="uct1-upper-confidence-bounds-applied-to-trees">UCT1 (Upper Confidence bounds applied to Trees)</h3>
-<p>UCT1는 충분히 탐험되지지 않은 경로와 좋다고 판단된 경로 사이의 균형을 맞추는 알고리즘이다. MCTS는 시뮬레이션으로 가치를 구하기 때문에, 각 노드의 방문 수가 충분하지 않다면 노드의 가치를 평가하기 어렵다. 이때 탐험 기능이 없다면, 탐험되지 않은 노드가 더 좋은 노드임에도 처음 탐험이 된 노드 위주로만 값이 흘러가기 때문에 초기값에 의해 편향될 수 있다. (Multi-armed Bandit 문제)</p>
+<p>UCT1는 충분히 탐험되지지 않은 경로와 좋다고 판단된 경로 사이의 균형을 맞추는 알고리즘이다. MCTS는 시뮬레이션으로 가치를 구하기 때문에, 각 노드의 방문 수가 충분하지 않다면 노드의 가치를 평가하기 어렵다. 이때 탐험 기능이 없다면, 탐험되지 않은 노드가 더 좋은 노드임에도 처음 탐험이 된 노드만 선택되기 때문에 초기값에 의해 편향될 수 있다. (Multi-armed Bandit 문제)</p>
 
 <p>이를 위해 UCT1은 이미 좋다고 판단 내려진 가치를 사용하는 <strong>활용</strong>과 해당 노드가 충분히 탐험되었는지 확인하는 <strong>탐색</strong> 두 지표를 사용한다.</p>
 
 <h3 id="수식">수식</h3>
-<h4 id="child-node-각각의-가치-계산"><strong>child node 각각의 가치 계산</strong></h4>
-<p>\(UCB1 = E(win|k,p) + C\sqrt{\frac{log(n_p)}{n_k}} \\ = \frac{w_{k,p}} {n_k} + C\sqrt{\frac{log(n_p)}{n_k}}\)</p>
-
-<h4 id="전체-child-nodes-중-select-기준"><strong>전체 child nodes 중 select 기준</strong></h4>
-<p>\(k ∈ argmax_{i ∈ I}(\frac{w_{i,p}} {n_i} + C\sqrt{\frac{log(n_p)}{n_i}})\)</p>
+<ul>
+  <li>
+    <p><strong>child node 각각의 가치 계산</strong><br />
+<img src="../assets/images/RL/MCTS/MCTS2.png" alt="img" /></p>
+  </li>
+  <li>
+    <p><strong>전체 child nodes 중 select 기준</strong>
+<img src="../assets/images/RL/MCTS/MCTS3.png" alt="img" /></p>
+  </li>
+</ul>
 
 <p>$C$ : 탐험의 정도를 조절하는 파라미터로, 알파고에서 사용된 $\sqrt{2}$가 가장 대중적으로 많이 사용된다.</p>
 
@@ -192,17 +197,17 @@ $E(win|k,p) = \frac{w_{k,p}} {n_k}$ 은 경험적으로 구해진 노드의 가�
 <h2 id="mcts를-통한-행동-선택">MCTS를 통한 행동 선택</h2>
 <p>MCTS의 가치평가 시기에는 최대 UCT1 값을 가지는 자식 노드를 우선적으로 선택했다. 하지만 최종적인 행동 선택은 최다방문 수를 기준으로 한다. UCT1 값은 충분한 양의 평가 및 탐색이 이뤄졌을 때, 탐색의 영향력은 줄고 활용 부분의 영향력이 커진다. 활용 부분의 영향력이 커지면, 유리하다고 판단되는 행동이 더 많은 지명을 얻게 되고 방문 수가 형제 노드보다 늘어나게 된다. 따라서 최다 방문 수를 기준으로 한 선택은 합리적이다.</p>
 
-<h2 id="출처">출처</h2>
-<ol>
-  <li><a href="https://www.youtube.com/watch?v=xmImNoDc9Z4">Advanced 4. Monte Carlo Tree Search _ MIT OpenCourseWare</a></li>
-</ol>
-
 <h2 id="mcts--code">MCTS : code</h2>
 <p><a href="https://github.com/Tonnonssi/tic_tac_toe.git">@ 틱택토</a>에 정리되어 있다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/code/mcts/ # 코드 위치
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">Node</code>가 MCTS 구현의 핵심이며, <code class="language-plaintext highlighter-rouge">Agent</code>에 걸쳐서 구현되어 있다.</p>
+
+<h4 id="출처">출처</h4>
+<ol>
+  <li><a href="https://www.youtube.com/watch?v=xmImNoDc9Z4">Advanced 4. Monte Carlo Tree Search _ MIT OpenCourseWare</a></li>
+</ol>
 
 
 
