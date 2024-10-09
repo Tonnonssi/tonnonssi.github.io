@@ -8,8 +8,6 @@ weight: 3
 # **About Me**
 
 Hi I am **{{ site.author.name }}** :wave:,<br>
-I majored in **statistics and computational science** at Ewha Womans University, South Korea.  
-I founded the first reinforcement learning club on campus, **"KangHwaSisters"**(A portmanteau of reinforcement in Korean and Sisters.)  and served as a member of the management team from the 2024.3 - .  
 Currently interested in **RL, DL, and Robotics**. 
 
 <div class="row">
