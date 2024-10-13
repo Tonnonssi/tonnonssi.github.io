@@ -90,3 +90,4 @@ MCTS의 가치평가 시기에는 최대 UCT1 값을 가지는 자식 노드를 
 
 #### 출처 
 1. [Advanced 4. Monte Carlo Tree Search _ MIT OpenCourseWare](https://www.youtube.com/watch?v=xmImNoDc9Z4)
+2. [https://dke.maastrichtuniversity.nl/m.winands/documents/pMCTS.pdf](https://dke.maastrichtuniversity.nl/m.winands/documents/pMCTS.pdf)
