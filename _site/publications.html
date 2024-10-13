@@ -22,11 +22,11 @@
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Publications">
-  <meta property="og:description" content="안녕 :Hi:">
+  <meta property="og:description" content="AI Engineer•Statistician ">
   <meta property="og:image" content="./assets/images/Profile/Jimin.png">
 
   <title>Publications</title>
-  <meta name="description" content="안녕 :Hi:">
+  <meta name="description" content="AI Engineer•Statistician ">
 
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
 
@@ -86,43 +86,55 @@
 <p><br /></p>
 
 <div class="publications-list">
+  
+  
     
-    <div class="publication">
-      <h4 class="title">Deep Learning for Molecular Graphs</h4>
-      <p class="authors">
+      
+      <h3 style="font-size: 2em; margin-top: 40px; solid #ccc; padding-bottom: 10px;">2025</h3>
+    
+    <div class="publication" style="position: relative; padding: 20px; border: 1px solid #ccc; margin-bottom: 20px;">
+      <h4 class="title" style="font-size: 1.5em; margin-bottom: 10px;">Deep Learning for Molecular Graphs</h4>
+      <p class="authors" style="margin-bottom: 10px;">
         
           <strong>Jimin Lee</strong>, 
         
           <strong>Jane Smith</strong>
         
       </p>
-      <p class="source"><em>AI Journal, 2023</em></p>
-      <p class="presented-at">Presented at NeurIPS 2023</p>
-      <div class="links">
-        <a href="javascript:void(0);" onclick="toggleAbstract(1)" class="abs-button">Abstract</a>
-        <div id="abstract-1" style="display:none;">
+      <p class="source" style="font-style: italic; margin-bottom: 10px;">AI Journal, 2023</p>
+      <p class="presented-at" style="margin-bottom: 10px;">Presented at NeurIPS 2023</p>
+      <div class="links" style="margin-bottom: 10px;">
+        <a href="javascript:void(0);" onclick="toggleAbstract(1)" class="abs-button" style="text-decoration: none; color: blue;">Abstract</a>
+        <div id="abstract-1" style="display:none; margin-top: 10px;">
           <p>WannaBe</p>
         </div>
         &nbsp;
-        <a href="" class="html-button">Link</a>
+        
+          <a href="https://example.com/fulltext2" class="html-button" style="text-decoration: none; color: blue;">Link</a>
+        
         &nbsp; 
-        <a href="" class="html-button">PDF</a>
+        
+          <a href="https://example.com/fulltext2" class="pdf-button" style="text-decoration: none; color: blue;">PDF</a>
+        
+      </div>
+      <div class="year" style="position: absolute; bottom: 0; right: 20px; font-size: 60px; font-weight: bold; color: rgba(0, 0, 0, 0.05); z-index: 0; pointer-events: none;">
+        2025
       </div>
     </div>
-    <hr />
-    
-  </div>
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;" />
+  
+</div>
 
 <script>
-    function toggleAbstract(index) {
-      var abstract = document.getElementById('abstract-' + index);
-      if (abstract.style.display === 'none') {
-        abstract.style.display = 'block';
-      } else {
-        abstract.style.display = 'none';
-      }
-    }
-  </script>
+function toggleAbstract(index) {
+  var abstract = document.getElementById('abstract-' + index);
+  if (abstract.style.display === 'none') {
+    abstract.style.display = 'block';
+  } else {
+    abstract.style.display = 'none';
+  }
+}
+</script>
 
 
   </main>

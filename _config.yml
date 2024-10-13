@@ -1,7 +1,7 @@
 ### Site Settings ###
 title               : tonnonssi
 description         : >-
-                      안녕 :Hi:
+                      <h3>AI Engineer<br>•<br>Statistician</h3><br> 
 baseurl             : ""            # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository          : tonnonssi/tonnonssi.github.io      # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 remote_theme        : yousinix/portfolYOU

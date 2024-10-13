@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "[Statistics] 평균 vs 기댓값",
+      "category" : "",
+      "tags"     : "Statistics",
+      "url"      : "/blog/ExpectationMean",
+      "date"     : "2024-10-10 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "[Suzume/01] 몸체 제작 및 회로 구성",
       "category" : "",
       "tags"     : "Suzume",
