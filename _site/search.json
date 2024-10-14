@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "[RL] DQN",
+      "category" : "",
+      "tags"     : "RL",
+      "url"      : "/blog/DQN",
+      "date"     : "2024-10-13 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "[Statistics] 평균 vs 기댓값",
       "category" : "",
       "tags"     : "Statistics",
