@@ -6,7 +6,9 @@ style: border  # fill / border
 color: dark
 description: "Implemented a CNN neural network specialized for spatial recognition, modified the replay memory to improve performance, and implemented two different DQN implementations. <br>-<br>공간 인식에 특화된 CNN 신경망을 구현하고, 성능 향상을 위해 리플레이 메모리를 수정했으며, 두 가지 방식의 DQN 구현을 진행했다."
 ---
-
+<!-- 한국어 콘텐츠 -->
+{% capture ko_content %}
+  
 ## 02. DQN
 ### Net 
 CNN은 공간상의 정보를 인식할 수 있기 때문에 이미지 인식에 유리하다. 지뢰찾기의 state 또한 수와 주변부 사이의 패턴이 중요하기 때문에 CNN 신경망이 적합하다 판단했다. 패딩과 합성곱 층만을 이용하는 두 가지 아이디어에서 성능 향상이 이뤄졌다. 
@@ -65,3 +67,21 @@ DQN 알고리즘을 두 가지 버전으로 구현했다. 먼저 vector type은 
 ![Alt text](../assets/images/Minesweeper/image-6.png)
 이를 통해 낮은 loss값이 더 빠른 수렴에 도움을 줄 수 있다 생각해 초기 수렴이 빠른 벡터 타입을 이용해 대부분의 학습을 진행했다.  
   
+
+{% endcapture %}
+
+<!-- 영어 콘텐츠 -->
+{% capture en_content %}
+
+To be continue...
+
+{% endcapture %}
+
+<div id="content-ko" class="lang-content" data-lang="ko">
+  {{ ko_content | markdownify }}
+</div>
+
+<div id="content-en" class="lang-content" data-lang="en" style="display: none;">
+  {{ en_content | markdownify }}
+</div>
+

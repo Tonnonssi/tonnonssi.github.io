@@ -6,6 +6,9 @@ style: border  # fill / border
 color: dark
 description: "Chose metrics that would tell us about learning trends, and the right number of sample sizes for valid and test. <br>-<br>학습 동향을 알려줄 수 있는 지표를 선택하고, valid 및 test에 적절한 수의 표본량을 선택했다."
 ---
+<!-- 한국어 콘텐츠 -->
+{% capture ko_content %}
+  
 
 ## 03. Train / Valid / Test
 ### Train : 학습 지표 선택 
@@ -45,3 +48,21 @@ description: "Chose metrics that would tell us about learning trends, and the ri
 100 에피소드에서의 승률이 표본 수가 더 많아 완만한 정규분포의 형태를 띄고 있지만, 분산이 1000 에피소드보다 훨씬 크다. 반대로 1000 에피소드의 경우, 분산이 현저하게 작으며 min-max 값 또한 80-85% 사이로 오차 범위가 적다. 
 
 구현한 valid는 test와 달리 고정된 모델의 승률을 여러 번 확인하지 않고 한 번의 검증으로만 모델을 평가한다. 한 번의 검증에서 얻은 추정치가 불편향 추정치에 근접해야 하기에, 분산이 작은 1000개에서의 승률이 100개에서보다 적합하다. 
+
+
+{% endcapture %}
+
+<!-- 영어 콘텐츠 -->
+{% capture en_content %}
+
+To be continue...
+
+{% endcapture %}
+
+<div id="content-ko" class="lang-content" data-lang="ko">
+  {{ ko_content | markdownify }}
+</div>
+
+<div id="content-en" class="lang-content" data-lang="en" style="display: none;">
+  {{ en_content | markdownify }}
+</div>

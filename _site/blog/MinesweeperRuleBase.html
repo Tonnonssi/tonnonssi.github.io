@@ -81,30 +81,110 @@
   </div>
 
 </nav>
-    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+    <div class="language-toggle">
+  <button id="toggle-ko" class="styled-button">View in English</button>
+  <button id="toggle-en" class="styled-button" style="display: none;">한국어로 보기</button>
+</div>
+
+<div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <div class="title-container">
   <h1><b>[Minesweeper/05] Rule Base</b></h1>
 
+  <!-- 언어 전환 버튼 -->
+  <div class="language-toggle">
+    <button id="toggle-ko" class="styled-button">View in English</button>
+    <button id="toggle-en" class="styled-button" style="display: none;">한국어로 보기</button>
+  </div>
+</div>
+
 <p class="post-metadata text-muted">
-  14 July 2024 -  
+  14 July 2024 -
   <b>less than 1 min read time</b>
 
-  <br>Tags: 
+  <br>Tags:
     
-    <a class="text-decoration-none no-underline" href="/blog/tags#minesweeper">
-      <span class="tag badge badge-pill text-primary border border-primary">Minesweeper</span>
-    </a>
+      <a class="text-decoration-none no-underline" href="/blog/tags#minesweeper">
+        <span class="tag badge badge-pill text-primary border border-primary">Minesweeper</span>
+      </a>
     </p>
 
+<!-- 마크다운 내용 표시 -->
+<!-- 한국어 콘텐츠 -->
+
+<!-- 영어 콘텐츠 -->
+
+<div id="content-ko" class="lang-content" data-lang="ko">
+  
 <h2 id="rule-base">Rule Base</h2>
 
 
+</div>
 
-<div class="pt-5">
+<div id="content-en" class="lang-content" data-lang="en" style="display: none;">
   
+<p>To be continue…</p>
+
+
 </div>
 
 
 
+<script>
+  const btnKo = document.getElementById("toggle-ko");
+  const btnEn = document.getElementById("toggle-en");
+  const contentKo = document.getElementById("content-ko");
+  const contentEn = document.getElementById("content-en");
+
+  // Set initial state to show Korean content by default
+  contentKo.style.display = "block";
+  contentEn.style.display = "none";
+  btnKo.style.display = "inline-block";
+  btnEn.style.display = "none";
+
+  // Event listeners to toggle language
+  btnKo.addEventListener("click", () => {
+    contentKo.style.display = "none";
+    contentEn.style.display = "block";
+    btnKo.style.display = "none";
+    btnEn.style.display = "inline-block";
+  });
+
+  btnEn.addEventListener("click", () => {
+    contentKo.style.display = "block";
+    contentEn.style.display = "none";
+    btnKo.style.display = "inline-block";
+    btnEn.style.display = "none";
+  });
+</script>
+
+<style>
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .language-toggle {
+    display: flex;
+    gap: 8px; /* Space between buttons */
+  }
+
+  .styled-button {
+    background-color: transparent; /* Transparent background */
+    color: #000000; /* Black text color */
+    border: 2px solid #000000; /* Black border */
+    padding: 8px 20px; /* Adjust padding for size */
+    font-size: 16px; /* Adjust font size */
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  }
+
+  .styled-button:hover {
+    background-color: #000000; /* Black background on hover */
+    color: #fff; /* White text on hover */
+  }
+</style>
 </div>
 
 <script src="https://utteranc.es/client.js"
@@ -115,6 +195,59 @@
         crossorigin="anonymous"
         async>
 </script>
+
+<script>
+  const btnKo = document.getElementById("toggle-ko");
+  const btnEn = document.getElementById("toggle-en");
+  const contentKo = document.getElementById("content-ko");
+  const contentEn = document.getElementById("content-en");
+
+  // Set initial state to show Korean content by default
+  contentKo.style.display = "block";
+  contentEn.style.display = "none";
+  btnKo.style.display = "inline-block";
+  btnEn.style.display = "none";
+
+  // Event listeners to toggle language
+  btnKo.addEventListener("click", () => {
+    contentKo.style.display = "none";
+    contentEn.style.display = "block";
+    btnKo.style.display = "none";
+    btnEn.style.display = "inline-block";
+  });
+
+  btnEn.addEventListener("click", () => {
+    contentKo.style.display = "block";
+    contentEn.style.display = "none";
+    btnKo.style.display = "inline-block";
+    btnEn.style.display = "none";
+  });
+</script>
+
+<style>
+  .language-toggle {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 8px; /* Space between buttons */
+    margin-top: 10px; /* Optional: Adjust spacing from the top */
+  }
+
+  .styled-button {
+    background-color: transparent; /* Transparent background */
+    color: #000000; /* Black text color */
+    border: 2px solid #000000; /* Black border */
+    padding: 8px 20px; /* Adjust padding for size */
+    font-size: 16px; /* Adjust font size */
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  }
+
+  .styled-button:hover {
+    background-color: #000000; /* Black background on hover */
+    color: #fff; /* White text on hover */
+  }
+</style>
   </main>
   <footer class="mt-auto py-3 text-center">
 

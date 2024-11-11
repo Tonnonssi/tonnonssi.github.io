@@ -6,7 +6,9 @@ style: fill  # fill / border
 color:  info # secondary / success / danger / warning / info / light / dark
 description: "Monte Carlo tree search structure used in AlphaGo and AlphaZero <br>-<br>알파고, 알파제로에 사용된 몬테카를로 트리 탐색 구조"
 ---
-
+<!-- 한국어 콘텐츠 -->
+{% capture ko_content %}
+  
 ## Monte Carlo Tree Search(MCTS)
 
 > Monte Carlo (Statistical Simulation Method) + Tree Search  
@@ -91,3 +93,21 @@ MCTS의 가치평가 시기에는 최대 UCT1 값을 가지는 자식 노드를 
 #### 출처 
 1. [Advanced 4. Monte Carlo Tree Search _ MIT OpenCourseWare](https://www.youtube.com/watch?v=xmImNoDc9Z4)
 2. [https://dke.maastrichtuniversity.nl/m.winands/documents/pMCTS.pdf](https://dke.maastrichtuniversity.nl/m.winands/documents/pMCTS.pdf)
+
+{% endcapture %}
+
+<!-- 영어 콘텐츠 -->
+{% capture en_content %}
+
+To be continue...
+
+{% endcapture %}
+
+<div id="content-ko" class="lang-content" data-lang="ko">
+  {{ ko_content | markdownify }}
+</div>
+
+<div id="content-en" class="lang-content" data-lang="en" style="display: none;">
+  {{ en_content | markdownify }}
+</div>
+

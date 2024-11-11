@@ -6,7 +6,9 @@ style: border  # fill / border
 color: dark
 description: "Resolved several issues with the Minesweeper environment implementation and implemented various states. <br>-<br>지뢰찾기 환경 구현에서 발생한 여러 문제점을 해결하고, 다양한 state를 구현했다."
 ---
-
+<!-- 한국어 콘텐츠 -->
+{% capture ko_content %}
+  
 ## 01. Environment
 
 ### State 
@@ -49,5 +51,26 @@ n0만 번 단위로 에피소드를 진행하다보니, 환경 코드의 시간 
 
 #### 2. 주변 지뢰 개수 세기 로직 
 기존 코드는 특정 타일을 기준으로 주변 타일을 탐색하는 방식을 이중 for문으로 구현했다. for문을 사용을 최소화 하고자, 겉에 0 패딩을 두른 후 3*3로 arr를 순서대로 탐색하며 M의 개수를 세는 방식으로 코드를 수정했다.  
+
 #### 3. cython  
 -> 추가할 예정 
+
+{% endcapture %}
+
+<!-- 영어 콘텐츠 -->
+{% capture en_content %}
+
+To be continue,,, 
+
+{% endcapture %}
+
+<div id="content-en" class="lang-content" data-lang="en" style="display: none;">
+  {{ en_content | markdownify }}
+</div>
+
+<div id="content-ko" class="lang-content" data-lang="ko">
+  {{ ko_content | markdownify }}
+</div>
+
+
+

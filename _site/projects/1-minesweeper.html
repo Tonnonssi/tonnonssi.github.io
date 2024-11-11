@@ -81,8 +81,19 @@
   </div>
 
 </nav>
-    <div class="col-lg-10 mx-auto mt-5 markdown-body">
-  <h1 id="minesweeper">Minesweeper</h1>
+    <div class="language-toggle">
+  <button id="toggle-ko" class="styled-button">View in English</button>
+  <button id="toggle-en" class="styled-button" style="display: none;">한국어로 보기</button>
+</div>
+
+<div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <!-- 한국어 콘텐츠 -->
+
+<!-- 영어 콘텐츠 -->
+
+<div id="content-ko" class="lang-content" data-lang="ko">
+  
+<h1 id="minesweeper">Minesweeper</h1>
 
 <div class="list-group my-3"><a class="list-group-item active disabled text-white">Table of Contents</a><a class="list-group-item list-group-item-action" href="#how-to-use">How to use</a><a class="list-group-item list-group-item-action" href="#about-minesweeper">
 About Minesweeper </a><a class="list-group-item list-group-item-action" href="#related-articles">
@@ -564,6 +575,17 @@ next_state와 Q-table에 시각화되어 있는 마름모는 게임 내 지뢰�
 
 <p><img src="../assets/images/Minesweeper/image-41.png" alt="Alt text" /></p>
 
+
+</div>
+
+<div id="content-en" class="lang-content" data-lang="en" style="display: none;">
+  
+<p>To be continue…</p>
+
+
+</div>
+
+
 </div>
 
 <script src="https://utteranc.es/client.js"
@@ -574,6 +596,59 @@ next_state와 Q-table에 시각화되어 있는 마름모는 게임 내 지뢰�
         crossorigin="anonymous"
         async>
 </script>
+
+<script>
+  const btnKo = document.getElementById("toggle-ko");
+  const btnEn = document.getElementById("toggle-en");
+  const contentKo = document.getElementById("content-ko");
+  const contentEn = document.getElementById("content-en");
+
+  // Set initial state to show Korean content by default
+  contentKo.style.display = "block";
+  contentEn.style.display = "none";
+  btnKo.style.display = "inline-block";
+  btnEn.style.display = "none";
+
+  // Event listeners to toggle language
+  btnKo.addEventListener("click", () => {
+    contentKo.style.display = "none";
+    contentEn.style.display = "block";
+    btnKo.style.display = "none";
+    btnEn.style.display = "inline-block";
+  });
+
+  btnEn.addEventListener("click", () => {
+    contentKo.style.display = "block";
+    contentEn.style.display = "none";
+    btnKo.style.display = "inline-block";
+    btnEn.style.display = "none";
+  });
+</script>
+
+<style>
+  .language-toggle {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 8px; /* Space between buttons */
+    margin-top: 10px; /* Optional: Adjust spacing from the top */
+  }
+
+  .styled-button {
+    background-color: transparent; /* Transparent background */
+    color: #000000; /* Black text color */
+    border: 2px solid #000000; /* Black border */
+    padding: 8px 20px; /* Adjust padding for size */
+    font-size: 16px; /* Adjust font size */
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  }
+
+  .styled-button:hover {
+    background-color: #000000; /* Black background on hover */
+    color: #fff; /* White text on hover */
+  }
+</style>
   </main>
   <footer class="mt-auto py-3 text-center">
 

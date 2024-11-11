@@ -6,6 +6,9 @@ style: border  # fill / border
 color: dark
 description: "Solved multiple problems and applied different methodologies during the course of learning.<br>-<br>학습 중에 있었던 여러 문제를 해결하고 다양한 방법론을 적용했다."
 ---
+<!-- 한국어 콘텐츠 -->
+{% capture ko_content %}
+  
 
 ## 04. Trouble Shooting 
 ### 이미 까진 타일을 또 누르는 사건 
@@ -72,3 +75,21 @@ Guess와 Progress를 구분하지 않고 동일한 보상을 준 경우가 전�
 
 ### 주요 파라미터
 강화학습에서 사용하는 여러 파라미터 중, learning rate가 학습에 가장 큰 영향을 미쳤다. 동일한 상황에서도 초기 lr이 너무 크거나 작으면 학습이 제대로 진행되지 않았다. 또한 계속 같은 크기의 lr로 학습을 시키는 것도 학습의 한계를 초래했다. 
+
+
+{% endcapture %}
+
+<!-- 영어 콘텐츠 -->
+{% capture en_content %}
+
+To be continue...
+
+{% endcapture %}
+
+<div id="content-ko" class="lang-content" data-lang="ko">
+  {{ ko_content | markdownify }}
+</div>
+
+<div id="content-en" class="lang-content" data-lang="en" style="display: none;">
+  {{ en_content | markdownify }}
+</div>
