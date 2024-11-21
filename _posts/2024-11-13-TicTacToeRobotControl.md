@@ -43,17 +43,21 @@ description: "Implemented the library to control CNC plotter by using C++. <br>-
 
 ### 아두이노용 라이브러리 제작
 
-아두이노는 `Stepper`라는 스텝 모터 제어 라이브러리를 제공한다. 원래는 `Stepper` 라이브러리를 이용해 제어 프로그램을 작성할 예정이었으나, 디지털 핀에 꼽힌 x와 y축 담당 스텝 모터가 단방향으로만 이동하는 오류가 발생했다. 이 오류는 랜덤으로 발생해 처음에는 양방향으로 잘 돌아가던 모터가 같은 코드 상에서 갑자기 단방향으로만 돌아가는 등 명확한 원인을 알아내기 어려웠다. 문제를 해결하고자 28BYJ-48 스텝 모터를 제어하는 전용 라이브러리를 다시 만들었다.  
+아두이노는 `Stepper`라는 스텝 모터 제어 라이브러리를 제공한다. 원래는 `Stepper` 라이브러리를 이용해 제어 프로그램을 작성할 예정이었으나, 디지털 핀에 꼽힌 x와 y축 담당 스텝 모터가 단방향으로만 이동하는 오류가 발생했다. 이 오류는 랜덤으로 발생해 명확한 원인을 알아내기 어려웠다. 예를 들어, 처음에는 양방향으로 잘 돌아가던 모터가 같은 코드 상에서 갑자기 단방향으로만 돌아가는 모습을 보였다. 이 문제를 해결하고자 28BYJ-48 스텝 모터를 제어하는 전용 라이브러리를 다시 만들었다.  
 
 ### C++ 기초 다지기 
 
 스텝 모터 제어 라이브러리와 로봇 제어 코드는 전부 C++으로 구현했다. C++의 클래스와 포인터, 참조, 복사를 다룬 아래 두 글은 라이브러리를 구현하며 공부한 내용이다. 
 
-{% include url.html num="01" title="C++ Class" description="." url="https://tonnonssi.github.io/blog/CppClass" %}   
-{% include url.html num="02" title="C++ Pointer & Reference" description="." url="https://tonnonssi.github.io/blog/CppPointerReference" %}  
+{% include url.html num="01" title="C++ Class" description=" " url="https://tonnonssi.github.io/blog/CppClass" %}   
+{% include url.html num="02" title="C++ Pointer & Reference" description=" " url="https://tonnonssi.github.io/blog/CppPointerReference" %}  
+
+<br>
 
 ### 코드 바로가기 
 {% include elements/button.html link="https://github.com/Tonnonssi/StepMotor.git" text="Codes on GitHub" block=true %}
+
+<br>
 
 ### 문제 상황 및 해결  
 
@@ -65,10 +69,9 @@ description: "Implemented the library to control CNC plotter by using C++. <br>-
   대각선을 그리기 위해서는 x,y 축이 동시에 움직여야 한다. 하지만 아두이노는 병렬 연산을 지원하지 않기 때문에 `std::thread()`를 사용할 수 없다. 처음에는 아두이노에서의 멀티 테스킹을 가능케 만드는 [`Scheduler`](https://github.com/mikaelpatel/Arduino-Scheduler)를 사용하려고 했다. 구현해야 하는 대각선 그리는 코드는 n_steps를 받아 그 크기만큼 x, y 스텝모터를 동시에 움직여야 하는데, 스케줄러는 정적 함수만을 파라미터로 받기 때문에 구현이 불가능했다. 이 문제는 `MultiStepper(&stepper_x, &stepper_y)` 클래스를 구현해 해결했다.  
 
 3. **한 방향으로만 도는 모터.** 
-  Seiral 통신을 통해 direction과 step_signal이 오류 없이 변화하는 것을 확인했음에도 회전 방향이 달라지지 않았다. 이 문제는 step 사이의 더 큰 delay() 값을 주며 해결되었다. 너무 적은 -나의 초깃값은 30이었다- 딜레이 시간은 모터에게 신호를 제대로 전달하지 못한다는 것을 알 수 있었고, 여러 시도 후 2000을 딜레이 값으로 설정했다. 
-  
+  Seiral 통신을 통해 direction과 step_signal이 오류 없이 변화하는 것을 확인했음에도 회전 방향이 달라지지 않았다. 이 문제는 step 사이의 더 큰 delay() 값을 주며 해결되었다. 너무 적은 -나의 초깃값은 30이었다- 딜레이 시간은 모터에게 신호를 제대로 전달하지 못한다는 것을 알 수 있었고, 여러 시도 후 500을 딜레이 값으로 설정했다. 
 
-## 02. 그림 그리기 제어 코드 
+## 03. 그림 그리기 제어 코드 
 ### TicTacToeArtist 
 틱택토 아티스트 클래스는 3개의 스텝 모터를 이용해 O / X, 판을 그리는 제어용 클래스다. `StepMotor.h` 라이브러리를 이용해 3개의 스텝 모터 클래스를 선언한 후, 인자로 받아 사용한다. 
 {%- gist 3c466bc3c32c4ae5c9b36d1266b913d8 %} // 수정해야 되,
