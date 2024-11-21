@@ -1,10 +1,10 @@
 ---
-title: "[C++] Class, Pointer & Reference"
+title: "[C++] Pointer & Reference"
 tags: [C++]
 pages: papers
 style: fill  # fill / border 
 color:  danger # secondary / success / danger / warning / info / light / dark
-description: "Implemented the library to control CNC plotter by using C++. <br>-<br> C++을 이용해 CNC Plotter을 제어하는 라이브러리를 구현했다."
+description: "Introductory of Pointer and Reference <br>-<br> 기초적인 포인터와 참조"
 ---
 
 <!-- 한국어 콘텐츠 -->
@@ -103,7 +103,7 @@ int& a; // 초기화가 안 되어서 오류 발생
 
 ## 포인터 vs 참조 
 | **특성**          | **참조 (Reference)**                                    | **포인터 (Pointer)**                                   |
-|-------------------|--------------------------------------------------------|------------------------------------------------------|
+|-|-|-|
 | **선언 및 초기화** | 선언과 동시에 초기화가 반드시 필요                | 초기화 없이 선언만 할 수 있음                    |
 | **주소 변경**      | 초기화된 이후 다른 주소를 참조할 수 없음            | 포인터는 다른 주소를 가리키도록 변경할 수 있음 |
 | **Null 값**        | Null 값을 가질 수 없음                              | Null 포인터를 가질 수 있음 (`nullptr`/`NULL` 사용 가능) |
