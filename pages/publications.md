@@ -3,6 +3,7 @@ layout: default
 title: Publications
 permalink: /publications
 ---
+<br>
 # Publications
 
 <br> 

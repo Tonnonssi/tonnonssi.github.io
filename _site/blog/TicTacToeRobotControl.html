@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[TicTacToe/02] CNC Plotter 제어">
+  <meta property="og:description" content="Implemented the library to control CNC plotter by using C++. - C++을 이용해 CNC Plotter을 제어하는 라이브러리를 구현했다.">
+  <meta property="og:image" content="./assets/images/Profile/Jimin.png">
+
+  <title>[TicTacToe/02] CNC Plotter 제어</title>
+  <meta name="description" content="Implemented the library to control CNC plotter by using C++. - C++을 이용해 CNC Plotter을 제어하는 라이브러리를 구현했다.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<!--  -->
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/publications">Publications</a>
+
+      <a class="nav-item nav-link " href="/categories">Categories</a>
+
+      <a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/articles/">Articles</a>
+
+      <a class="nav-item nav-link " href="https://github.com/tonnonssi"><i class="fab fa-1x fa-github"></i></a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="language-toggle">
+  <button id="toggle-ko" class="styled-button">View in English</button>
+  <button id="toggle-en" class="styled-button" style="display: none;">한국어로 보기</button>
+</div>
+
+<div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <div class="title-container">
+  <h1><b>[TicTacToe/02] CNC Plotter 제어</b></h1>
+</div>
+
+<p class="post-metadata text-muted">
+  13 November 2024 -
+  <b>3 mins read time</b>
+
+  <br>Tags:
+    
+      <a class="text-decoration-none no-underline" href="/blog/tags#tictactoe">
+        <span class="tag badge badge-pill text-primary border border-primary">TicTacToe</span>
+      </a>
+    </p>
+
+<!-- 마크다운 내용 표시 -->
+<!-- 한국어 콘텐츠 -->
+
+<!-- 영어 콘텐츠 -->
+
+<div id="content-ko" class="lang-content" data-lang="ko">
+  
+<h2 id="01-스텝-모터">01. 스텝 모터</h2>
+
+<blockquote>
+  <p>Step Motor 28BYJ-48 기준</p>
+</blockquote>
+
+<p>스텝 모터는 움직이던 관성에 영향을 받지 않고, 일정한 각도만큼 회전하는 모터다. 스텝 모터는 신호를 읽고 해당하는 동작을 절차적으로 수행하며 모터를 회전시킨다. 구현에 사용한 28BYJ-48 모터는 5 wires 유니폴라 구조며, 정밀한 제어가 가능한 half-step 시퀀스를 이용한다. (더 자세한 서보 모터의 구조와 시퀀스는 아래 참고 자료를 읽는 것을 추천한다.)</p>
+
+<p><img src="..\assets\images\TicTacToe\Robot\image.png" alt="alt text" /></p>
+
+<p>28BYJ-48 스텝 모터의 5 wires는 각각 전원선, IN1-4와 연결된다. 5 wires 유니폴라 방식은 두 개의 코일로 구성되어 있는데, 각각의 코일은 IN1과 IN3, IN2와 IN4과 연결되어 있다. 각각의 선에 0-7 순서로 신호를 전달하면 시계 방향으로 모터가 회전한다. 시계 반대 방향으로 모터를 돌리고 싶다면, 역순으로 신호를 전달하면 된다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Switching Seq 
+// Step  | IN1 IN2 IN3 IN4
+// ----- | ----------------
+//   0   |  0   0   0   1
+//   1   |  0   0   1   1
+//   2   |  0   0   1   0
+//   3   |  0   1   1   0
+//   4   |  0   1   0   0
+//   5   |  1   1   0   0
+//   6   |  1   0   0   0
+//   7   |  1   0   0   1
+</code></pre></div></div>
+
+<ul>
+  <li><strong>참고 자료</strong>
+    <ol>
+      <li><a href="https://www.rs-online.com/designspark/stepper-motors-and-drives-what-is-full-step-half-step-and-microstepping">Stepper motors and drives, what is full step, half step and microstepping?</a></li>
+      <li><a href="https://coeleveld.com/arduino-stepper/">Arduino + Stepper (Theory)</a></li>
+      <li><a href="https://m.blog.naver.com/PostView.naver?blogId=darknisia&amp;logNo=221652111026&amp;proxyReferer=https:%2F%2Fwww.google.com%2F&amp;trackingCode=external">아두이노 중급_29. 스텝모터, 스테핑모터</a></li>
+      <li><a href="https://components101.com/motors/28byj-48-stepper-motor">28BYJ-48 - 5V Stepper Motor</a></li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="아두이노용-라이브러리-제작">아두이노용 라이브러리 제작</h3>
+
+<p>아두이노는 <code class="language-plaintext highlighter-rouge">Stepper</code>라는 스텝 모터 제어 라이브러리를 제공한다. 원래는 <code class="language-plaintext highlighter-rouge">Stepper</code> 라이브러리를 이용해 제어 프로그램을 작성할 예정이었으나, 디지털 핀에 꼽힌 x와 y축 담당 스텝 모터가 단방향으로만 이동하는 오류가 발생했다. 이 오류는 랜덤으로 발생해 명확한 원인을 알아내기 어려웠다. 예를 들어, 처음에는 양방향으로 잘 돌아가던 모터가 같은 코드 상에서 갑자기 단방향으로만 돌아가는 모습을 보였다. 이 문제를 해결하고자 28BYJ-48 스텝 모터를 제어하는 전용 라이브러리를 다시 만들었다.</p>
+
+<h3 id="c-기초-다지기">C++ 기초 다지기</h3>
+
+<p>스텝 모터 제어 라이브러리와 로봇 제어 코드는 전부 C++으로 구현했다. C++의 클래스와 포인터, 참조, 복사를 다룬 아래 두 글은 라이브러리를 구현하며 공부한 내용이다.</p>
+
+<p><a href="https://tonnonssi.github.io/blog/CppClass" target="_blank" style="display: block; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px; cursor: pointer; text-decoration: none; color: black;">
+    <!-- Row number with larger font and gray color -->
+    <span style="display: block; font-weight: bold; font-size: 24px; color: gray;">01</span>
+    <!-- Title -->
+    <span style="display: block; font-weight: bold; margin: 0; font-size: 18px; color: black;">C++ Class</span>
+    <!-- Description -->
+    <span style="display: block; margin: 0; color: black;"> </span>
+  </a></p>
+
+<p><a href="https://tonnonssi.github.io/blog/CppPointerReference" target="_blank" style="display: block; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px; cursor: pointer; text-decoration: none; color: black;">
+    <!-- Row number with larger font and gray color -->
+    <span style="display: block; font-weight: bold; font-size: 24px; color: gray;">02</span>
+    <!-- Title -->
+    <span style="display: block; font-weight: bold; margin: 0; font-size: 18px; color: black;">C++ Pointer &amp; Reference</span>
+    <!-- Description -->
+    <span style="display: block; margin: 0; color: black;"> </span>
+  </a></p>
+
+<p><br /></p>
+
+<h3 id="코드-바로가기">코드 바로가기</h3>
+<p><a class="m-1 btn btn-outline-primary btn-3 btn-block" href="https://github.com/Tonnonssi/StepMotor.git">
+  Codes on GitHub
+</a></p>
+
+<p><br /></p>
+
+<h3 id="문제-상황-및-해결">문제 상황 및 해결</h3>
+
+<ol>
+  <li>
+    <p><strong>모터의 속도 저하 문제.</strong> <br />
+  하나 하나 핀을 설정해주는 것과 그 내용을 함수로 묶은거랑 움직임 속도 차이가 난다. .. 왜?</p>
+  </li>
+  <li>
+    <p><strong>병렬 연산을 지원하지 않는 아두이노.</strong> <br />
+  대각선을 그리기 위해서는 x,y 축이 동시에 움직여야 한다. 하지만 아두이노는 병렬 연산을 지원하지 않기 때문에 <code class="language-plaintext highlighter-rouge">std::thread()</code>를 사용할 수 없다. 처음에는 아두이노에서의 멀티 테스킹을 가능케 만드는 <a href="https://github.com/mikaelpatel/Arduino-Scheduler"><code class="language-plaintext highlighter-rouge">Scheduler</code></a>를 사용하려고 했다. 구현해야 하는 대각선 그리는 코드는 n_steps를 받아 그 크기만큼 x, y 스텝모터를 동시에 움직여야 하는데, 스케줄러는 정적 함수만을 파라미터로 받기 때문에 구현이 불가능했다. 이 문제는 <code class="language-plaintext highlighter-rouge">MultiStepper(&amp;stepper_x, &amp;stepper_y)</code> 클래스를 구현해 해결했다.</p>
+  </li>
+  <li>
+    <p><strong>한 방향으로만 도는 모터.</strong> 
+  Seiral 통신을 통해 direction과 step_signal이 오류 없이 변화하는 것을 확인했음에도 회전 방향이 달라지지 않았다. 이 문제는 step 사이의 더 큰 delay() 값을 주며 해결되었다. 너무 적은 -나의 초깃값은 30이었다- 딜레이 시간은 모터에게 신호를 제대로 전달하지 못한다는 것을 알 수 있었고, 여러 시도 후 500을 딜레이 값으로 설정했다.</p>
+  </li>
+</ol>
+
+<h2 id="03-그림-그리기-제어-코드">03. 그림 그리기 제어 코드</h2>
+<h3 id="tictactoeartist">TicTacToeArtist</h3>
+<p>틱택토 아티스트 클래스는 3개의 스텝 모터를 이용해 O / X, 판을 그리는 제어용 클래스다. <code class="language-plaintext highlighter-rouge">StepMotor.h</code> 라이브러리를 이용해 3개의 스텝 모터 클래스를 선언한 후, 인자로 받아 사용한다.<script src="https://gist.github.com/3c466bc3c32c4ae5c9b36d1266b913d8.js"> </script> // 수정해야 되,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ino code 여기로 
+</code></pre></div></div>
+
+<p><a class="m-1 btn btn-outline-primary btn-3 btn-block" href="https://github.com/Tonnonssi/StepMotor.git">
+  Codes on GitHub
+</a>
+// 수정해야 되</p>
+
+<h3 id="실제-움직임">실제 움직임</h3>
+
+<h3 id="문제-상황-및-해결-1">문제 상황 및 해결</h3>
+
+
+</div>
+
+<div id="content-en" class="lang-content" data-lang="en" style="display: none;">
+  
+<p>To be continue…</p>
+
+
+</div>
+
+</div>
+
+<script src="https://utteranc.es/client.js"
+        repo="tonnonssi/tonnonssi.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<script>
+  const btnKo = document.getElementById("toggle-ko");
+  const btnEn = document.getElementById("toggle-en");
+  const contentKo = document.getElementById("content-ko");
+  const contentEn = document.getElementById("content-en");
+
+  // Set initial state to show Korean content by default
+  contentKo.style.display = "block";
+  contentEn.style.display = "none";
+  btnKo.style.display = "inline-block";
+  btnEn.style.display = "none";
+
+  // Event listeners to toggle language
+  btnKo.addEventListener("click", () => {
+    contentKo.style.display = "none";
+    contentEn.style.display = "block";
+    btnKo.style.display = "none";
+    btnEn.style.display = "inline-block";
+  });
+
+  btnEn.addEventListener("click", () => {
+    contentKo.style.display = "block";
+    contentEn.style.display = "none";
+    btnKo.style.display = "inline-block";
+    btnEn.style.display = "none";
+  });
+</script>
+
+<style>
+  .language-toggle {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 8px; /* Space between buttons */
+    margin-top: 10px; /* Optional: Adjust spacing from the top */
+  }
+
+  .styled-button {
+    background-color: transparent; /* Transparent background */
+    color: #000000; /* Black text color */
+    border: 2px solid #000000; /* Black border */
+    padding: 8px 20px; /* Adjust padding for size */
+    font-size: 16px; /* Adjust font size */
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  }
+
+  .styled-button:hover {
+    background-color: #000000; /* Black background on hover */
+    color: #fff; /* White text on hover */
+  }
+</style>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Jimin Lee</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:tonnonssi@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.instagram.com/jiringsi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#405de6'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-instagram fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<!-- Add LaTex function -->
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script></body>
+
+</html>

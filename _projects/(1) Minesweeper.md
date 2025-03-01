@@ -3,7 +3,7 @@ name: "Minesweeper"
 tools: [python, web, RL]
 # use_math: true
 image: ../assets/images/ProjectThumbnail/Minesweeper.png
-description: "Solved Minesweeper using RL. Trained a model with an average win rate of 84%(easy level). Solved theoretical minesweeper, web for deployment. <br>-<br>강화학습으로 지뢰찾기 문제를 해결했다. 초급 기준 평균 승률 84% 모델을 학습시켰고 배포를 위한 웹, 지뢰찾기의 이론적 풀이를 진행했다."
+description: "Solved Minesweeper using DQN. Trained a model with an average win rate of 84%(easy level). Solved theoretical minesweeper, web for deployment. <br>-<br>강화학습으로 지뢰찾기 문제를 해결했다. 초급 기준 평균 승률 84% 모델을 학습시켰고 배포를 위한 웹, 지뢰찾기의 이론적 풀이를 진행했다."
 # external_url: https://www.google.com
 ---
 <!-- 한국어 콘텐츠 -->

@@ -1,6 +1,38 @@
 [
   
     {
+      "title"    : "[C++] Pointer &amp; Reference",
+      "category" : "",
+      "tags"     : "C++",
+      "url"      : "/blog/CppPointerReference",
+      "date"     : "2024-11-15 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[C++] Class",
+      "category" : "",
+      "tags"     : "C++",
+      "url"      : "/blog/CppClass",
+      "date"     : "2024-11-15 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[TicTacToe/02] CNC Plotter 제어",
+      "category" : "",
+      "tags"     : "TicTacToe",
+      "url"      : "/blog/TicTacToeRobotControl",
+      "date"     : "2024-11-13 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[TicTacToe/01] CNC Plotter 제작",
+      "category" : "",
+      "tags"     : "TicTacToe",
+      "url"      : "/blog/TicTacToeRobot",
+      "date"     : "2024-11-06 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "[RL] DQN",
       "category" : "",
       "tags"     : "RL",

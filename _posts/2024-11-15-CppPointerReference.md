@@ -129,4 +129,4 @@ To be continue...
 
 <div id="content-en" class="lang-content" data-lang="en" style="display: none;">
   {{ en_content | markdownify }}
-</div>ㅅㅎ ㅡ소ㅜ러6759ㅛㅕ ㅅ
+</div>

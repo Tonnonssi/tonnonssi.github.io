@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[C++] Pointer &amp; Reference">
+  <meta property="og:description" content="Introductory of Pointer and Reference - 기초적인 포인터와 참조">
+  <meta property="og:image" content="./assets/images/Profile/Jimin.png">
+
+  <title>[C++] Pointer &amp; Reference</title>
+  <meta name="description" content="Introductory of Pointer and Reference - 기초적인 포인터와 참조">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<!--  -->
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/publications">Publications</a>
+
+      <a class="nav-item nav-link " href="/categories">Categories</a>
+
+      <a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/articles/">Articles</a>
+
+      <a class="nav-item nav-link " href="https://github.com/tonnonssi"><i class="fab fa-1x fa-github"></i></a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="language-toggle">
+  <button id="toggle-ko" class="styled-button">View in English</button>
+  <button id="toggle-en" class="styled-button" style="display: none;">한국어로 보기</button>
+</div>
+
+<div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <div class="title-container">
+  <h1><b>[C++] Pointer & Reference</b></h1>
+</div>
+
+<p class="post-metadata text-muted">
+  15 November 2024 -
+  <b>4 mins read time</b>
+
+  <br>Tags:
+    
+      <a class="text-decoration-none no-underline" href="/blog/tags#c">
+        <span class="tag badge badge-pill text-primary border border-primary">C++</span>
+      </a>
+    </p>
+
+<!-- 마크다운 내용 표시 -->
+<!-- 한국어 콘텐츠 -->
+
+<!-- 영어 콘텐츠 -->
+
+<div id="content-ko" class="lang-content" data-lang="ko">
+  
+<p>포인터와 참조는 메모리와 관련된 개념으로, C 프로그래밍에서 빠질 수 없는 개념이다. 이 글은 포인터와 참조의 특성, 차이점, 사용법에 대해 다룬다.</p>
+
+<h3 id="포인터pointer">포인터(Pointer)</h3>
+<p>포인터는 변수의 메모리 주소를 담는 변수다. 코드에 작성되는 모든 변수는 메모리 공간에 저장되고, 주소가 할당된다. 이 주소가 바로 포인터가 담는 내용이다. 
+포인터는 포인터를 중심으로 원본 객체를 불러올 수 있고, 원본 객체의 멤버 변수들을 꺼내올 수 있다.</p>
+
+<h4 id="포인터-정의">포인터 정의</h4>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">*</span> <span class="n">pointer</span><span class="p">;</span>
+</code></pre></div></div>
+<p>타입 옆에 <code class="language-plaintext highlighter-rouge">*</code>를 붙이면 포인터 인스턴스를 생성할 수 있다.</p>
+
+<h3 id="포인터에서-사용되는-연산자">포인터에서 사용되는 연산자</h3>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">&amp; 연산자</code> (주소 연산자) : 변수의 주소를 추출하는 연산자로, 포인터에 변수의 주소값을 할당할 때 사용된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">* 연산자</code> (간접참조 연산자; 역참조 연산자) : 포인터가 가리키는 장소에 값을 저장하는 연산자로, 이미 정의된 포인터에 어떤 값을 할당하기 위해 사용된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">-&gt;</code> (멤버 접근 연산자) : 포인터의 멤버 변수에 접근하는 연산자다.</li>
+</ol>
+
+<h4 id="예시를-통해-이해하기">예시를 통해 이해하기</h4>
+
+<ol>
+  <li>포인터 인스턴스 생성
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">*</span> <span class="n">pt</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p>위 코드는 포인터 pt를 생성한다. 이때 포인터는 초기화없이 선언만 되었기 때문에 랜덤한 값이 pt안에 할당된다. 따라서 값을 *pt로 pt에 있는 주소값에 있는 인스턴스를 가져오는 건 아무런 의미가 없다.</p>
+  </li>
+  <li>다른 인스턴스를 포인터에 할당 (포인터 초기화)
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">*</span> <span class="n">pt</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">var_1</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="c1">// 주소를 0x01라 가정한다. </span>
+<span class="n">pt</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">var_1</span><span class="p">;</span> <span class="c1">// &amp;는 var_1의 주소를 끄집어내는 연산자다.</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>위 코드는 주소가 0X01, 객체의 값이 40인 var_1의 주소를 pt에 할당한다.</p>
+
+<ul>
+  <li>포인터 해석</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span><span class="o">*</span> <span class="n">pt</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">var_1</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> 
+<span class="n">pt</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">var_1</span><span class="p">;</span> 
+
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"value of p : "</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// value of p : 0X01</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"value of *p : "</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// value of *p : 40</span>
+
+</code></pre></div></div>
+
+<ol>
+  <li>멤버 변수 접근
+```cpp
+#include <iostream>
+using namespace std;</iostream></li>
+</ol>
+
+<p>class MyClass {
+public:
+    int data; // 멤버 변수
+};</p>
+
+<p>int main() {
+    MyClass obj;       // 객체 생성
+    obj.data = 10;     // 멤버 변수 직접 접근</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MyClass* ptr = &amp;obj; // 객체의 주소를 포인터에 저장
+ptr-&gt;data = 20;      // 포인터를 통해 멤버 변수 접근
+
+cout &lt;&lt; "obj.data: " &lt;&lt; obj.data &lt;&lt; endl; // 출력: obj.data: 20
+
+return 0; }
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>직접 접근과 포인터를 통한 접근을 다룬 예제다. 
+
+
+### 참조(Reference)
+참조는 포인터와 마찬가지로 메모리 주소를 받는다. 하지만 사용 방법과 기능면에서 차이가 있다. 포인터는 변수의 주소를 저장해 직접적으로 변수에 접근하지만, 참조는 같은 주소를 공유하는 인스턴스를 만든다. 이 인스턴스는 원본 객체에서 얕은 복사가 된 객체로, 참조 인스턴스의 값이 수정되면 원본 객체 또한 변화한다. 
+
+#### 참조 정의  
+```cpp
+int ref = 10;
+int&amp; a = ref; // 참조 선언 
+</code></pre></div></div>
+<p>참조는 <code class="language-plaintext highlighter-rouge">&amp;</code>를 타입 뒤에 붙여 정의한다.<br />
+참조는 포인터와 달리, 선언된 참조 변수(a)를 일반 변수처럼 사용할 수 있기에 별도의 연산자(*,&amp;)가 필요하지 않아 간편하다. 다만 참조는 정의할 때 초기화가 필수적이며, 포인터처럼 독립적으로 정의될 수 없다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span> <span class="c1">// 초기화가 안 되어도 정의될 수 있음 </span>
+<span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// 초기화가 안 되어서 오류 발생 </span>
+</code></pre></div></div>
+
+<h2 id="포인터-vs-참조">포인터 vs 참조</h2>
+<p>| <strong>특성</strong>          | <strong>참조 (Reference)</strong>                                    | <strong>포인터 (Pointer)</strong>                                   |
+|-|-|-|
+| <strong>선언 및 초기화</strong> | 선언과 동시에 초기화가 반드시 필요                | 초기화 없이 선언만 할 수 있음                    |
+| <strong>주소 변경</strong>      | 초기화된 이후 다른 주소를 참조할 수 없음            | 포인터는 다른 주소를 가리키도록 변경할 수 있음 |
+| <strong>Null 값</strong>        | Null 값을 가질 수 없음                              | Null 포인터를 가질 수 있음 (<code class="language-plaintext highlighter-rouge">nullptr</code>/<code class="language-plaintext highlighter-rouge">NULL</code> 사용 가능) |
+| <strong>문법의 간결함</strong>   | 참조를 사용하면 원래 변수처럼 사용하므로 문법이 단순함 | 포인터는 연산자(<code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">&amp;</code>, <code class="language-plaintext highlighter-rouge">-&gt;</code>)를 명시적으로 사용해야 함 |
+| <strong>사용 목적</strong>      | 주로 함수 인자 전달이나 반환값을 사용할 때 사용됨     | 동적 메모리 할당, 배열 처리 등 다양한 상황에서 사용됨 |</p>
+
+<h3 id="클래스와-포인터-참조">클래스와 포인터, 참조</h3>
+
+<p>클래스에서 또 다른 클래스를 파라미터로 받아 사용하거나, 멤버 변수로 받아 사용할 때는 일반적으로 참조(혹은 포인터)가 사용된다. C 프로그래밍에서 가장 핵심적인 것은 효율적인 메모리 관리다. 참조와 포인터는 동일한 주소를 공유 혹은 사용하기 때문에 중복 데이터에 대한 메모리 할당을 하지 않아도 된다. 만약 클래스의 파라미터로 복잡한 구조의 클래스를 받는데 참조나 포인터를 사용하지 않는다면, 메모리 오남용을 유발한다.</p>
+
+
+</div>
+
+<div id="content-en" class="lang-content" data-lang="en" style="display: none;">
+  
+<p>To be continue…</p>
+
+
+</div>
+
+</div>
+
+<script src="https://utteranc.es/client.js"
+        repo="tonnonssi/tonnonssi.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<script>
+  const btnKo = document.getElementById("toggle-ko");
+  const btnEn = document.getElementById("toggle-en");
+  const contentKo = document.getElementById("content-ko");
+  const contentEn = document.getElementById("content-en");
+
+  // Set initial state to show Korean content by default
+  contentKo.style.display = "block";
+  contentEn.style.display = "none";
+  btnKo.style.display = "inline-block";
+  btnEn.style.display = "none";
+
+  // Event listeners to toggle language
+  btnKo.addEventListener("click", () => {
+    contentKo.style.display = "none";
+    contentEn.style.display = "block";
+    btnKo.style.display = "none";
+    btnEn.style.display = "inline-block";
+  });
+
+  btnEn.addEventListener("click", () => {
+    contentKo.style.display = "block";
+    contentEn.style.display = "none";
+    btnKo.style.display = "inline-block";
+    btnEn.style.display = "none";
+  });
+</script>
+
+<style>
+  .language-toggle {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 8px; /* Space between buttons */
+    margin-top: 10px; /* Optional: Adjust spacing from the top */
+  }
+
+  .styled-button {
+    background-color: transparent; /* Transparent background */
+    color: #000000; /* Black text color */
+    border: 2px solid #000000; /* Black border */
+    padding: 8px 20px; /* Adjust padding for size */
+    font-size: 16px; /* Adjust font size */
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  }
+
+  .styled-button:hover {
+    background-color: #000000; /* Black background on hover */
+    color: #fff; /* White text on hover */
+  }
+</style>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Jimin Lee</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:tonnonssi@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.instagram.com/jiringsi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#405de6'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-instagram fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<!-- Add LaTex function -->
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script></body>
+
+</html>

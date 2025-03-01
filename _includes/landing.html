@@ -13,3 +13,77 @@
 
   </div>
 </div>
+
+
+
+<!-- 소개 멘트 -->
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-10 col-md-12 px-5">
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
+    <h3>AboutME</h3>
+    <p>{{ site.introduction }}</p>
+      <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
+    </div>
+</div>
+
+<br>
+
+<!-- Skills Section (더 넓게 조정) -->
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-10 col-md-12">
+    <div class="row">
+      <div class="col-md-6 px-3"> <!-- 좌측 -->
+        {% include about/skills.html title="Programming Skills" source=site.data.programming-skills %}
+      </div>
+      <div class="col-md-6 px-3"> <!-- 우측 -->
+        {% include about/skills.html title="Languages Skills" source=site.data.language-skills %}
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
+    <h3>Projects</h3>
+    <br>
+    {% include elements/project_list.html title="" source=site.data.project %}
+  </div>
+</div>
+<br>
+
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
+    <h3>Publication</h3>
+    {% include elements/papers.html title="" source=site.data.publication %}
+  </div>
+</div>
+<br>
+
+<!-- Timeline Section (더 넓게 조정) -->
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
+    <h3>Timeline</h3>
+    {% include about/timeline.html %}
+  </div>
+</div>
+<br>
+
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
+    <div class="recent-posts">
+      <h3>Recent Posts</h3>
+      <ul>
+        {% for post in site.posts limit:5 %}
+        <br>
+          <li>
+            <a href="{{ post.url }}">{{ post.title }}</a> &nbsp; 
+            <span style="color: gray;">({{ post.date | date: "%Y-%m-%d" }})</span>
+            <br>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+</div>
+
+
