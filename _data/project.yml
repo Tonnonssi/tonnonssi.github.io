@@ -1,6 +1,6 @@
 - title: "Solve Mineswepper with DQN"
   article_link: "https://tonnonssi.github.io/projects/1-minesweeper"
-  year: "03, 2024-"
+  year: "March, 2024-"
   dev_tool:
     - "Python"
     - "Pytorch"
@@ -11,7 +11,7 @@
 
 - title: "Solve Gomoku with AlphaZero"
   article_link: "https://tonnonssi.github.io/projects/2-omok"
-  year: "10, 2024-"
+  year: "October, 2024-"
   dev_tool:
     - "Python"
     - "c++"
@@ -21,4 +21,16 @@
   abstract: "This project applies AlphaZero to a real-world Gomoku game with a robotic arm."
   github: "https://github.com/Tonnonssi/AiGO"
   pdf: "https://raw.githubusercontent.com/Tonnonssi/AiGO/main/img/report.pdf"
+
+- title: "Solve TicTacToe with Dual Agent Methods"
+  article_link: "https://tonnonssi.github.io/projects/3-tictactoe"
+  year: "October, 2024 - February, 2025"
+  dev_tool:
+    - "Python"
+    - "c++"
+    - "Pytorch"
+    - "Arduino"
+  abstract: "This project applies various dual agent methods to a real-world tictactoe game with a CNC model."
+  github: "https://github.com/Tonnonssi/TicTacToeArtist"
+  pdf: "https://raw.githubusercontent.com/Tonnonssi/TicTacToeArtist/main/img/report.pdf"
 

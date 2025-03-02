@@ -40,8 +40,9 @@ description: "Implemented the library to control CNC plotter by using C++. <br>-
 3. [아두이노 중급_29. 스텝모터, 스테핑모터](https://m.blog.naver.com/PostView.naver?blogId=darknisia&logNo=221652111026&proxyReferer=https:%2F%2Fwww.google.com%2F&trackingCode=external)  
 4. [28BYJ-48 - 5V Stepper Motor](https://components101.com/motors/28byj-48-stepper-motor)
 
+<br>
 
-### 아두이노용 라이브러리 제작
+## 02. 아두이노용 라이브러리 제작
 
 아두이노는 `Stepper`라는 스텝 모터 제어 라이브러리를 제공한다. 원래는 `Stepper` 라이브러리를 이용해 제어 프로그램을 작성할 예정이었으나, 디지털 핀에 꼽힌 x와 y축 담당 스텝 모터가 단방향으로만 이동하는 오류가 발생했다. 이 오류는 랜덤으로 발생해 명확한 원인을 알아내기 어려웠다. 예를 들어, 처음에는 양방향으로 잘 돌아가던 모터가 같은 코드 상에서 갑자기 단방향으로만 돌아가는 모습을 보였다. 이 문제를 해결하고자 28BYJ-48 스텝 모터를 제어하는 전용 라이브러리를 다시 만들었다.  
 
@@ -52,17 +53,12 @@ description: "Implemented the library to control CNC plotter by using C++. <br>-
 {% include url.html num="01" title="C++ Class" description=" " url="https://tonnonssi.github.io/blog/CppClass" %}   
 {% include url.html num="02" title="C++ Pointer & Reference" description=" " url="https://tonnonssi.github.io/blog/CppPointerReference" %}  
 
-<br>
 
-### 코드 바로가기 
-{% include elements/button.html link="https://github.com/Tonnonssi/StepMotor.git" text="Codes on GitHub" block=true %}
-
-<br>
 
 ### 문제 상황 및 해결  
 
 1. **모터의 속도 저하 문제.**   
-  하나 하나 핀을 설정해주는 것과 그 내용을 함수로 묶은거랑 움직임 속도 차이가 난다. .. 왜? 
+  하나 하나 핀을 설정해주는 것과 그 내용을 함수로 묶은거랑 움직임 속도 차이가 난다. 하드웨어적인 문제라서 정확한 원인은 모르겠다.  
 
 
 2. **병렬 연산을 지원하지 않는 아두이노.**   
@@ -74,19 +70,57 @@ description: "Implemented the library to control CNC plotter by using C++. <br>-
 ## 03. 그림 그리기 제어 코드 
 ### TicTacToeArtist 
 틱택토 아티스트 클래스는 3개의 스텝 모터를 이용해 O / X, 판을 그리는 제어용 클래스다. `StepMotor.h` 라이브러리를 이용해 3개의 스텝 모터 클래스를 선언한 후, 인자로 받아 사용한다. 
-{%- gist 3c466bc3c32c4ae5c9b36d1266b913d8 %} // 수정해야 되,
 
-```
-ino code 여기로 
-```
+```cpp
+#include "StepMotor.h"
 
-{% include elements/button.html link="https://github.com/Tonnonssi/StepMotor.git" text="Codes on GitHub" block=true %}
-// 수정해야 되
+Stepper stepper_x(8, 9, 10, 11);
+Stepper stepper_y(3, 4, 5, 6);
+Stepper stepper_z(A5, A4, A3, A2);
+
+TicTacToeArtist artist(21, 21, &stepper_x, &stepper_y, &stepper_z);
+
+void setup(){
+    Serial.begin(115200);
+    Serial.println("Setup complete");
+};
+
+void loop() {
+    Serial.println("delay");
+    delay(3000);
+    artist.resetPosition();
+    artist.drawGameBoard();   // 게임 보드 그리기
+    delay(2000);              // 잠시 대기
+
+    Serial.println("Drawing X...");
+    artist.drawX(0);           // 'X' 그리기
+    delay(2000);              // 잠시 대기
+    
+    Serial.println("Drawing Circle...");
+    artist.drawCircle(0);      // 'O' 그리기
+    delay(2000);              // 잠시 대기
+
+
+    Serial.println("end");
+    delay(1000000);
+};
+```
+<br> 
+
+-> [로봇 제어 코드 바로가기](https://github.com/Tonnonssi/TicTacToeArtist/tree/5dfdc4c61e742037216b356ab2e49052417dac10/Robotics/controlCNC)  
+
+## 04. 시리얼 통신 제어 
+로봇은 AI의 선택을 현실세계로 가져오는 역할이며, 이를 구현하기 위해 python에서 시리얼 통신을 실행했다. 이 부분은 오목 로봇팔 구현과 매커니즘이 유사하기 때문에 별도로 설명하지 않는다. 방법이 궁금하다면 하단의 오목 문서에서 확인할 수 있다.  
+{% include url.html num="02" title="오목 로봇 회로 제작 및 제어" description=" " url="https://tonnonssi.github.io/blog/OmokRobotCircuit" %}  
 
 ### 실제 움직임 
+![움짤](../assets/images/TicTacToe/Robot/realWorld.gif)  
+- 이 버전은 최종 완성본으로, 로봇 제작을 제외한 AI • CV 부분은 강화시스터즈 01 세션 부원이 마무리했다.  
 
+### 코드 바로가기 
 
-### 문제 상황 및 해결
+1. [**CV-AI-Robotics (동아리 일환)**](https://github.com/Tonnonssi/TicTacToeArtist)  
+2. [**듀얼 에이전트 RL 구현**](https://github.com/Tonnonssi/tic_tac_toe)
 
 {% endcapture %}
 

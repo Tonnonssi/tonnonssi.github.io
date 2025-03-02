@@ -91,7 +91,7 @@
 
 <p class="post-metadata text-muted">
   13 November 2024 -
-  <b>3 mins read time</b>
+  <b>5 mins read time</b>
 
   <br>Tags:
     
@@ -143,7 +143,9 @@
   </li>
 </ul>
 
-<h3 id="아두이노용-라이브러리-제작">아두이노용 라이브러리 제작</h3>
+<p><br /></p>
+
+<h2 id="02-아두이노용-라이브러리-제작">02. 아두이노용 라이브러리 제작</h2>
 
 <p>아두이노는 <code class="language-plaintext highlighter-rouge">Stepper</code>라는 스텝 모터 제어 라이브러리를 제공한다. 원래는 <code class="language-plaintext highlighter-rouge">Stepper</code> 라이브러리를 이용해 제어 프로그램을 작성할 예정이었으나, 디지털 핀에 꼽힌 x와 y축 담당 스텝 모터가 단방향으로만 이동하는 오류가 발생했다. 이 오류는 랜덤으로 발생해 명확한 원인을 알아내기 어려웠다. 예를 들어, 처음에는 양방향으로 잘 돌아가던 모터가 같은 코드 상에서 갑자기 단방향으로만 돌아가는 모습을 보였다. 이 문제를 해결하고자 28BYJ-48 스텝 모터를 제어하는 전용 라이브러리를 다시 만들었다.</p>
 
@@ -169,21 +171,12 @@
     <span style="display: block; margin: 0; color: black;"> </span>
   </a></p>
 
-<p><br /></p>
-
-<h3 id="코드-바로가기">코드 바로가기</h3>
-<p><a class="m-1 btn btn-outline-primary btn-3 btn-block" href="https://github.com/Tonnonssi/StepMotor.git">
-  Codes on GitHub
-</a></p>
-
-<p><br /></p>
-
 <h3 id="문제-상황-및-해결">문제 상황 및 해결</h3>
 
 <ol>
   <li>
     <p><strong>모터의 속도 저하 문제.</strong> <br />
-  하나 하나 핀을 설정해주는 것과 그 내용을 함수로 묶은거랑 움직임 속도 차이가 난다. .. 왜?</p>
+  하나 하나 핀을 설정해주는 것과 그 내용을 함수로 묶은거랑 움직임 속도 차이가 난다. 하드웨어적인 문제라서 정확한 원인은 모르겠다.</p>
   </li>
   <li>
     <p><strong>병렬 연산을 지원하지 않는 아두이노.</strong> <br />
@@ -197,19 +190,68 @@
 
 <h2 id="03-그림-그리기-제어-코드">03. 그림 그리기 제어 코드</h2>
 <h3 id="tictactoeartist">TicTacToeArtist</h3>
-<p>틱택토 아티스트 클래스는 3개의 스텝 모터를 이용해 O / X, 판을 그리는 제어용 클래스다. <code class="language-plaintext highlighter-rouge">StepMotor.h</code> 라이브러리를 이용해 3개의 스텝 모터 클래스를 선언한 후, 인자로 받아 사용한다.<script src="https://gist.github.com/3c466bc3c32c4ae5c9b36d1266b913d8.js"> </script> // 수정해야 되,</p>
+<p>틱택토 아티스트 클래스는 3개의 스텝 모터를 이용해 O / X, 판을 그리는 제어용 클래스다. <code class="language-plaintext highlighter-rouge">StepMotor.h</code> 라이브러리를 이용해 3개의 스텝 모터 클래스를 선언한 후, 인자로 받아 사용한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ino code 여기로 
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"StepMotor.h"</span><span class="cp">
+</span>
+<span class="n">Stepper</span> <span class="nf">stepper_x</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+<span class="n">Stepper</span> <span class="nf">stepper_y</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+<span class="n">Stepper</span> <span class="nf">stepper_z</span><span class="p">(</span><span class="n">A5</span><span class="p">,</span> <span class="n">A4</span><span class="p">,</span> <span class="n">A3</span><span class="p">,</span> <span class="n">A2</span><span class="p">);</span>
+
+<span class="n">TicTacToeArtist</span> <span class="nf">artist</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">stepper_x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">stepper_y</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">stepper_z</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">(){</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Setup complete"</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"delay"</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+    <span class="n">artist</span><span class="p">.</span><span class="n">resetPosition</span><span class="p">();</span>
+    <span class="n">artist</span><span class="p">.</span><span class="n">drawGameBoard</span><span class="p">();</span>   <span class="c1">// 게임 보드 그리기</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>              <span class="c1">// 잠시 대기</span>
+
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Drawing X..."</span><span class="p">);</span>
+    <span class="n">artist</span><span class="p">.</span><span class="n">drawX</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>           <span class="c1">// 'X' 그리기</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>              <span class="c1">// 잠시 대기</span>
+    
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Drawing Circle..."</span><span class="p">);</span>
+    <span class="n">artist</span><span class="p">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>      <span class="c1">// 'O' 그리기</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>              <span class="c1">// 잠시 대기</span>
+
+
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"end"</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+<span class="p">};</span>
 </code></pre></div></div>
+<p><br /></p>
 
-<p><a class="m-1 btn btn-outline-primary btn-3 btn-block" href="https://github.com/Tonnonssi/StepMotor.git">
-  Codes on GitHub
-</a>
-// 수정해야 되</p>
+<p>-&gt; <a href="https://github.com/Tonnonssi/TicTacToeArtist/tree/5dfdc4c61e742037216b356ab2e49052417dac10/Robotics/controlCNC">로봇 제어 코드 바로가기</a></p>
+
+<h2 id="04-시리얼-통신-제어">04. 시리얼 통신 제어</h2>
+<p>로봇은 AI의 선택을 현실세계로 가져오는 역할이며, 이를 구현하기 위해 python에서 시리얼 통신을 실행했다. 이 부분은 오목 로봇팔 구현과 매커니즘이 유사하기 때문에 별도로 설명하지 않는다. 방법이 궁금하다면 하단의 오목 문서에서 확인할 수 있다.<br />
+<a href="https://tonnonssi.github.io/blog/OmokRobotCircuit" target="_blank" style="display: block; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px; cursor: pointer; text-decoration: none; color: black;">
+    <!-- Row number with larger font and gray color -->
+    <span style="display: block; font-weight: bold; font-size: 24px; color: gray;">02</span>
+    <!-- Title -->
+    <span style="display: block; font-weight: bold; margin: 0; font-size: 18px; color: black;">오목 로봇 회로 제작 및 제어</span>
+    <!-- Description -->
+    <span style="display: block; margin: 0; color: black;"> </span>
+  </a></p>
 
 <h3 id="실제-움직임">실제 움직임</h3>
+<p><img src="../assets/images/TicTacToe/Robot/realWorld.gif" alt="움짤" /></p>
+<ul>
+  <li>이 버전은 최종 완성본으로, 로봇 제작을 제외한 AI • CV 부분은 강화시스터즈 01 세션 부원이 마무리했다.</li>
+</ul>
 
-<h3 id="문제-상황-및-해결-1">문제 상황 및 해결</h3>
+<h3 id="코드-바로가기">코드 바로가기</h3>
+
+<ol>
+  <li><a href="https://github.com/Tonnonssi/TicTacToeArtist"><strong>CV-AI-Robotics (동아리 일환)</strong></a></li>
+  <li><a href="https://github.com/Tonnonssi/tic_tac_toe"><strong>듀얼 에이전트 RL 구현</strong></a></li>
+</ol>
 
 
 </div>
@@ -220,6 +262,31 @@
 
 
 </div>
+
+
+<!-- 이전 이후 글 -->
+<br>
+
+
+
+
+
+
+
+
+<div class="post-navigation">
+  
+    <a class="prev-post" href="/blog/TicTacToeRobot">
+      ← Previous: [TicTacToe/01] CNC Plotter 제작
+    </a>
+  
+  
+  
+</div>
+
+<br><br>
+<h3>Comments</h3>
+<br>
 
 </div>
 

@@ -64,6 +64,7 @@ DQN 방법론을 이용했으며, 구체적인 내용 및 구현은 Ch.03에 기
 
 
 ## Related Articles
+{% include url.html num="00" title="DQN" description="Review and Implementation of the DQN Paper Published by Google DeepMind<br>Google DeepMind가 발표한 DQN 논문 리뷰 및 구현" url="https://tonnonssi.github.io/blog/DQN" %}
 {% include url.html num="01" title="Environment" description="Resolved several issues with the Minesweeper environment implementation and implemented various states. 지뢰찾기 환경 구현에서 발생한 여러 문제점을 해결하고, 다양한 state를 구현했다." url="https://tonnonssi.github.io/blog/MinesweeperEnv" %}
 {% include url.html num="02" title="DQN" description="Implemented a CNN neural network specialized for spatial recognition, modified the replay memory to improve performance, and implemented two different DQN implementations. <br>공간 인식에 특화된 CNN 신경망을 구현하고, 성능 향상을 위해 리플레이 메모리를 수정했으며, 두 가지 방식의 DQN 구현을 진행했다." url="https://tonnonssi.github.io/blog/MinesweeperNet" %}
 {% include url.html num="03" title="Train / Valid / Test" description="Chose metrics that would tell us about learning trends, and the right number of sample sizes for valid and test. <br>학습 동향을 알려줄 수 있는 지표를 선택하고, valid 및 test에 적절한 수의 표본량을 선택했다." url="https://tonnonssi.github.io/blog/MinesweeperTrainValidTest" %}

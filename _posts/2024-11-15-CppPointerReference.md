@@ -1,6 +1,6 @@
 ---
 title: "[C++] Pointer & Reference"
-tags: [C++]
+tags: [Cpp]
 pages: papers
 style: fill  # fill / border 
 color:  danger # secondary / success / danger / warning / info / light / dark
@@ -45,7 +45,8 @@ pt = &var_1; // &는 var_1의 주소를 끄집어내는 연산자다.
 
 위 코드는 주소가 0X01, 객체의 값이 40인 var_1의 주소를 pt에 할당한다.  
 
-- 포인터 해석  
+- 포인터 해석   
+
 
 ```cpp
 #include <iostream>
@@ -56,10 +57,10 @@ pt = &var_1;
 
 cout << "value of p : " << p << endl; // value of p : 0X01
 cout << "value of *p : " << *p << endl; // value of *p : 40
-
 ```
 
-03. 멤버 변수 접근 
+03. 멤버 변수 접근  
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -102,13 +103,42 @@ int& a; // 초기화가 안 되어서 오류 발생
 ```
 
 ## 포인터 vs 참조 
-| **특성**          | **참조 (Reference)**                                    | **포인터 (Pointer)**                                   |
-|-|-|-|
-| **선언 및 초기화** | 선언과 동시에 초기화가 반드시 필요                | 초기화 없이 선언만 할 수 있음                    |
-| **주소 변경**      | 초기화된 이후 다른 주소를 참조할 수 없음            | 포인터는 다른 주소를 가리키도록 변경할 수 있음 |
-| **Null 값**        | Null 값을 가질 수 없음                              | Null 포인터를 가질 수 있음 (`nullptr`/`NULL` 사용 가능) |
-| **문법의 간결함**   | 참조를 사용하면 원래 변수처럼 사용하므로 문법이 단순함 | 포인터는 연산자(`*`, `&`, `->`)를 명시적으로 사용해야 함 |
-| **사용 목적**      | 주로 함수 인자 전달이나 반환값을 사용할 때 사용됨     | 동적 메모리 할당, 배열 처리 등 다양한 상황에서 사용됨 |
+<table>
+  <thead>
+    <tr>
+      <th>특성</th>
+      <th>참조 (Reference)</th>
+      <th>포인터 (Pointer)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>선언 및 초기화</strong></td>
+      <td>선언과 동시에 초기화가 반드시 필요</td>
+      <td>초기화 없이 선언만 할 수 있음</td>
+    </tr>
+    <tr>
+      <td><strong>주소 변경</strong></td>
+      <td>초기화된 이후 다른 주소를 참조할 수 없음</td>
+      <td>포인터는 다른 주소를 가리키도록 변경할 수 있음</td>
+    </tr>
+    <tr>
+      <td><strong>Null 값</strong></td>
+      <td>Null 값을 가질 수 없음</td>
+      <td>Null 포인터를 가질 수 있음 (<code>nullptr</code>/NULL 사용 가능)</td>
+    </tr>
+    <tr>
+      <td><strong>문법의 간결함</strong></td>
+      <td>참조를 사용하면 원래 변수처럼 사용하므로 문법이 단순함</td>
+      <td>포인터는 연산자(<code>*</code>, <code>&</code>, <code>-></code>)를 명시적으로 사용해야 함</td>
+    </tr>
+    <tr>
+      <td><strong>사용 목적</strong></td>
+      <td>주로 함수 인자 전달이나 반환값을 사용할 때 사용됨</td>
+      <td>동적 메모리 할당, 배열 처리 등 다양한 상황에서 사용됨</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 클래스와 포인터, 참조  
 

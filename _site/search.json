@@ -1,9 +1,25 @@
 [
   
     {
+      "title"    : "[RL] AlphaZero",
+      "category" : "",
+      "tags"     : "RL",
+      "url"      : "/blog/AlphaZero",
+      "date"     : "2025-02-12 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[Omok/02] 로봇팔 회로 제작 • 제어 코드 작성",
+      "category" : "",
+      "tags"     : "Omok",
+      "url"      : "/blog/OmokRobotCircuit",
+      "date"     : "2025-02-03 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "[C++] Pointer &amp; Reference",
       "category" : "",
-      "tags"     : "C++",
+      "tags"     : "Cpp",
       "url"      : "/blog/CppPointerReference",
       "date"     : "2024-11-15 00:00:00 +0900"
     } ,
@@ -11,7 +27,7 @@
     {
       "title"    : "[C++] Class",
       "category" : "",
-      "tags"     : "C++",
+      "tags"     : "Cpp",
       "url"      : "/blog/CppClass",
       "date"     : "2024-11-15 00:00:00 +0900"
     } ,
@@ -78,14 +94,6 @@
       "tags"     : "Arduino",
       "url"      : "/blog/ArduinoBasic",
       "date"     : "2024-10-07 00:00:00 +0900"
-    } ,
-  
-    {
-      "title"    : "[Omok/02] 로봇팔 회로 제작",
-      "category" : "",
-      "tags"     : "Omok",
-      "url"      : "/blog/OmokRobotCircuit-copy",
-      "date"     : "2024-10-03 00:00:00 +0900"
     } ,
   
     {

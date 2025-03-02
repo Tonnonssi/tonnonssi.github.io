@@ -95,8 +95,8 @@
 
   <br>Tags:
     
-      <a class="text-decoration-none no-underline" href="/blog/tags#c">
-        <span class="tag badge badge-pill text-primary border border-primary">C++</span>
+      <a class="text-decoration-none no-underline" href="/blog/tags#cpp">
+        <span class="tag badge badge-pill text-primary border border-primary">Cpp</span>
       </a>
     </p>
 
@@ -155,43 +155,41 @@
 
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"value of p : "</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// value of p : 0X01</span>
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"value of *p : "</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// value of *p : 40</span>
-
 </code></pre></div></div>
 
 <ol>
-  <li>멤버 변수 접근
-```cpp
-#include <iostream>
-using namespace std;</iostream></li>
+  <li>멤버 변수 접근</li>
 </ol>
 
-<p>class MyClass {
-public:
-    int data; // 멤버 변수
-};</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
-<p>int main() {
-    MyClass obj;       // 객체 생성
-    obj.data = 10;     // 멤버 변수 직접 접근</p>
+<span class="k">class</span> <span class="nc">MyClass</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">;</span> <span class="c1">// 멤버 변수</span>
+<span class="p">};</span>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MyClass* ptr = &amp;obj; // 객체의 주소를 포인터에 저장
-ptr-&gt;data = 20;      // 포인터를 통해 멤버 변수 접근
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">MyClass</span> <span class="n">obj</span><span class="p">;</span>       <span class="c1">// 객체 생성</span>
+    <span class="n">obj</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>     <span class="c1">// 멤버 변수 직접 접근</span>
 
-cout &lt;&lt; "obj.data: " &lt;&lt; obj.data &lt;&lt; endl; // 출력: obj.data: 20
+    <span class="n">MyClass</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">obj</span><span class="p">;</span> <span class="c1">// 객체의 주소를 포인터에 저장</span>
+    <span class="n">ptr</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>      <span class="c1">// 포인터를 통해 멤버 변수 접근</span>
 
-return 0; }
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"obj.data: "</span> <span class="o">&lt;&lt;</span> <span class="n">obj</span><span class="p">.</span><span class="n">data</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// 출력: obj.data: 20</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
 </code></pre></div></div>
+<p>직접 접근과 포인터를 통한 접근을 다룬 예제다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>직접 접근과 포인터를 통한 접근을 다룬 예제다. 
+<h3 id="참조reference">참조(Reference)</h3>
+<p>참조는 포인터와 마찬가지로 메모리 주소를 받는다. 하지만 사용 방법과 기능면에서 차이가 있다. 포인터는 변수의 주소를 저장해 직접적으로 변수에 접근하지만, 참조는 같은 주소를 공유하는 인스턴스를 만든다. 이 인스턴스는 원본 객체에서 얕은 복사가 된 객체로, 참조 인스턴스의 값이 수정되면 원본 객체 또한 변화한다.</p>
 
-
-### 참조(Reference)
-참조는 포인터와 마찬가지로 메모리 주소를 받는다. 하지만 사용 방법과 기능면에서 차이가 있다. 포인터는 변수의 주소를 저장해 직접적으로 변수에 접근하지만, 참조는 같은 주소를 공유하는 인스턴스를 만든다. 이 인스턴스는 원본 객체에서 얕은 복사가 된 객체로, 참조 인스턴스의 값이 수정되면 원본 객체 또한 변화한다. 
-
-#### 참조 정의  
-```cpp
-int ref = 10;
-int&amp; a = ref; // 참조 선언 
+<h4 id="참조-정의">참조 정의</h4>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">ref</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">ref</span><span class="p">;</span> <span class="c1">// 참조 선언 </span>
 </code></pre></div></div>
 <p>참조는 <code class="language-plaintext highlighter-rouge">&amp;</code>를 타입 뒤에 붙여 정의한다.<br />
 참조는 포인터와 달리, 선언된 참조 변수(a)를 일반 변수처럼 사용할 수 있기에 별도의 연산자(*,&amp;)가 필요하지 않아 간편하다. 다만 참조는 정의할 때 초기화가 필수적이며, 포인터처럼 독립적으로 정의될 수 없다.</p>
@@ -201,13 +199,42 @@ int&amp; a = ref; // 참조 선언
 </code></pre></div></div>
 
 <h2 id="포인터-vs-참조">포인터 vs 참조</h2>
-<p>| <strong>특성</strong>          | <strong>참조 (Reference)</strong>                                    | <strong>포인터 (Pointer)</strong>                                   |
-|-|-|-|
-| <strong>선언 및 초기화</strong> | 선언과 동시에 초기화가 반드시 필요                | 초기화 없이 선언만 할 수 있음                    |
-| <strong>주소 변경</strong>      | 초기화된 이후 다른 주소를 참조할 수 없음            | 포인터는 다른 주소를 가리키도록 변경할 수 있음 |
-| <strong>Null 값</strong>        | Null 값을 가질 수 없음                              | Null 포인터를 가질 수 있음 (<code class="language-plaintext highlighter-rouge">nullptr</code>/<code class="language-plaintext highlighter-rouge">NULL</code> 사용 가능) |
-| <strong>문법의 간결함</strong>   | 참조를 사용하면 원래 변수처럼 사용하므로 문법이 단순함 | 포인터는 연산자(<code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">&amp;</code>, <code class="language-plaintext highlighter-rouge">-&gt;</code>)를 명시적으로 사용해야 함 |
-| <strong>사용 목적</strong>      | 주로 함수 인자 전달이나 반환값을 사용할 때 사용됨     | 동적 메모리 할당, 배열 처리 등 다양한 상황에서 사용됨 |</p>
+<table>
+  <thead>
+    <tr>
+      <th>특성</th>
+      <th>참조 (Reference)</th>
+      <th>포인터 (Pointer)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>선언 및 초기화</strong></td>
+      <td>선언과 동시에 초기화가 반드시 필요</td>
+      <td>초기화 없이 선언만 할 수 있음</td>
+    </tr>
+    <tr>
+      <td><strong>주소 변경</strong></td>
+      <td>초기화된 이후 다른 주소를 참조할 수 없음</td>
+      <td>포인터는 다른 주소를 가리키도록 변경할 수 있음</td>
+    </tr>
+    <tr>
+      <td><strong>Null 값</strong></td>
+      <td>Null 값을 가질 수 없음</td>
+      <td>Null 포인터를 가질 수 있음 (<code>nullptr</code>/NULL 사용 가능)</td>
+    </tr>
+    <tr>
+      <td><strong>문법의 간결함</strong></td>
+      <td>참조를 사용하면 원래 변수처럼 사용하므로 문법이 단순함</td>
+      <td>포인터는 연산자(<code>*</code>, <code>&amp;</code>, <code>-&gt;</code>)를 명시적으로 사용해야 함</td>
+    </tr>
+    <tr>
+      <td><strong>사용 목적</strong></td>
+      <td>주로 함수 인자 전달이나 반환값을 사용할 때 사용됨</td>
+      <td>동적 메모리 할당, 배열 처리 등 다양한 상황에서 사용됨</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="클래스와-포인터-참조">클래스와 포인터, 참조</h3>
 
@@ -222,6 +249,27 @@ int&amp; a = ref; // 참조 선언
 
 
 </div>
+
+
+<!-- 이전 이후 글 -->
+<br>
+
+
+
+
+
+
+
+
+<div class="post-navigation">
+  
+  
+  
+</div>
+
+<br><br>
+<h3>Comments</h3>
+<br>
 
 </div>
 

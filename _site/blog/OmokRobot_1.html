@@ -91,7 +91,7 @@
 
 <p class="post-metadata text-muted">
   02 October 2024 -
-  <b>3 mins read time</b>
+  <b>2 mins read time</b>
 
   <br>Tags:
     
@@ -110,7 +110,8 @@
 <div class="list-group my-3"><a class="list-group-item active disabled text-white">Table of Contents</a><a class="list-group-item list-group-item-action" href="#로봇팔-도면-정하기">로봇팔 도면 정하기</a><a class="list-group-item list-group-item-action" href="#본체-조립">
 본체 조립</a><a class="list-group-item list-group-item-action" href="#문제-01-부품이-제대로-들어가지-않았다">
 문제 01. 부품이 제대로 들어가지 않았다.</a><a class="list-group-item list-group-item-action" href="#문제-02-집게-악력이-너무-약하다">
-문제 02. 집게 악력이 너무 약하다.</a>
+문제 02. 집게 악력이 너무 약하다.  </a><a class="list-group-item list-group-item-action" href="#문제-03-바둑돌을-집기에-집게는-적절하지-않다">
+문제 03. 바둑돌을 집기에 집게는 적절하지 않다.</a>
 
 </div>
 
@@ -129,53 +130,6 @@
 3D 프린팅으로 로봇팔을 뽑으면 stl 파일이 존재한다는 장점이 있지만, 판 전체에서 움직일 수 있는 크기의 로봇팔은 과도하게 프린팅 단가가 비싸 제외되었다. 간단하게 아두이노 조립과 나무 막대기만으로 로봇팔을 구성하고 조정하는 레퍼런스도 존재했지만, 내구성이 약해 안정적인 제어가 어려워 제외되었다. 선정된 레퍼런스의 경우, 가격 면에서 엄청난 강점을 가졌고 대중적인 키트이기에 많은 조립 영상을 갖고 있었다. 또한 판매자가 3D 파일을 제공하고 있었기에 필요한 모든 조건을 충족했다. 판매자에게 받기 전, 구글링을 통해 해당 로봇팔의 스케치업 도면을 얻었고 각 부품을 stl 파일로 변환했다.</p>
 <ul>
   <li>스케치업 파일 링크 : <a href="https://3dwarehouse.sketchup.com/model/e652c8d7-eef4-4c61-b5f7-9ef8b67c9da8/YFRobot-6-DOF">바로가기</a></li>
-</ul>
-
-<h2 id="본체-조립">본체 조립</h2>
-<p><img src="../assets/images/Omok/Robot/skup.png" alt="img" />
-전체적인 조립은 스케치업 파일을 보며 진행했다.</p>
-
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="false">
-
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li><li data-target="#carouselExampleIndicators" data-slide-to="1"></li><li data-target="#carouselExampleIndicators" data-slide-to="2"></li><li data-target="#carouselExampleIndicators" data-slide-to="3"></li><li data-target="#carouselExampleIndicators" data-slide-to="4"></li><li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-  </ol>
-
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-          <img src="../assets/images/Omok/Robot/IMG_5372.png" class="d-block w-100" />
-        </div><div class="carousel-item">
-          <img src="
-../assets/images/Omok/Robot/IMG_5373.png" class="d-block w-100" />
-        </div><div class="carousel-item">
-          <img src="
-../assets/images/Omok/Robot/IMG_5374.png" class="d-block w-100" />
-        </div><div class="carousel-item">
-          <img src="
-../assets/images/Omok/Robot/IMG_5376.png" class="d-block w-100" />
-        </div><div class="carousel-item">
-          <img src="
-../assets/images/Omok/Robot/IMG_5383.png" class="d-block w-100" />
-        </div><div class="carousel-item">
-          <img src="
-../assets/images/Omok/Robot/IMG_5388.jpg" class="d-block w-100" />
-        </div>
-  </div>
-
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-
-</div>
-
-<ul>
-  <li>조립 중 찍은 사진들</li>
 </ul>
 
 <h4 id="문제-01-부품이-제대로-들어가지-않았다">문제 01. 부품이 제대로 들어가지 않았다.</h4>
@@ -233,6 +187,11 @@
 
 <p>그 결과, 가벼운 찹쌀 과자도 들지 못하던 로봇팔이 두유를 안정적으로 들고 내려놓을 수 있을 정도로 악력이 높아졌다. 하지만 부품을 강제로 조이다보니 소음이 증가했다.</p>
 
+<h4 id="문제-03-바둑돌을-집기에-집게는-적절하지-않다">문제 03. 바둑돌을 집기에 집게는 적절하지 않다.</h4>
+<p>마찰을 높이면 아무리 바둑돌이라도 집기 어렵지 않으리라 생각했다. 하지만 실제로 바둑돌을 집는 것은 각도가 정말 정확하지 않으면 불가능했다. 이 문제를 해결하기 위해 end-effector를 흡입형으로 바꾸었다. 이를 위해 6DOF의 로봇팔 중 집게 부분을 다루던 두 개의 관절을 제외했고 최종적으로 4DOF에 흡입장치를 단 형태가 되었다.</p>
+
+<p><img src="../assets/images/Omok/Robot/suction_version.jpeg" alt="suctuion" /></p>
+
 
 </div>
 
@@ -242,6 +201,31 @@
 
 
 </div>
+
+
+<!-- 이전 이후 글 -->
+<br>
+
+
+
+
+
+
+
+
+<div class="post-navigation">
+  
+  
+  
+    <a class="next-post" href="/blog/OmokRobotCircuit">
+      Next: [Omok/02] 로봇팔 회로 제작 • 제어 코드 작성 →
+    </a>
+  
+</div>
+
+<br><br>
+<h3>Comments</h3>
+<br>
 
 </div>
 
