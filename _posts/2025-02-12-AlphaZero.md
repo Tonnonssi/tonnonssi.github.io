@@ -62,7 +62,9 @@ $$loss = ( z- v )^2 - \pi^Tlogp + c||\theta||^2$$
 
 <h5>신경망</h5>
 
-ResNet을 이용해 깊은 CNN을 이용한다. 
+ResNet을 이용해 깊은 CNN을 이용한다.   
+
+![이미지](../assets/images/RL/AlphaZero/ResNet.png)
 &nbsp;
 ### MCTS
 
