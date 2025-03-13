@@ -12,7 +12,6 @@
 
   
   
-  
 
   
 
@@ -23,7 +22,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Tags">
   <meta property="og:description" content="Jimin LeeAI Engineer•Statistician ">
-  <meta property="og:image" content="./assets/images/Profile/Jimin.png">
+  <meta property="og:image" content="">
 
   <title>Tags</title>
   <meta name="description" content="Jimin LeeAI Engineer•Statistician ">
@@ -79,26 +78,106 @@
   </div>
 
 </nav>
-    <!-- Collect tags from all posts --><!-- List tags & related posts -->
+    <!-- Collect tags from all posts --><br>
+<hr>
+<br>
 
-<div class="py-3">
-  <h4 id="arduino">Arduino</h4>
-  <ol><!-- Sorting posts by date -->
-  <a href="/blog/ArduinoBasic"><li>[Arduino] 아두이노 기초</li></a>
-    <small class="text-muted"> - 07 October 2024</small>
-    <br/>
-  </ol>
+<!-- Display all tags at the top -->
+<div class="tags-list text-center my-4">
+  <h3>CONTENT</h3>
+  <div class="d-flex flex-wrap justify-content-center gap-2" style="max-width: 900px; margin: auto;">
+    
+      <a href="#cpp" 
+         class="badge badge-primary px-2 py-2 text-white text-center"
+         style="display: inline-block; min-width: 80px; max-width: 120px; font-size: 14px; border-radius: 12px; margin: 6px;">
+        Cpp
+      </a>
+    
+      <a href="#issacsim" 
+         class="badge badge-primary px-2 py-2 text-white text-center"
+         style="display: inline-block; min-width: 80px; max-width: 120px; font-size: 14px; border-radius: 12px; margin: 6px;">
+        IssacSim
+      </a>
+    
+      <a href="#minesweeper" 
+         class="badge badge-primary px-2 py-2 text-white text-center"
+         style="display: inline-block; min-width: 80px; max-width: 120px; font-size: 14px; border-radius: 12px; margin: 6px;">
+        Minesweeper
+      </a>
+    
+      <a href="#omok" 
+         class="badge badge-primary px-2 py-2 text-white text-center"
+         style="display: inline-block; min-width: 80px; max-width: 120px; font-size: 14px; border-radius: 12px; margin: 6px;">
+        Omok
+      </a>
+    
+      <a href="#rl" 
+         class="badge badge-primary px-2 py-2 text-white text-center"
+         style="display: inline-block; min-width: 80px; max-width: 120px; font-size: 14px; border-radius: 12px; margin: 6px;">
+        RL
+      </a>
+    
+      <a href="#statistics" 
+         class="badge badge-primary px-2 py-2 text-white text-center"
+         style="display: inline-block; min-width: 80px; max-width: 120px; font-size: 14px; border-radius: 12px; margin: 6px;">
+        Statistics
+      </a>
+    
+      <a href="#suzume" 
+         class="badge badge-primary px-2 py-2 text-white text-center"
+         style="display: inline-block; min-width: 80px; max-width: 120px; font-size: 14px; border-radius: 12px; margin: 6px;">
+        Suzume
+      </a>
+    
+      <a href="#tictactoe" 
+         class="badge badge-primary px-2 py-2 text-white text-center"
+         style="display: inline-block; min-width: 80px; max-width: 120px; font-size: 14px; border-radius: 12px; margin: 6px;">
+        TicTacToe
+      </a>
+    
+  </div>
 </div>
-<hr class="bg-light">
+
+<br>
+<hr>
+
+<!-- Simple-Jekyll-Search https://github.com/christian-fei/Simple-Jekyll-Search -->
+
+<div class="input-group mt-5 px-3">
+  <input id="search-input" type="text" class="form-control search-box" placeholder="Search posts..">
+  <div class="input-group-append">
+    <span class="input-group-text border border-primary bg-primary text-white">
+      <i class="fas fa-search"></i>
+    </span>
+  </div>
+  <button class="btn btn-outline-primary ml-1" onclick="location.href = '/blog/tags';">
+    <i class="fas fa-tags"></i>
+  </button>
+</div>
+<ul class="px-3" id="results-container"></ul>
+
+<script src="https://cdn.rawgit.com/christian-fei/Simple-Jekyll-Search/master/dest/simple-jekyll-search.min.js"></script>
+<script>
+  var sjs = SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        searchResultTemplate: '<a href="{url}" class="list-group-item list-group-item-action">{title}</a>',
+        noResultsText: '<li class="list-group-item list-group-item-action disabled">No results found</li>',
+        json: '/search.json'
+      })
+</script>
+<br>
+
+<!-- List tags & related posts -->
 
 <div class="py-3">
   <h4 id="cpp">Cpp</h4>
   <ol><!-- Sorting posts by date -->
   <a href="/blog/CppPointerReference"><li>[C++] Pointer & Reference</li></a>
-    <small class="text-muted"> - 15 November 2024</small>
-    <br/><a href="/blog/CppClass"><li>[C++] Class</li></a>
-    <small class="text-muted"> - 15 November 2024</small>
-    <br/>
+      <small class="text-muted"> - 15 November 2024</small>
+      <br/><a href="/blog/CppClass"><li>[C++] Class</li></a>
+      <small class="text-muted"> - 15 November 2024</small>
+      <br/>
   </ol>
 </div>
 <hr class="bg-light">
@@ -107,8 +186,8 @@
   <h4 id="issacsim">IssacSim</h4>
   <ol><!-- Sorting posts by date -->
   <a href="/blog/IssacSimBasic"><li>[IssacSim] 기초</li></a>
-    <small class="text-muted"> - 07 October 2024</small>
-    <br/>
+      <small class="text-muted"> - 07 October 2024</small>
+      <br/>
   </ol>
 </div>
 <hr class="bg-light">
@@ -117,16 +196,16 @@
   <h4 id="minesweeper">Minesweeper</h4>
   <ol><!-- Sorting posts by date -->
   <a href="/blog/MinesweeperEnv"><li>[Minesweeper/01] 환경</li></a>
-    <small class="text-muted"> - 10 July 2024</small>
-    <br/><a href="/blog/MinesweeperNet"><li>[Minesweeper/02] DQN</li></a>
-    <small class="text-muted"> - 11 July 2024</small>
-    <br/><a href="/blog/MinesweeperTrainValidTest"><li>[Minesweeper/03] Train, Valid, Test</li></a>
-    <small class="text-muted"> - 12 July 2024</small>
-    <br/><a href="/blog/MinesweeperTroubleShooting"><li>[Minesweeper/04] Trouble Shooting</li></a>
-    <small class="text-muted"> - 13 July 2024</small>
-    <br/><a href="/blog/MinesweeperRuleBase"><li>[Minesweeper/05] Rule Base</li></a>
-    <small class="text-muted"> - 14 July 2024</small>
-    <br/>
+      <small class="text-muted"> - 10 July 2024</small>
+      <br/><a href="/blog/MinesweeperNet"><li>[Minesweeper/02] DQN</li></a>
+      <small class="text-muted"> - 11 July 2024</small>
+      <br/><a href="/blog/MinesweeperTrainValidTest"><li>[Minesweeper/03] Train, Valid, Test</li></a>
+      <small class="text-muted"> - 12 July 2024</small>
+      <br/><a href="/blog/MinesweeperTroubleShooting"><li>[Minesweeper/04] Trouble Shooting</li></a>
+      <small class="text-muted"> - 13 July 2024</small>
+      <br/><a href="/blog/MinesweeperRuleBase"><li>[Minesweeper/05] Rule Base</li></a>
+      <small class="text-muted"> - 14 July 2024</small>
+      <br/>
   </ol>
 </div>
 <hr class="bg-light">
@@ -135,10 +214,10 @@
   <h4 id="omok">Omok</h4>
   <ol><!-- Sorting posts by date -->
   <a href="/blog/OmokRobot_1"><li>[Omok/01] 로봇팔 제작</li></a>
-    <small class="text-muted"> - 02 October 2024</small>
-    <br/><a href="/blog/OmokRobotCircuit"><li>[Omok/02] 로봇팔 회로 제작 • 제어 코드 작성</li></a>
-    <small class="text-muted"> - 03 February 2025</small>
-    <br/>
+      <small class="text-muted"> - 02 October 2024</small>
+      <br/><a href="/blog/OmokRobotCircuit"><li>[Omok/02] 로봇팔 회로 제작 • 제어 코드 작성</li></a>
+      <small class="text-muted"> - 03 February 2025</small>
+      <br/>
   </ol>
 </div>
 <hr class="bg-light">
@@ -146,15 +225,15 @@
 <div class="py-3">
   <h4 id="rl">RL</h4>
   <ol><!-- Sorting posts by date -->
-  <a href="https://kanghwasisters.github.io/tags/#%EC%9D%B4%EC%A7%80%EB%AF%BC"><li>Articles in KanghwaSisters</li></a>
-    <small class="text-muted"> - 02 March 2024</small>
-    <br/><a href="/blog/MonteCarloTreeSearch"><li>[RL] Monte Carlo Tree Search</li></a>
-    <small class="text-muted"> - 07 October 2024</small>
-    <br/><a href="/blog/DQN"><li>[RL] DQN</li></a>
-    <small class="text-muted"> - 13 October 2024</small>
-    <br/><a href="/blog/AlphaZero"><li>[RL] AlphaZero</li></a>
-    <small class="text-muted"> - 12 February 2025</small>
-    <br/>
+  <a href="https://kanghwasisters.github.io/blog/author#이지민"><li>Articles in KanghwaSisters</li></a>
+      <small class="text-muted"> - 02 March 2024</small>
+      <br/><a href="/blog/MonteCarloTreeSearch"><li>[RL] Monte Carlo Tree Search</li></a>
+      <small class="text-muted"> - 07 October 2024</small>
+      <br/><a href="/blog/DQN"><li>[RL] DQN</li></a>
+      <small class="text-muted"> - 13 October 2024</small>
+      <br/><a href="/blog/AlphaZero"><li>[RL] AlphaZero</li></a>
+      <small class="text-muted"> - 12 February 2025</small>
+      <br/>
   </ol>
 </div>
 <hr class="bg-light">
@@ -163,8 +242,8 @@
   <h4 id="statistics">Statistics</h4>
   <ol><!-- Sorting posts by date -->
   <a href="/blog/ExpectationMean"><li>[Statistics] 평균 vs 기댓값</li></a>
-    <small class="text-muted"> - 10 October 2024</small>
-    <br/>
+      <small class="text-muted"> - 10 October 2024</small>
+      <br/>
   </ol>
 </div>
 <hr class="bg-light">
@@ -173,8 +252,8 @@
   <h4 id="suzume">Suzume</h4>
   <ol><!-- Sorting posts by date -->
   <a href="/blog/Suzume_body_circuit"><li>[Suzume/01] 몸체 제작 및 회로 구성</li></a>
-    <small class="text-muted"> - 07 October 2024</small>
-    <br/>
+      <small class="text-muted"> - 07 October 2024</small>
+      <br/>
   </ol>
 </div>
 <hr class="bg-light">
@@ -183,10 +262,10 @@
   <h4 id="tictactoe">TicTacToe</h4>
   <ol><!-- Sorting posts by date -->
   <a href="/blog/TicTacToeRobot"><li>[TicTacToe/01] CNC Plotter 제작</li></a>
-    <small class="text-muted"> - 06 November 2024</small>
-    <br/><a href="/blog/TicTacToeRobotControl"><li>[TicTacToe/02] CNC Plotter 제어</li></a>
-    <small class="text-muted"> - 13 November 2024</small>
-    <br/>
+      <small class="text-muted"> - 06 November 2024</small>
+      <br/><a href="/blog/TicTacToeRobotControl"><li>[TicTacToe/02] CNC Plotter 제어</li></a>
+      <small class="text-muted"> - 13 November 2024</small>
+      <br/>
   </ol>
 </div>
 <hr class="bg-light">

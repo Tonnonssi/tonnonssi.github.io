@@ -89,14 +89,6 @@
     } ,
   
     {
-      "title"    : "[Arduino] 아두이노 기초",
-      "category" : "",
-      "tags"     : "Arduino",
-      "url"      : "/blog/ArduinoBasic",
-      "date"     : "2024-10-07 00:00:00 +0900"
-    } ,
-  
-    {
       "title"    : "[Omok/01] 로봇팔 제작",
       "category" : "",
       "tags"     : "Omok",
@@ -148,7 +140,7 @@
       "title"    : "Articles in KanghwaSisters",
       "category" : "",
       "tags"     : "RL",
-      "url"      : "https://kanghwasisters.github.io/tags/#%EC%9D%B4%EC%A7%80%EB%AF%BC",
+      "url"      : "https://kanghwasisters.github.io/blog/author#이지민",
       "date"     : "2024-03-02 00:00:00 +0900"
     } 
   

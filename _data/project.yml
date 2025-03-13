@@ -3,11 +3,11 @@
   year: "March, 2024-"
   dev_tool:
     - "Python"
-    - "Pytorch"
+    - "RL"
     - "Web"
   abstract: "Solved Minesweeper using DQN. Trained a model with an average win rate of 84%(easy level). Solved theoretical minesweeper, web for deployment. <br>-<br>강화학습으로 지뢰찾기 문제를 해결했다. 초급 기준 평균 승률 84% 모델을 학습시켰고 배포를 위한 웹, 지뢰찾기의 이론적 풀이를 진행했다."
   github: "https://github.com/Tonnonssi/-RL-Minesweeper"
-  # image: "../assets/images/ProjectThumbnail/Minesweeper.png"
+  image: "../assets/images/Minesweeper/minesweeper-2.gif" 
 
 - title: "Solve Gomoku with AlphaZero"
   article_link: "https://tonnonssi.github.io/projects/2-omok"
@@ -15,12 +15,14 @@
   dev_tool:
     - "Python"
     - "c++"
-    - "Pytorch"
-    - "Arduino"
+    - "CV"
+    - "RL"
+    - "Robotics"
     - "Web"
   abstract: "This project applies AlphaZero to a real-world Gomoku game with a robotic arm."
   github: "https://github.com/Tonnonssi/AiGO"
   pdf: "https://raw.githubusercontent.com/Tonnonssi/AiGO/main/img/report.pdf"
+  image: " ../assets/images/Omok/Omok.gif"
 
 - title: "Solve TicTacToe with Dual Agent Methods"
   article_link: "https://tonnonssi.github.io/projects/3-tictactoe"
@@ -28,9 +30,12 @@
   dev_tool:
     - "Python"
     - "c++"
-    - "Pytorch"
-    - "Arduino"
+    - "CV"
+    - "RL"
+    - "Robotics"
   abstract: "This project applies various dual agent methods to a real-world tictactoe game with a CNC model."
   github: "https://github.com/Tonnonssi/TicTacToeArtist"
   pdf: "https://raw.githubusercontent.com/Tonnonssi/TicTacToeArtist/main/img/report.pdf"
+  image: " ../assets/images/TicTacToe/Robot/realWorld.gif"
+
 
