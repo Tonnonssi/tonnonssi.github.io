@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "[ML] Naive Bayes Classifer",
+      "category" : "",
+      "tags"     : "ML",
+      "url"      : "/blog/NaiveBayesClassifer",
+      "date"     : "2025-03-11 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "[RL] AlphaZero",
       "category" : "",
       "tags"     : "RL",
