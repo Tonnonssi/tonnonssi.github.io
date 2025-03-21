@@ -377,9 +377,10 @@ P(B | A) = P(B)\]
 \[P(X_i \mid Y) = \frac{C(X_i , Y) + 1}{C(Y=y) + NumCategory(X_i)}\]
 
 <ul>
-  <li>MAP<br />
-\(\hat{\theta}_{MAP} = \frac{m+a-1}{m+n+a+b-2}\)</li>
+  <li>MAP</li>
 </ul>
+
+\[\hat{\theta}_{MAP} = \frac{m+a-1}{m+n+a+b-2}\]
 
 <p>두 식을 비교해보았을 때, 라플라스 평활화는 사전분포가 Beta( $\theta \mid$ a=2,b=2 )인 MAP와 동일하다.</p>
 
@@ -425,11 +426,14 @@ $x_i$의 상태(확률)를 알기 위해서는 $x_i$의 부모, 자식, 그리�
 <img src="../assets/images/ML/NBC/image-12.png" alt="alt text" /></p>
 
 <h3 id="베이지안-네트워크-분해">베이지안 네트워크 분해</h3>
-<p>베이지안 네트워크로 정의된 full joint distribution P(X)은 부모-자식 간의 관계로 나누어 나타낼 수 있다.<br />
-\(P(X) = \prod_j P \left( X_j \mid \operatorname{parent}(X_j) \right)\)</p>
+<p>베이지안 네트워크로 정의된 full joint distribution P(X)은 부모-자식 간의 관계로 나누어 나타낼 수 있다.</p>
+
+\[P(X) = \prod_j P \left( X_j \mid \operatorname{parent}(X_j) \right)\]
 
 <p><img src="../assets/images/ML/NBC/image-13.png" alt="alt text" /></p>
-<h2 id="예시">예시</h2>
+
+<h2 id="문제-풀이">문제 풀이</h2>
+
 <p><img src="../assets/images/ML/NBC/image-14.png" alt="alt text" /></p>
 
 <h2 id="코드--해석">코드 • 해석</h2>

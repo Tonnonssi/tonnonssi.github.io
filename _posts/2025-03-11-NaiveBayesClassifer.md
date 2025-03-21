@@ -191,6 +191,7 @@ prior prob으로 베타 분포를 사용하는 이유는 베타 분포의 성질
 $$P(X_i \mid Y) = \frac{C(X_i , Y) + 1}{C(Y=y) + NumCategory(X_i)}$$  
 
 - MAP  
+
 $$\hat{\theta}_{MAP} = \frac{m+a-1}{m+n+a+b-2}$$  
 
 두 식을 비교해보았을 때, 라플라스 평활화는 사전분포가 Beta( $\theta \mid$ a=2,b=2 )인 MAP와 동일하다.  
@@ -235,14 +236,17 @@ $x_i$의 상태(확률)를 알기 위해서는 $x_i$의 부모, 자식, 그리�
 ![alt text](../assets/images/ML/NBC/image-11.png)  
 ![alt text](../assets/images/ML/NBC/image-12.png)  
 
-### 베이지안 네트워크 분해
+### 베이지안 네트워크 분해  
 베이지안 네트워크로 정의된 full joint distribution P(X)은 부모-자식 간의 관계로 나누어 나타낼 수 있다.  
+
 $$P(X) = \prod_j P \left( X_j \mid \operatorname{parent}(X_j) \right)
 $$
 
-![alt text](../assets/images/ML/NBC/image-13.png)
-## 예시 
-![alt text](../assets/images/ML/NBC/image-14.png)
+![alt text](../assets/images/ML/NBC/image-13.png)  
+
+## 문제 풀이 
+
+![alt text](../assets/images/ML/NBC/image-14.png)  
 
 ## 코드 • 해석 
 

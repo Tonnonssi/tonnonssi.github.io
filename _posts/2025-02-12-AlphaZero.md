@@ -13,7 +13,7 @@ description: " Review and Implementation of the AlphaZero Paper Published by Goo
 
 **👇 원문 바로가기**  
 
-> **Mastering the game of Go without human knowledge (2017)**
+> [**Mastering the game of Go without human knowledge (2017)**](https://www.davidsilver.uk/wp-content/uploads/2020/03/unformatted_final_mastering_go.pdf)
 > 
 
 ### 의의
