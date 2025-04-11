@@ -4,7 +4,7 @@ tags: [RL]
 pages: papers
 style: border  # fill / border 
 color:  secondary # secondary / success / danger / warning / info / light / dark
-description: "Built the robotic arm needed to play checkers.<br>-<br>로봇팔을 제어할 때 필요한 회로를 제작했다."
+description: "Set up DonkeyGym, a useful simulator for getting started with autonomous driving, on an M1 Mac.<br>-<br>자율주행 입문용으로 유용한 DonkeyGym을 mac m1 환경에 세팅했다."
 ---
 
 <!-- 한국어 콘텐츠 -->
@@ -80,10 +80,6 @@ env.close()
 
 ```
 
-코드 실행물  
-
-
-<video src="../assets/images/DonkeyGym/Basic/Moving.mp4"></video>
 
 ### 레퍼런스 
 [http://docs.donkeycar.com/guide/deep_learning/simulator/](http://docs.donkeycar.com/guide/deep_learning/simulator/)  
