@@ -1,6 +1,6 @@
 ---
 title: "[RL] AlphaZero"
-tags: [RL]
+tags: [RL, PaperReivew]
 pages: papers
 style: fill  # fill / border 
 color:  info # secondary / success / danger / warning / info / light / dark

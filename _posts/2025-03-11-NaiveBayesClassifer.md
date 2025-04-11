@@ -248,8 +248,8 @@ $$
 
 ![alt text](../assets/images/ML/NBC/image-14.png)  
 
-## 코드 • 해석 
-
+## 코드
+[코드 바로가기](https://github.com/Tonnonssi/ML/blob/1d9e2bdb868d966b9f1707d71bb53a785f3caea8/naive_bayes_classifier/naive_bayes_classifier_practice.ipynb)
 
 {% endcapture %}
 
