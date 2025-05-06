@@ -1,7 +1,5 @@
-<div class="card-group mt-2">
-
+<div class="container">
   {% for post in site.posts %}
-    {% include blog/post-card.html %}
+    {% include blog/post-card.html post=post %}
   {% endfor %}
-  
 </div>

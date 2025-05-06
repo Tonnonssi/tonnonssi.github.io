@@ -4,6 +4,7 @@ tags: [Omok]
 pages: papers
 style: fill  # fill / border 
 color: dark
+img: ../assets/images/Omok/Robot/circuit.png
 description: "Built the robotic arm needed to play Gomoku and write control code.<br>-<br>로봇팔을 제어할 때 필요한 회로를 제작했고 제어에 필요한 통신 코드를 작성했다."
 ---
 <!-- 한국어 콘텐츠 -->

@@ -4,6 +4,7 @@ tags: [TicTacToe]
 pages: papers
 style: fill  # fill / border 
 color:  warning # secondary / success / danger / warning / info / light / dark
+img: ../assets/images/TicTacToe/Robot/real.png
 description: "To help AI and humans interact in the real world, I built CNC Plotter, a robot that draws pictures.<br>-<br> AI와 인간이 현실 세계에서 상호작용하게 만들고자 했다. 이를 위해 그림을 그리는 로봇인 CNC Plotter을 제작했다."
 ---
 

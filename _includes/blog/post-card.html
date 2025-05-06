@@ -1,50 +1,41 @@
-{%- comment -%} Default Styles {%- endcomment -%}
-{%- assign card_style  = '' -%}
-{%- assign text_style  = 'text-themed' -%}
-{%- assign badge_style = 'badge-dark' -%}
-
-{%- comment -%} Update Styles {%- endcomment -%}
-{%- if post.style == 'fill' -%}
-  {%- assign card_style = post.color | prepend: 'bg-' -%}
-  {%- if post.color != 'light' -%}
-    {%- assign text_style  = 'text-white' -%}
-    {%- assign badge_style = 'badge-light text-' -%}
-    {%- assign badge_style = badge_style | append: post.color -%}
-  {%- endif -%}
-{%- else -%}
-  {%- assign card_style = post.color | prepend: 'border border-' -%}
-  {%- if post.color -%}
-    {%- assign badge_style =  post.color | prepend: 'badge-' -%}
-  {%- endif -%}
-{%- endif -%}
-
 {%- comment -%} Determine Post URL {%- endcomment -%}
 {%- if post.external_url -%}
   {%- assign post_url = post.external_url -%}
 {%- else -%}
   {%- assign post_url = post.url | relative_url -%}
 {%- endif -%}
-    
-<div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="{{ post_url }}" class="post card {{ card_style }}" {%- if post.external_url and site.open_new_tab -%} target="_blank" {%- endif -%}>
-    <div class="card-body {{ text_style }}">
-      <h3 class="card-title">{{ post.title }}</h3>
-      <p class="card-text">
+
+<div class="my-4 py-3 border-bottom wow animated fadeIn" data-wow-delay=".1s">
+  <a href="{{ post_url }}" class="d-flex text-decoration-none gap-3" style="align-items: stretch;" {%- if post.external_url and site.open_new_tab -%} target="_blank" {%- endif -%}>
+
+    <!-- 텍스트 왼쪽 영역 -->
+    <div style="flex: 1;">
+      <h2 class="mb-1" style="font-size: 1.1rem;">{{ post.title }}</h2>
+
+      <p class="text-muted mb-1" style="font-size: 0.9rem;">
         {% for tag in post.tags %}
-        <span class="badge {{ badge_style }}">{{ tag }}</span>
+        <span class="badge badge-secondary">{{ tag }}</span>
         {% endfor %}
       </p>
-      <p class="card-text">
+
+      <p class="mb-1" style="color: #444;">
         {%- if post.description -%}
         {{ post.description }}
         {%- else -%}
-        {{ post.content | truncatewords: 25, "<small><i>  read more...</i></small>" }}
+        {{ post.excerpt | strip_html | truncatewords: 30 }}
         {%- endif -%}
       </p>
+
+      <p class="text-muted" style="font-size: 0.8rem;">{{ post.date | date: "%Y. %m. %d" }}</p>
     </div>
-    <div class="card-footer {{ text_style }}">
-      {{ post.date | date_to_long_string }}
-    </div>
+
+    <!-- 이미지 오른쪽 영역 -->
+    {%- if post.img -%}
+      <div style="width: 160px; aspect-ratio: 1 / 1; flex-shrink: 0;">
+        <img src="{{ post.img | relative_url }}" alt="preview"
+             style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 8px;">
+      </div>
+    {%- endif -%}
+
   </a>
 </div>
-

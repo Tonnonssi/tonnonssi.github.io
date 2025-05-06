@@ -1,6 +1,30 @@
 [
   
     {
+      "title"    : "[MARL/01] Multi Agent Reinforcement Learning 기초 ",
+      "category" : "",
+      "tags"     : "RL, MARL",
+      "url"      : "/blog/MARL",
+      "date"     : "2025-05-05 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[DonkeyGym/01] mac m1 환경 설정",
+      "category" : "",
+      "tags"     : "RL",
+      "url"      : "/blog/DonkeyGYMMacSetting",
+      "date"     : "2025-04-11 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "[TimeSeries] AR-Net",
+      "category" : "",
+      "tags"     : "TimeSeries, PaperReivew",
+      "url"      : "/blog/ARNet",
+      "date"     : "2025-03-20 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "[ML] Naive Bayes Classifer",
       "category" : "",
       "tags"     : "ML",
@@ -11,7 +35,7 @@
     {
       "title"    : "[RL] AlphaZero",
       "category" : "",
-      "tags"     : "RL",
+      "tags"     : "RL, PaperReivew",
       "url"      : "/blog/AlphaZero",
       "date"     : "2025-02-12 00:00:00 +0900"
     } ,
@@ -59,25 +83,9 @@
     {
       "title"    : "[RL] DQN",
       "category" : "",
-      "tags"     : "RL",
+      "tags"     : "RL, PaperReivew",
       "url"      : "/blog/DQN",
       "date"     : "2024-10-13 00:00:00 +0900"
-    } ,
-  
-    {
-      "title"    : "[Statistics] 평균 vs 기댓값",
-      "category" : "",
-      "tags"     : "Statistics",
-      "url"      : "/blog/ExpectationMean",
-      "date"     : "2024-10-10 00:00:00 +0900"
-    } ,
-  
-    {
-      "title"    : "[Suzume/01] 몸체 제작 및 회로 구성",
-      "category" : "",
-      "tags"     : "Suzume",
-      "url"      : "/blog/Suzume_body_circuit",
-      "date"     : "2024-10-07 00:00:00 +0900"
     } ,
   
     {
@@ -85,14 +93,6 @@
       "category" : "",
       "tags"     : "RL",
       "url"      : "/blog/MonteCarloTreeSearch",
-      "date"     : "2024-10-07 00:00:00 +0900"
-    } ,
-  
-    {
-      "title"    : "[IssacSim] 기초",
-      "category" : "",
-      "tags"     : "IssacSim",
-      "url"      : "/blog/IssacSimBasic",
       "date"     : "2024-10-07 00:00:00 +0900"
     } ,
   

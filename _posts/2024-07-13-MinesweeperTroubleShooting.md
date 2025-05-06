@@ -4,6 +4,7 @@ tags: [Minesweeper]
 pages: papers
 style: border  # fill / border 
 color: dark
+img: ../assets/images/Minesweeper/image-26.png
 description: "Solved multiple problems and applied different methodologies during the course of learning.<br>-<br>학습 중에 있었던 여러 문제를 해결하고 다양한 방법론을 적용했다."
 ---
 <!-- 한국어 콘텐츠 -->

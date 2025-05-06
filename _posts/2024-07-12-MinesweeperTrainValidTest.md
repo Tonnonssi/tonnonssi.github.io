@@ -3,7 +3,7 @@ title: "[Minesweeper/03] Train, Valid, Test"
 tags: [Minesweeper]
 pages: papers
 style: border  # fill / border 
-color: dark
+img: ../assets/images/Minesweeper/image-22.png
 description: "Chose metrics that would tell us about learning trends, and the right number of sample sizes for valid and test. <br>-<br>학습 동향을 알려줄 수 있는 지표를 선택하고, valid 및 test에 적절한 수의 표본량을 선택했다."
 ---
 <!-- 한국어 콘텐츠 -->

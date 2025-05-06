@@ -1,9 +1,13 @@
 ---
 layout: default
-title: Articles
+title: Article
 weight: 2
-permalink: /articles/
+permalink: /article/
 ---
-
-{% include blog/search.html %}
-{% include blog/index.html %}
+<div style="margin-top: 2rem; padding-left: 1rem;">
+    <br>
+    <h4 style="color: #027bff;">Total ({{ site.posts | size }})</h4>
+  </div>
+  
+  {% include blog/search.html %}
+  {% include blog/index.html %}

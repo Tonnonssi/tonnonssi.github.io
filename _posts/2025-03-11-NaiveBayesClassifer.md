@@ -4,6 +4,7 @@ tags: [ML]
 pages: papers
 style: fill  # fill / border 
 color:  success # secondary / success / danger / warning / info / light / dark
+img: ../assets/images/ML/NBC/image.png
 description: " Review and Implementation of the Naive Bayes Classifer<br>-<br>Naive Bayes Classifer 이론 및 구현"
 ---
 <!-- 한국어 콘텐츠 -->

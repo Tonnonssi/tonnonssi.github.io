@@ -3,7 +3,7 @@ title: "[Minesweeper/02] DQN"
 tags: [Minesweeper]
 pages: papers
 style: border  # fill / border 
-color: dark
+img: ../assets/images/Minesweeper/image-6.png
 description: "Implemented a CNN neural network specialized for spatial recognition, modified the replay memory to improve performance, and implemented two different DQN implementations. <br>-<br>공간 인식에 특화된 CNN 신경망을 구현하고, 성능 향상을 위해 리플레이 메모리를 수정했으며, 두 가지 방식의 DQN 구현을 진행했다."
 ---
 <!-- 한국어 콘텐츠 -->

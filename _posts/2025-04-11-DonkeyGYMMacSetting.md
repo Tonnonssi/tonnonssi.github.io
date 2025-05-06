@@ -4,6 +4,7 @@ tags: [RL]
 pages: papers
 style: border  # fill / border 
 color:  secondary # secondary / success / danger / warning / info / light / dark
+img: ../assets/images/DonkeyGym/Basic/image.png
 description: "Set up DonkeyGym, a useful simulator for getting started with autonomous driving, on an M1 Mac.<br>-<br>자율주행 입문용으로 유용한 DonkeyGym을 mac m1 환경에 세팅했다."
 ---
 

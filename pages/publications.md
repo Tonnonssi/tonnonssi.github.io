@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Publications
-permalink: /publications
+title: Publication
+permalink: /publication
 ---
 <br>
-# Publications
+# Publication
 
 <br> 
    
