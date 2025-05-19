@@ -1,5 +1,5 @@
 ---
-title: "[RL/01] Actor Critic"
+title: "[RL] Actor Critic"
 tags: [RL]
 pages: papers
 style: border  # fill / border 
@@ -54,7 +54,8 @@ Actor-Critic 알고리즘은 정책 중심 방법과 가치 중심 방법의 장
 
 ![](../assets/images/RL/ActorCritic/image.png)  
 
-정책 그래디언트 기반의 액터 크리틱 알고리즘은 아래와 같이 정의된다.  
+정책 그래디언트 기반의 액터 크리틱 알고리즘은 아래와 같이 정의된다.   
+
 $$\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta(a|s) \cdot Q_{w}(s, a) \right]$$
 
 - $\theta$ : 정책 신경망의 파라미터  
@@ -72,7 +73,7 @@ $$A(s, a) = Q_w(s, a) - V_v(s)$$
 어드벤티지 함수는 상태 가치 함수  $V_v(s)$ 를 baseline으로 사용하여 Q-함수의 분산을 줄이는 것을 목적으로 한다. 상태 가치 함수는 각 행동이 아닌 상태 고유의 기대 가치를 근사하기 때문에 분산이 상대적으로 작다. 
 따라서  A(s, a) 는 상태-행동 가치 함수에서 상태 가치 함수를 제함으로써, 각 행동이 상태에서 갖는 **상대적 우수성(advantage)**만을 강조하며 정책 그래디언트의 분산을 효과적으로 감소시킨다.  
 
-실제로 Q-함수와 V-함수를 별도로 학습하지 않고, TD 오차를 이용하여 어드벤티지 함수를 근사할 수 있다. TD 오차는 다음과 같이 정의된다:
+Q-함수와 V-함수를 별도로 학습하지 않고, TD 오차를 이용하여 어드벤티지 함수를 근사할 수 있다. TD 오차는 다음과 같이 정의된다:
 
 
 $$\delta_v = R_{t+1} + \gamma V_v(S_{t+1}) - V_v(S_t)$$
@@ -103,7 +104,152 @@ A3C는 여러 에이전트들이 분리된 환경에서 독립적으로 학습�
 
 
 ### A2C 구현 
-![](../assets/images/RL/ActorCritic/image3.png)  
+![](../assets/images/RL/ActorCritic/image3.png)   
+
+```py
+import gym
+import numpy as np
+import matplotlib.pyplot as plt
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch.nn.functional as F
+
+# AttributeError: module 'numpy' has no attribute 'bool8' 방지 
+if not hasattr(np, 'bool8'):
+    np.bool8 = np.bool_     
+
+## ActorCriticNetwork
+class ActorCriticNetwork(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super().__init__()
+        # actor params 
+        self.actor_fc1 = nn.Linear(input_size, hidden_size)
+        self.actor_fc2 = nn.Linear(hidden_size, output_size)
+
+        # critic params 
+        self.critic_fc1 = nn.Linear(input_size, hidden_size)
+        self.critic_fc2 = nn.Linear(hidden_size, hidden_size)
+        self.critic_fc3 = nn.Linear(hidden_size, 1)
+
+    def forward(self, x):
+        actor_x = F.tanh(self.actor_fc1(x))
+        policy = F.softmax(self.actor_fc2(actor_x), dim=-1)
+
+        critic_x = F.tanh(self.critic_fc1(x))
+        critic_x = F.tanh(self.critic_fc2(critic_x))
+        value = self.critic_fc3(critic_x)
+
+        return policy, value
+
+## Agent
+class Agent:
+    def __init__(self, env, hyper_parameters:dict):
+        self.env = env 
+        self.action_size = env.action_space.n
+        self.state_shape = env.observation_space.shape[0]
+
+        # hyper params 
+        self.gamma = hyper_parameters['gamma']
+        self.lr = hyper_parameters['lr']
+
+        # actor critic network
+        self.a2c = ActorCriticNetwork(self.state_shape, 32, self.action_size)
+        self.optimizer = optim.Adam(self.a2c.parameters(), lr=self.lr)
+
+    def get_action(self, state:torch.Tensor):
+        policy, _ = self.a2c(state)
+        policy = policy.detach().numpy()
+        action = np.random.choice(self.action_size, p=policy)
+        return action 
+
+    def train(self, state:torch.Tensor, action:int, reward:int, next_state:torch.Tensor, done:bool):
+
+        self.a2c.train()
+
+        policy, value = self.a2c(state)
+        _, next_value = self.a2c(next_state)
+
+        target = reward + (1 - done) * self.gamma * next_value
+        advantage = target - value 
+
+        # actor(policy) nn 
+        action_prob = policy[action]
+        log_prob = torch.log(action_prob + 1e-8)
+        actor_loss = -log_prob * advantage.detach() # policy update 과정이니, value 신경망이 개입하면 안된다. 
+
+        # critic nn 
+        critic_loss = advantage.pow(2) # 제곱한다는 의미 
+
+        # total loss
+        total_loss = actor_loss + critic_loss
+
+        # back propagation 
+        self.optimizer.zero_grad()
+        total_loss.backward()
+        self.optimizer.step()
+
+        return total_loss.item()
+
+
+## Hyper Params
+HYPER_PARAMETERS = {
+    'gamma' : 0.99, 
+    'lr' : 1e-3
+}
+
+N_EPISODES = 1000
+MAX_STEPS = 500
+PRINT_INTERVAL = 20  
+
+
+## Env Setting
+seed = 2000
+env_name = "CartPole-v1"
+env = gym.make(env_name)
+env.seed(seed)
+
+## main 
+env = gym.make(env_name)
+agent = Agent(env, HYPER_PARAMETERS)
+
+reward_history = []
+loss_history = []
+
+for e in range(N_EPISODES):
+    done = False
+    state = env.reset()
+    state = torch.tensor(state, dtype=torch.float32)
+    
+    total_reward = 0
+    total_n_steps = 0
+    loss_list = []
+
+    while not done:
+        action = agent.get_action(state)
+        next_state, reward, done, _ = env.step(action)
+        next_state = torch.tensor(next_state, dtype=torch.float32)
+
+        total_reward += reward
+        loss = agent.train(state, action, reward, next_state, done)
+        if not np.isnan(loss):
+            loss_list.append(loss)
+
+        total_n_steps += 1
+        if total_n_steps >= MAX_STEPS:
+            break
+
+        state = next_state
+
+    reward_history.append(total_reward)
+    loss_history.append(np.mean(loss_list))
+
+    # PRINT_INTERVAL 마다 평균 출력
+    if (e + 1) % PRINT_INTERVAL == 0:
+        avg_reward = np.mean(reward_history[-PRINT_INTERVAL:])
+        avg_loss = np.mean(loss_history[-PRINT_INTERVAL:])
+        print(f"[Episode {e+1}] Average Reward: {avg_reward:.2f}, Average Loss: {avg_loss:.4f}")
+```
 
 ## 출처 
 1. [강화학습에서의 bootstrapping은 무엇인가? (What is bootstrapping in RL?)](https://cumulu-s.tistory.com/7)  
@@ -116,6 +262,7 @@ A3C는 여러 에이전트들이 분리된 환경에서 독립적으로 학습�
 
 5. [The idea behind Actor-Critics and how A2C and A3C improve them](https://theaisummer.com/Actor_critics/)  
 
+6. [파이썬과 케라스로 배우는 강화학습](https://www.yes24.com/Product/Goods/101987210)  
 
 {% endcapture %}
 
