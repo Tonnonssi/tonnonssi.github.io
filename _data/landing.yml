@@ -1,0 +1,138 @@
+hero:
+  name:
+    ko: "이지민"
+    en: "Jimin Lee"
+  role:
+    ko: "ML 엔지니어"
+    en: "ML Engineer"
+
+about:
+  paragraph:
+    ko: >-
+      아이디어 발굴부터 구현·실험·개선까지 코드의 전 과정을 즐깁니다. 
+      새로운 구조를 설계하고 시스템을 완성해 가는 과정에서 큰 재미를 느껴, 부분이 아닌 전체를 다루는 강화학습(RL)을 집중적으로 탐구해 왔습니다. 
+      게임, 로보틱스, 금융 등 다양한 주제를 다루며 강화학습을 연구하는 동시에, 딥러닝과 머신러닝 전반에 대한 학습도 꾸준히 이어가며 폭넓게 성장하고 있습니다.
+    en: >-
+      Enjoy the full lifecycle of code, from ideation to implementation, experimentation, and refinement. Thrives on designing new architectures and building complete systems, which aligns well with a focus on reinforcement learning (RL). Explores RL across diverse domains like gaming, robotics, and finance, while continuously expanding knowledge in deep learning and machine learning.
+
+callouts:
+  - icon: "✨"
+    variant: default
+    title:
+      ko: "협업과 새로운 아이디어를 항상 환영해요."
+      en: "Always open to fresh ideas and collaboration."
+    body:
+      ko: |-
+        RL · Applied ML · 과거 진행한 여러 프로젝트에 관심이 있다면 편하게 메시지를 남겨주세요.
+        <br>
+        <a href="mailto:tonnonssi@gmail.com">tonnonssi@gmail.com</a> · <a href="https://github.com/tonnonssi" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/tonnonssi" target="_blank" rel="noopener">LinkedIn</a>
+      en: |-
+        Feel free to reach out if you're interested in RL, applied ML, or any of my past projects.
+        <br>
+        <a href="mailto:tonnonssi@gmail.com">tonnonssi@gmail.com</a> · <a href="https://github.com/tonnonssi" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/tonnonssi" target="_blank" rel="noopener">LinkedIn</a>
+  - icon: "🛠"
+    variant: neutral
+    title:
+      ko: "최근에는 선물 트레이더 에이전트 고도화 · 효율적인 따릉이 재배치 시스템을 개발 중이에요."
+      en: "Currently upgrading my futures trader agent and developing an efficient bike-sharing repositioning system."
+
+tech_stack:
+  python:
+    summary:
+      ko: 주언어로, AI 구현 및 파이프라인 자동화, 경량 서비스 배포에 활용합니다.
+      en: "Primary language used for AI implementation, pipeline automation, and lightweight service deployment."
+    groups:
+    - title: "Core Python"
+      items:
+        - "Python 3.11+, Conda, uv"
+        - "Typing, Dataclasses"
+        - "Jupyter Notebook"
+
+    - title: "ML / RL"
+      items:
+        - "PyTorch, TorchRL"
+        - "Gymnasium, PettingZoo"
+        - "Hydra, Pydantic"
+
+    - title: "Data & Visualization"
+      items:
+        - "NumPy, Pandas"
+        - "Matplotlib, Seaborn, Plotly"
+        - "Scikit-learn, Statsmodels"
+
+  support:
+    - title: "R"
+      summary:
+        ko: 보조 언어로, 통계 분석과 시각화에 사용합니다.
+        en: "Used for statistical analysis and visualization."
+      items:
+        - "Tidyverse"
+        - "Shiny · RMarkdown"
+    - title: "Web"
+      summary:
+        ko: "프로토타입이나 내부 도구 배포를 위해 가벼운 웹 인터페이스를 제작합니다."
+        en: "Build lightweight web frontends for prototypes or internal tools."
+      items:
+        - "Flask · Javascript"
+        - "Jekyll · GitHub Pages"
+    - title: "C / C++"
+      summary:
+        ko: "로보틱스 제어와 성능 최적화가 필요한 구간에 한정해 사용합니다."
+        en: "Reserved for robotics control and performance-critical extensions."
+      items:
+        - "Arduino SDK"
+        - "Pybind11 integration"
+
+leadership:
+  - badge: "Founder & Leader"
+    title:
+      ko: "강화시스터즈"
+      en: "KangHwaSisters"
+    meta:
+      ko: "이화여자대학교 AI 동아리 · 2024년 3월 – 2026년 2월"
+      en: "Ewha Womans University AI Club · Mar 2024 – Feb 2026"
+    bullets:
+      ko:
+        - "동아리 창립 후 2년 간 회장으로 활동하며 기초부터 심화까지 아우르는 커리큘럼을 설계·운영했습니다."
+        - "4학기 간 15명의 팀원들을 이끌며, 매학기 주요 프로젝트(게임, 금융, 로보틱스)에서 팀 리더로 활동했습니다."
+        - "논문 스터디·코드 리뷰 문화 정착했고, 동아리 내 프로젝트 결과물을 정리해 블로그에 게시했습니다."
+        - "동아리 내 대회 및 세미나를 기획·운영했습니다."
+      en:
+        - "Founded and led the club for 2 years, designing and running a curriculum covering basics to advanced topics."
+        - "Led 15 members over 4 semesters, serving as team lead on key projects (Game RL, Finance RL, Robotics RL)."
+        - "Established a culture of paper study and code review, documenting project outcomes on our blog."
+        - "Organized internal competitions and seminars."
+    links:
+      - label: "GitHub"
+        url: "https://github.com/KanghwaSisters"
+      - label: "Blog"
+        url: "https://kanghwasisters.github.io/"
+
+  - badge: "Mentor"
+    title:
+      ko: "스터디 멘토"
+      en: "Study Mentor"
+    meta:
+      ko: "이화여자대학교 통계수학 · 2023년 3월 – 2023년 6월"
+      en: "Ewha Statistical Mathematics · Mar 2023 — Jun 2023"
+    summary:
+      ko: "선형대수학 이론과 실습을 배우는 학부생 스터디 그룹을 만들고, 파이썬에 익숙하지 않은 학생들을 위해 기초 문법과 Numpy 활용법을 지도했습니다."
+      en: "Created an undergrad study group on linear algebra theory and practice, coaching students unfamiliar with Python on basic syntax and NumPy usage."
+    links:
+      - label: "Curriculum Notes"
+        url: "https://recondite-lungfish-fd3.notion.site/23-1-c072eed5d13b463fbe9850591e4ab4f3?pvs=4"
+
+education:
+  title:
+    ko: "이화여자대학교 · 통계학 & 계산과학 복수전공"
+    en: "Ewha Womans University · Double Major in Statistics & Computational Science"
+  meta:
+    ko: "대한민국 · GPA 3.97/4.3"
+    en: "South Korea · GPA 3.97/4.3"
+  summary:
+    ko: "2022년 2월 입학, 2026년 2월 졸업 예정"
+    en: "Feb 2022 – Feb 2026(Expected)"
+
+projects_note:
+  ko: "모든 프로젝트의 자세한 내용은 상단의 'Project' 메뉴에서 확인하실 수 있습니다."
+  en: "You can find detailed information about all projects in the 'Project' menu at the top."

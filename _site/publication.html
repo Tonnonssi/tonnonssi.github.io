@@ -6,10 +6,11 @@
   https://github.com/yousinix/portfolYOU
 -->
 
-<html lang="en" class="h-100">
+<html lang="ko" class="h-100">
 
 <head>
 
+  
   
   
 
@@ -52,7 +53,7 @@
 <body class="h-100 d-flex flex-column">
 
   <main class="flex-shrink-0 container mt-5">
-    <nav class="navbar navbar-expand-lg navbar-themed">
+    <nav class="navbar navbar-expand-lg navbar-themed bg-themed navbar--fixed">
 
   <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
 
@@ -73,11 +74,16 @@
 
       
 
-      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+      <div class="nav-item language-toggle language-toggle--nav" data-lang-toggle-container="always">
+        <button type="button" class="language-toggle__btn" data-lang-switcher>View in English</button>
+      </div>
+
+      <span id="theme-toggler" class="nav-item nav-link d-none" aria-hidden="true"></span>
     </div>
   </div>
 
 </nav>
+
     <p><br /></p>
 <h1 id="publication">Publication</h1>
 
@@ -211,6 +217,9 @@ $(function () {
      },
      "HTML-CSS": { availableFonts: ["TeX"] }
    });
-</script></body>
+</script>
+
+<script src="/assets/js/lang.js" defer></script>
+</body>
 
 </html>

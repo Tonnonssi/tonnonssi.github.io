@@ -1,3 +1,5 @@
+{% assign landing = site.data.landing %}
+
 <div class="row justify-content-center align-items-center p-4">
   <div class="col-lg-4 col-md-6 text-center mt-4">
 
@@ -8,8 +10,16 @@
         <img src="{{ site.author.image }}" alt="{{ site.title }}" class="circle-image wow animated zoomIn" data-wow-delay=".1s">
       </div>
     </div>
-
-    <p class="text-muted wow animated slideInUp" data-wow-delay=".15s">{{ site.description }}</p>
+    <br> 
+    <br> 
+    <p class="text-muted wow animated slideInUp lang-content" data-wow-delay=".15s" data-lang="ko" data-lang-group="landing-hero">
+      <span class="d-block h3 mb-2">{{ landing.hero.name.ko }}</span>
+      <span class="d-block">{{ landing.hero.role.ko }}</span>
+    </p>
+    <p class="text-muted wow animated slideInUp lang-content" data-wow-delay=".15s" data-lang="en" data-lang-group="landing-hero">
+      <span class="d-block h3 mb-2">{{ landing.hero.name.en }}</span>
+      <span class="d-block">{{ landing.hero.role.en }}</span>
+    </p>
 
   </div>
 </div>
@@ -20,51 +30,284 @@
 <div class="row justify-content-center mt-4">
   <div class="col-lg-10 col-md-12 px-5">
     <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
-    <h3>AboutME</h3>
-    <p>{{ site.introduction }}</p>
+    {% assign about_config = site.landing_headings.about %}
+    {% assign about_show = true %}
+    {% assign about_default_ko = '소개' %}
+    {% assign about_default_en = 'About Me' %}
+
+    {% if about_config == false %}
+      {% assign about_show = false %}
+    {% elsif about_config and about_config != true %}
+      {% if about_config.ko or about_config.en %}
+        {% assign about_default_ko = about_config.ko | default: about_default_ko %}
+        {% assign about_default_en = about_config.en | default: about_default_en %}
+      {% else %}
+        {% assign about_default_ko = about_config %}
+        {% assign about_default_en = about_config %}
+      {% endif %}
+    {% endif %}
+
+    {% if about_show %}
+      <h3 class="lang-content" data-lang="ko" data-lang-group="landing-about-heading">{{ about_default_ko }}</h3>
+      <h3 class="lang-content" data-lang="en" data-lang-group="landing-about-heading">{{ about_default_en }}</h3>
+    {% endif %}
+    <p class="lang-content" data-lang="ko" data-lang-group="landing-about">
+      {{ landing.about.paragraph.ko }}
+    </p>
+    <p class="lang-content" data-lang="en" data-lang-group="landing-about">
+      {{ landing.about.paragraph.en }}
+    </p>
+
+    {% for callout in landing.callouts %}
+      {% assign callout_class = 'callout-simple' %}
+      {% if callout.variant and callout.variant != 'default' %}
+        {% assign callout_class = callout_class | append: ' callout-simple--' | append: callout.variant %}
+      {% endif %}
+      {% assign title_ko = callout.title.ko | default: '' | strip %}
+      {% assign title_en = callout.title.en | default: '' | strip %}
+      {% assign body_ko = callout.body.ko | default: '' | strip %}
+      {% assign body_en = callout.body.en | default: '' | strip %}
+      {% assign title_combined = title_ko | append: title_en %}
+      {% assign body_combined = body_ko | append: body_en %}
+      {% assign body_class = 'callout-simple__body' %}
+      {% if title_combined == '' or body_combined == '' %}
+        {% assign body_class = body_class | append: ' callout-simple__body--centered' %}
+      {% endif %}
+      <div class="{{ callout_class }} {% if forloop.first %}mt-4{% else %}mt-3{% endif %}">
+        <div class="callout-simple__icon" aria-hidden="true">{{ callout.icon }}</div>
+        <div class="{{ body_class }}">
+          {% if title_ko != '' %}
+            <p class="callout-simple__title lang-content" data-lang="ko" data-lang-group="landing-callout-title-{{ forloop.index0 }}">{{ title_ko }}</p>
+          {% endif %}
+          {% if title_en != '' %}
+            <p class="callout-simple__title lang-content" data-lang="en" data-lang-group="landing-callout-title-{{ forloop.index0 }}">{{ title_en }}</p>
+          {% endif %}
+          {% if body_ko != '' %}
+            <p class="lang-content" data-lang="ko" data-lang-group="landing-callout-body-{{ forloop.index0 }}">{{ body_ko }}</p>
+          {% endif %}
+          {% if body_en != '' %}
+            <p class="lang-content" data-lang="en" data-lang-group="landing-callout-body-{{ forloop.index0 }}">{{ body_en }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
       <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
     </div>
 </div>
 
 <br>
 
-<!-- Skills Section (더 넓게 조정) -->
 <div class="row justify-content-center mt-4">
-  <div class="col-lg-10 col-md-12">
-    <div class="row">
-      <div class="col-md-6 px-3"> <!-- 좌측 -->
-        {% include about/skills.html title="Programming Skills" source=site.data.programming-skills %}
+  <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
+    {% assign projects_config = site.landing_headings.projects %}
+    {% assign projects_show = true %}
+    {% assign projects_default_ko = '프로젝트' %}
+    {% assign projects_default_en = 'Projects' %}
+
+    {% if projects_config == false %}
+      {% assign projects_show = false %}
+    {% elsif projects_config and projects_config != true %}
+      {% if projects_config.ko or projects_config.en %}
+        {% assign projects_default_ko = projects_config.ko | default: projects_default_ko %}
+        {% assign projects_default_en = projects_config.en | default: projects_default_en %}
+      {% else %}
+        {% assign projects_default_ko = projects_config %}
+        {% assign projects_default_en = projects_config %}
+      {% endif %}
+    {% endif %}
+
+    {% if projects_show %}
+      <h3>
+        <span class="lang-content" data-lang="ko" data-lang-group="landing-projects-heading">{{ projects_default_ko }}</span>
+        <span class="lang-content" data-lang="en" data-lang-group="landing-projects-heading">{{ projects_default_en }}</span>
+      </h3>
+    {% endif %}
+    <br>
+    {% include elements/project_list.html title="" source=site.data.project featured=4 %}
+
+    {% if landing.projects_note %}
+      <div class="projects-note">
+        <p class="lang-content" data-lang="ko" data-lang-group="projects-note">{{ landing.projects_note.ko }}</p>
+        <p class="lang-content" data-lang="en" data-lang-group="projects-note">{{ landing.projects_note.en }}</p>
       </div>
-      <div class="col-md-6 px-3"> <!-- 우측 -->
-        {% include about/skills.html title="Languages Skills" source=site.data.language-skills %}
-      </div>
+    {% endif %}
+  </div>
+</div>
+<br>
+
+
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-10 col-md-12 px-5">
+    <h3>
+      <span class="lang-content" data-lang="ko" data-lang-group="landing-techstack-heading">스킬</span>
+      <span class="lang-content" data-lang="en" data-lang-group="landing-techstack-heading">Tech Stack</span>
+    </h3>
+
+    <div class="tech-stack-shell">
+      <section class="python-stack">
+        <header class="python-stack__header">
+          <span class="python-stack__badge">Python</span>
+          <p class="python-stack__summary lang-content" data-lang="ko" data-lang-group="python-summary">{{ landing.tech_stack.python.summary.ko }}</p>
+          <p class="python-stack__summary lang-content" data-lang="en" data-lang-group="python-summary">{{ landing.tech_stack.python.summary.en }}</p>
+        </header>
+
+        <div class="python-stack__grid">
+          {% for group in landing.tech_stack.python.groups %}
+            <div class="python-stack__group">
+              <h5>{{ group.title }}</h5>
+              <ul>
+                {% for item in group.items %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      {% if landing.tech_stack.support %}
+        <aside class="support-stack">
+          {% for stack in landing.tech_stack.support %}
+            <article class="support-card">
+              <header>
+                <span class="support-card__title">{{ stack.title }}</span>
+                <p class="support-card__summary lang-content" data-lang="ko" data-lang-group="support-{{ forloop.index0 }}">{{ stack.summary.ko }}</p>
+                <p class="support-card__summary lang-content" data-lang="en" data-lang-group="support-{{ forloop.index0 }}">{{ stack.summary.en }}</p>
+              </header>
+              <ul>
+                {% for item in stack.items %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+          {% endfor %}
+        </aside>
+      {% endif %}
     </div>
   </div>
 </div>
 <br>
-
-<div class="row justify-content-center mt-4">
-  <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
-    <h3>Projects</h3>
-    <br>
-    {% include elements/project_list.html title="" source=site.data.project %}
-  </div>
-</div>
 <br>
 
 <div class="row justify-content-center mt-4">
   <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
-    <h3>Publication</h3>
-    {% include elements/papers.html title="" source=site.data.publication %}
+    {% assign publication_config = site.landing_headings.publication %}
+    {% assign publication_show = true %}
+    {% assign publication_default_ko = '활동·리더십' %}
+    {% assign publication_default_en = 'Clubs & Leadership / Activities' %}
+
+    {% if publication_config == false %}
+      {% assign publication_show = false %}
+    {% elsif publication_config and publication_config != true %}
+      {% if publication_config.ko or publication_config.en %}
+        {% assign publication_default_ko = publication_config.ko | default: publication_default_ko %}
+        {% assign publication_default_en = publication_config.en | default: publication_default_en %}
+      {% else %}
+        {% assign publication_default_ko = publication_config %}
+        {% assign publication_default_en = publication_config %}
+      {% endif %}
+    {% endif %}
+
+    {% if publication_show %}
+      <h3>
+        <span class="lang-content" data-lang="ko" data-lang-group="landing-publication-heading">{{ publication_default_ko }}</span>
+        <span class="lang-content" data-lang="en" data-lang-group="landing-publication-heading">{{ publication_default_en }}</span>
+      </h3>
+    {% endif %}
+
+    <div class="leadership-timeline">
+      {% for item in landing.leadership %}
+        <article class="leadership-event{% if forloop.first %} leadership-event--highlight{% endif %}">
+          <div class="leadership-event__marker"></div>
+          <div class="leadership-event__content">
+            {% if item.badge %}
+              <span class="leadership-event__badge">{{ item.badge }}</span>
+            {% endif %}
+            <h4 class="leadership-event__title">
+              <span class="lang-content" data-lang="ko" data-lang-group="leadership-title-{{ forloop.index0 }}">{{ item.title.ko }}</span>
+              <span class="lang-content" data-lang="en" data-lang-group="leadership-title-{{ forloop.index0 }}">{{ item.title.en }}</span>
+            </h4>
+            {% if item.meta %}
+              <p class="leadership-event__meta">
+                <span class="lang-content" data-lang="ko" data-lang-group="leadership-meta-{{ forloop.index0 }}">{{ item.meta.ko }}</span>
+                <span class="lang-content" data-lang="en" data-lang-group="leadership-meta-{{ forloop.index0 }}">{{ item.meta.en }}</span>
+              </p>
+            {% endif %}
+            {% if item.summary %}
+              <p class="leadership-event__summary lang-content" data-lang="ko" data-lang-group="leadership-summary-{{ forloop.index0 }}">{{ item.summary.ko }}</p>
+              <p class="leadership-event__summary lang-content" data-lang="en" data-lang-group="leadership-summary-{{ forloop.index0 }}">{{ item.summary.en }}</p>
+            {% endif %}
+            {% if item.bullets %}
+              <ul class="leadership-event__list lang-content" data-lang="ko" data-lang-group="leadership-bullets-{{ forloop.index0 }}">
+                {% for bullet in item.bullets.ko %}
+                  <li>{{ bullet }}</li>
+                {% endfor %}
+              </ul>
+              <ul class="leadership-event__list lang-content" data-lang="en" data-lang-group="leadership-bullets-{{ forloop.index0 }}">
+                {% for bullet in item.bullets.en %}
+                  <li>{{ bullet }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            {% if item.links %}
+              <div class="leadership-event__links">
+                {% for link in item.links %}
+                  <a href="{{ link.url }}" target="_blank" rel="noopener" class="leadership-event__link">{{ link.label }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
   </div>
 </div>
+<br>
 <br>
 
 <!-- Timeline Section (더 넓게 조정) -->
 <div class="row justify-content-center mt-4">
   <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
-    <h3>Timeline</h3>
-    {% include about/timeline.html %}
+    {% assign timeline_config = site.landing_headings.timeline %}
+    {% assign timeline_show = true %}
+    {% assign timeline_default_ko = '학력' %}
+    {% assign timeline_default_en = 'Education' %}
+
+    {% if timeline_config == false %}
+      {% assign timeline_show = false %}
+    {% elsif timeline_config and timeline_config != true %}
+      {% if timeline_config.ko or timeline_config.en %}
+        {% assign timeline_default_ko = timeline_config.ko | default: timeline_default_ko %}
+        {% assign timeline_default_en = timeline_config.en | default: timeline_default_en %}
+      {% else %}
+        {% assign timeline_default_ko = timeline_config %}
+        {% assign timeline_default_en = timeline_config %}
+      {% endif %}
+    {% endif %}
+
+    {% if timeline_show %}
+      <h3>
+        <span class="lang-content" data-lang="ko" data-lang-group="landing-timeline-heading">{{ timeline_default_ko }}</span>
+        <span class="lang-content" data-lang="en" data-lang-group="landing-timeline-heading">{{ timeline_default_en }}</span>
+      </h3>
+    {% endif %}
+    <div class="education-panel">
+      <div class="education-card">
+        <div class="education-card__icon" aria-hidden="true">🎓</div>
+        <div class="education-card__body">
+          <h4 class="education-card__title">
+            <span class="lang-content" data-lang="ko" data-lang-group="education-title">{{ landing.education.title.ko }}</span>
+            <span class="lang-content" data-lang="en" data-lang-group="education-title">{{ landing.education.title.en }}</span>
+          </h4>
+          <p class="education-card__meta">
+            <span class="lang-content" data-lang="ko" data-lang-group="education-meta">{{ landing.education.meta.ko }}</span>
+            <span class="lang-content" data-lang="en" data-lang-group="education-meta">{{ landing.education.meta.en }}</span>
+          </p>
+          <p class="education-card__summary lang-content" data-lang="ko" data-lang-group="education-summary">{{ landing.education.summary.ko }}</p>
+          <p class="education-card__summary lang-content" data-lang="en" data-lang-group="education-summary">{{ landing.education.summary.en }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <br>
@@ -72,7 +315,29 @@
 <div class="row justify-content-center mt-4">
   <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
     <div class="recent-posts">
-      <h3>Recent Posts</h3>
+      {% assign recent_config = site.landing_headings.recent_posts %}
+      {% assign recent_show = true %}
+      {% assign recent_default_ko = '최근 글' %}
+      {% assign recent_default_en = 'Recent Posts' %}
+
+      {% if recent_config == false %}
+        {% assign recent_show = false %}
+      {% elsif recent_config and recent_config != true %}
+        {% if recent_config.ko or recent_config.en %}
+          {% assign recent_default_ko = recent_config.ko | default: recent_default_ko %}
+          {% assign recent_default_en = recent_config.en | default: recent_default_en %}
+        {% else %}
+          {% assign recent_default_ko = recent_config %}
+          {% assign recent_default_en = recent_config %}
+        {% endif %}
+      {% endif %}
+
+      {% if recent_show %}
+        <h3>
+          <span class="lang-content" data-lang="ko" data-lang-group="landing-recent-heading">{{ recent_default_ko }}</span>
+          <span class="lang-content" data-lang="en" data-lang-group="landing-recent-heading">{{ recent_default_en }}</span>
+        </h3>
+      {% endif %}
       <ul>
         {% for post in site.posts limit:5 %}
         <br>

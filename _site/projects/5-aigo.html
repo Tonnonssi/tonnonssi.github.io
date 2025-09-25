@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="ko" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{&quot;ko&quot;=&gt;&quot;AiGO: CV·로보틱스 기반 오목 AI&quot;, &quot;en&quot;=&gt;&quot;AiGO: End-to-End AI for Gomoku with Vision and Robotics&quot;}">
+  <meta property="og:description" content="4축 로봇팔(end-effector: suction)을 제어해 인간과 AI가 함께 오목(Gomoku)을 플레이하는 듀얼 에이전트 시스템을 개발했습니다. 오목 학습에는 AlphaZero 방법론을 적용하고, 로봇 제어에는 정·역기구학을 활용했습니다. 데이터 증강, 다양한 신경망 구조,...">
+  <meta property="og:image" content="">
+
+  <title>{&quot;ko&quot;=&gt;&quot;AiGO: CV·로보틱스 기반 오목 AI&quot;, &quot;en&quot;=&gt;&quot;AiGO: End-to-End AI for Gomoku with Vision and Robotics&quot;}</title>
+  <meta name="description" content="4축 로봇팔(end-effector: suction)을 제어해 인간과 AI가 함께 오목(Gomoku)을 플레이하는 듀얼 에이전트 시스템을 개발했습니다. 오목 학습에는 AlphaZero 방법론을 적용하고, 로봇 제어에는 정·역기구학을 활용했습니다. 데이터 증강, 다양한 신경망 구조,...">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<!--  -->
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed bg-themed navbar--fixed">
+
+  <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/publication">Publication</a>
+
+      <a class="nav-item nav-link " href="/content">Content</a>
+
+      <a class="nav-item nav-link " href="/project/">Project</a>
+
+      <a class="nav-item nav-link " href="/article/">Article</a>
+
+      <a class="nav-item nav-link " href="https://github.com/tonnonssi"><i class="fab fa-1x fa-github"></i></a>
+
+      
+
+      <div class="nav-item language-toggle language-toggle--nav" data-lang-toggle-container="always">
+        <button type="button" class="language-toggle__btn" data-lang-switcher>View in English</button>
+      </div>
+
+      <span id="theme-toggler" class="nav-item nav-link d-none" aria-hidden="true"></span>
+    </div>
+  </div>
+
+</nav>
+
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  
+<div class="lang-content" data-lang="ko" data-lang-group="project-body">
+  
+<h1 id="aigo-cv로보틱스-기반-오목-ai">AiGO: CV·로보틱스 기반 오목 AI</h1>
+
+<h2 id="1--프로젝트-개요--링크">1. 🔗 프로젝트 개요 &amp; 링크</h2>
+<p><br />
+<strong>4축 로봇팔 (로봇) - 바둑판 인식(CV) - 알파제로 기반 오목 에이전트(RL)</strong>를 개발해 시스템화시켰다.</p>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">GitHub</h4>
+    
+      <p class="url-card__description">학습, 실험 코드 저장소</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/KanghwaSisters/24-2-Omok.git" target="_blank" rel="noopener" class="url-card__link" aria-label="GitHub"></a>
+</div>
+
+<h2 id="2--핵심-역량--문제-해결">2. ✨ 핵심 역량 &amp; 문제 해결</h2>
+
+<div class="callout callout--default">
+  <div class="callout__icon" aria-hidden="true">👩‍💻</div>
+  <div class="callout__body">
+    
+      <p class="callout__title">역할: 리더 · 강화시스터즈(24-2)</p>
+    
+    
+      <p class="callout__text">알파제로 핵심 구현 · 로보틱스 · Web</p>
+    
+  </div>
+</div>
+
+<ul>
+  <li>알파제로를 도입해 베이스라인을 초과하는 성능을 유일하게 달성해 프로젝트의 성과와 완성도를 높이는 데 주도적인 역할을 했습니다.</li>
+  <li>아두이노 제어를 위한 프로젝트에 최적화된 동작 라이브러리를 개발했고, Python &lt;-&gt; Arduino 시리얼 통신을 구현했습니다.</li>
+  <li>학기 초부터 로봇을 제작을 병행해 동아리원들의 CV와 AI 작업 이전에 끝내고자 노력했습니다.</li>
+  <li>전체 시스템 구조를 짜고 부분부분을 효과적으로 팀원들과 나누며 작업했습니다.</li>
+</ul>
+
+<h2 id="3-️-개발-과정">3. ⚙️ 개발 과정</h2>
+<ul>
+  <li>알파제로 논문을 공부해 팀원들의 이해를 증진시켰고, 로봇 개발 과정을 담았습니다.</li>
+</ul>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">PR</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">알파제로 논문 리뷰</h4>
+    
+      <p class="url-card__description">알파제로 논문 리뷰 및 구현</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="../blog/AlphaZero" target="_blank" rel="noopener" class="url-card__link" aria-label="알파제로 논문 리뷰"></a>
+</div>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">01</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">오목용 로봇 제작</h4>
+    
+      <p class="url-card__description">오목에서 사용할 로봇팔 로봇을 제작했습니다. 이후 석션으로 End-effector를 수정했습니다.</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="../blog/OmokRobot_1" target="_blank" rel="noopener" class="url-card__link" aria-label="오목용 로봇 제작"></a>
+</div>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">02</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">로봇팔 회로 제작 • 제어 코드 작성</h4>
+    
+      <p class="url-card__description">로봇팔에서 사용할 회로를 재구성하고 제어하는 클래스를 작성했습니다.</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="../blog/OmokRobotCircuit" target="_blank" rel="noopener" class="url-card__link" aria-label="로봇팔 회로 제작 • 제어 코드 작성"></a>
+</div>
+
+<h2 id="4--결과--성과">4. 📊 결과 &amp; 성과</h2>
+<ul>
+  <li>베이스라인: 방어를 배우는 것이 보여야 합니다. (ex. 연속 3개가 완성되었을 때 방어해야 합니다.)</li>
+  <li>(오목 AI) 데이터 증강, 다양한 신경망 구조, 노이즈 기반 탐험을 통해 성능을 개선해 <mark class="px-2">9×9 환경에서 평균 25스텝 이상의 플레이</mark>를 달성했습니다.</li>
+  <li>평균 25 스텝 이상의 결과에서 기초적인(낮은 스텝에서의) 방어전략과 중앙먹기 전략을 파악할 수 있었습니다.</li>
+  <li>(로봇 제어) 서보 모터를 원하는 동작대로 신호를 보내는 것은 성공하였으나, 로봇팔의 안정성이 심하게 낮아 움직임 오차가 심해 바둑을 둘 정도로 세밀한 동작은 수행할 수 없었습니다.</li>
+</ul>
+
+<p><img src="../assets/images/Omok/Omok.gif" alt="결과" /></p>
+
+<p><img src="../assets/images/Omok/with_policy.gif" alt="움짤" /></p>
+
+<p><br />
+<a class="m-1 btn btn-outline-primary btn-3 btn-block" href="../assets/images/archives/AiGO.pdf">
+  📄 Report
+</a></p>
+
+<h2 id="5--배운-점--다음-단계">5. 💡 배운 점 &amp; 다음 단계</h2>
+<ul>
+  <li>CV-AI-로봇을 총괄하는 구조를 디자인하고 구성들이 하나가 되어 움직이는 시스템을 구성하고 돌아가는 것을 보는 게 보람찼습니다. 또한 배경지식조차 없었던 학문을 공부해보며 효과적으로 질문하는 방법과 새로운 정보를 받아들이는 방법을 배울 수 있었습니다.</li>
+  <li>알파제로 구현 난이도가 높아 논문을 완전히 소화한 후 구현까지 시간이 많이 소요되었습니다. 9x9로 제한을 걸었음에도 불구하고 학습 시간이 과도하게 오래 걸려 다양한 최적화 전략을 수행해보지 못한 것이 아쉬웠습니다.</li>
+  <li>다른 게임과 달리, 승패가 갈리기 전까지 결과 및 보상을 알 수 없기 때문에 학습이 되고 있는지 판단하는 것이 어려웠습니다. 리플레이 메모리와 효과적인 시각화로 문제를 보완했습니다.</li>
+  <li>로봇에 대한 사전지식이 없다보니, 로봇팔의 불안정성을 미리 생각하지 못했습니다. 레퍼런스를 찾아보며 석션으로 end-effector을 바꾸었음에도 구조적인 유격을 해결하지 못했습니다. 이 부분은 온폴리쉬 RL을 사용해 오차를 잡아보면 좋겠다고 생각했습니다.</li>
+</ul>
+
+
+</div>
+
+<div class="lang-content" data-lang="en" data-lang-group="project-body">
+  
+<h1 id="aigo-end-to-end-ai-for-gomoku-with-vision-and-robotics">AiGO: End-to-End AI for Gomoku with Vision and Robotics</h1>
+
+<h2 id="1--overview--links">1. 🔗 Overview &amp; Links</h2>
+<p><br />
+Built an end-to-end system that combines a <strong>4-axis robotic arm, Gomoku board perception, and an AlphaZero-inspired agent</strong> so humans can challenge the AI on a physical board.</p>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">GitHub</h4>
+    
+      <p class="url-card__description">Source code for AlphaZero training, CV pipeline, and robotics control</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/KanghwaSisters/24-2-Omok.git" target="_blank" rel="noopener" class="url-card__link" aria-label="GitHub"></a>
+</div>
+
+<h2 id="2--core-strengths--problem-solving">2. ✨ Core Strengths &amp; Problem Solving</h2>
+
+<div class="callout callout--default">
+  <div class="callout__icon" aria-hidden="true">👩‍💻</div>
+  <div class="callout__body">
+    
+      <p class="callout__title">Role: Team Lead</p>
+    
+    
+      <p class="callout__text">Implemented AlphaZero core loop · Robotics integration · Web interface</p>
+    
+  </div>
+</div>
+
+<ul>
+  <li>Introduced AlphaZero to surpass the baseline policy, driving the project’s performance and overall polish.</li>
+  <li>Authored a tailored motion library for Arduino control and implemented the Python ↔ Arduino serial bridge.</li>
+  <li>Balanced hardware fabrication alongside CV/AI work so the robot was ready early for teamwide integration.</li>
+  <li>Designed the system architecture and coordinated responsibilities across robotics, perception, and training.</li>
+</ul>
+
+<h2 id="3-️-development-process">3. ⚙️ Development Process</h2>
+<ul>
+  <li>Studied the AlphaZero paper in depth to align the team, and documented the robotics build from prototype to control software.</li>
+</ul>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">PR</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">AlphaZero Paper Review</h4>
+    
+      <p class="url-card__description">Notes and implementation details distilled for the team</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="../blog/AlphaZero" target="_blank" rel="noopener" class="url-card__link" aria-label="AlphaZero Paper Review"></a>
+</div>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">01</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">Building the Gomoku Robot</h4>
+    
+      <p class="url-card__description">Constructed the arm used for Gomoku; later swapped the end-effector to suction.</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="../blog/OmokRobot_1" target="_blank" rel="noopener" class="url-card__link" aria-label="Building the Gomoku Robot"></a>
+</div>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">02</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">Circuitry &amp; Control Code</h4>
+    
+      <p class="url-card__description">Reworked the robot arm circuitry and authored the motion control classes.</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="../blog/OmokRobotCircuit" target="_blank" rel="noopener" class="url-card__link" aria-label="Circuitry &amp; Control Code"></a>
+</div>
+
+<h2 id="4--results--outcomes">4. 📊 Results &amp; Outcomes</h2>
+<ul>
+  <li>Baseline expectation: the agent must demonstrate defensive behavior (e.g., blocking open fours).</li>
+  <li>Through augmentation, diverse CNN architectures, and noise-driven exploration, the Gomoku agent achieved <mark class="px-2">an average of 25+ moves per game on a 9×9 board</mark>.</li>
+  <li>At the 25-step benchmark we could observe foundational defense patterns and center-first strategies emerging.</li>
+  <li>Robotics: while servo commands executed as intended, mechanical instability in the arm still caused positional error, preventing full board-level precision.</li>
+</ul>
+
+<p><img src="../assets/images/Omok/Omok.gif" alt="Outcome" /></p>
+
+<p><img src="../assets/images/Omok/with_policy.gif" alt="Policy Playthrough" /></p>
+
+<p><br />
+<a class="m-1 btn btn-outline-primary btn-3 btn-block" href="../assets/images/archives/AiGO.pdf">
+  📄 Report
+</a></p>
+
+<h2 id="5--learnings--next-steps">5. 💡 Learnings &amp; Next Steps</h2>
+<ul>
+  <li>Orchestrating CV, AI, and robotics into a cohesive pipeline was rewarding; picking up unfamiliar domains taught me how to ask sharper questions and digest new material quickly.</li>
+  <li>Fully digesting AlphaZero and implementing it took significant time, and training—even at 9×9—remained slow, limiting how many optimization ideas we could test.</li>
+  <li>Unlike many games, Gomoku offers no intermediate rewards, making progress tracking difficult. Replay memory and richer visualizations helped us evaluate training quality.</li>
+  <li>With zero robotics background, we underestimated the arm’s mechanical slack. Even after switching to a suction end-effector, structural play persisted; exploring on-policy RL for fine-grained correction is a promising next step.</li>
+</ul>
+
+</div>
+
+</div>
+
+<script src="https://utteranc.es/client.js"
+        repo="tonnonssi/tonnonssi.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Jimin Lee</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:tonnonssi@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.instagram.com/jiringsi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#405de6'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-instagram fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<!-- Add LaTex function -->
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+
+<script src="/assets/js/lang.js" defer></script>
+</body>
+
+</html>

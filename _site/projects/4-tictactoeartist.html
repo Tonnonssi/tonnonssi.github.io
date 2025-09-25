@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="ko" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{&quot;ko&quot;=&gt;&quot;TicTacToeArtist: CV·로보틱스 기반 틱택토 AI&quot;, &quot;en&quot;=&gt;&quot;TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics&quot;}">
+  <meta property="og:description" content="CNC 플로터 제어해 AI와 인간이 직접 상호작용하며 틱택토를 플레이할 수 있는 시스템을 구축했습니다. MCS, MCTS, Min-Max, AlphaBeta 등 다양한 방법론을 구현해 비교했고, 특히 AlphaZero 기반 강화학습 모델을 통해 최적의 플레이어 신경망을 학습했습니다...">
+  <meta property="og:image" content="">
+
+  <title>{&quot;ko&quot;=&gt;&quot;TicTacToeArtist: CV·로보틱스 기반 틱택토 AI&quot;, &quot;en&quot;=&gt;&quot;TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics&quot;}</title>
+  <meta name="description" content="CNC 플로터 제어해 AI와 인간이 직접 상호작용하며 틱택토를 플레이할 수 있는 시스템을 구축했습니다. MCS, MCTS, Min-Max, AlphaBeta 등 다양한 방법론을 구현해 비교했고, 특히 AlphaZero 기반 강화학습 모델을 통해 최적의 플레이어 신경망을 학습했습니다...">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<!--  -->
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed bg-themed navbar--fixed">
+
+  <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/publication">Publication</a>
+
+      <a class="nav-item nav-link " href="/content">Content</a>
+
+      <a class="nav-item nav-link " href="/project/">Project</a>
+
+      <a class="nav-item nav-link " href="/article/">Article</a>
+
+      <a class="nav-item nav-link " href="https://github.com/tonnonssi"><i class="fab fa-1x fa-github"></i></a>
+
+      
+
+      <div class="nav-item language-toggle language-toggle--nav" data-lang-toggle-container="always">
+        <button type="button" class="language-toggle__btn" data-lang-switcher>View in English</button>
+      </div>
+
+      <span id="theme-toggler" class="nav-item nav-link d-none" aria-hidden="true"></span>
+    </div>
+  </div>
+
+</nav>
+
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  
+<div class="lang-content" data-lang="ko" data-lang-group="project-body">
+  
+<h1 id="tictactoeartist-cv로보틱스-기반-틱택토-ai">TicTacToeArtist: CV·로보틱스 기반 틱택토 AI</h1>
+
+<h2 id="1--프로젝트-개요--링크">1. 🔗 프로젝트 개요 &amp; 링크</h2>
+<p><br />
+<strong>CNC 플로터(로봇) - 틱택토 판 인식(CV) - 듀얼 제로섬 게임 에이전트(RL)</strong>를 개발해 시스템화시켰다.</p>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">GitHub</h4>
+    
+      <p class="url-card__description">학습, 실험 코드 저장소</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/Tonnonssi/TicTacToeArtist.git" target="_blank" rel="noopener" class="url-card__link" aria-label="GitHub"></a>
+</div>
+
+<h2 id="2--핵심-역량--문제-해결">2. ✨ 핵심 역량 &amp; 문제 해결</h2>
+
+<div class="callout callout--default">
+  <div class="callout__icon" aria-hidden="true">👩‍💻</div>
+  <div class="callout__body">
+    
+      <p class="callout__title">역할: 팀원 · 강화시스터즈(24-2)</p>
+    
+    
+      <p class="callout__text">듀얼 에이전트 제로섬 게임 알고리즘 이론 강의 · 로보틱스</p>
+    
+  </div>
+</div>
+
+<ul>
+  <li>minmax알고리즘부터 알파제로까지 듀얼 제로섬 게임 에이전트 이론을 공부하고 동아리원을 지도했습니다.</li>
+  <li>아두이노 공부를 학기 초부터 병행해 동아리원들의 CV와 AI 작업 이전에 로보틱스를 완성했습니다.</li>
+  <li>아두이노에서 발생하는 불안정성을 없애기 위해 C를 공부해 프로젝트에 최적화된 동작 라이브러리를 개발했습니다.</li>
+</ul>
+
+<h2 id="3-️-개발-과정">3. ⚙️ 개발 과정</h2>
+<ul>
+  <li>듀얼 에이전트 개인 공부, 로보틱스 부분을 작성했습니다.</li>
+</ul>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">GitHub</h4>
+    
+      <p class="url-card__description">듀얼 에이전트 기초부터 심화까지 개인 공부 레파지토리</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/Tonnonssi/tic_tac_toe.git" target="_blank" rel="noopener" class="url-card__link" aria-label="GitHub"></a>
+</div>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">01</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">CNC Plotter 제작</h4>
+    
+      <p class="url-card__description">AI와 인간이 현실 세계에서 상호작용하게 만들고자 했고, 그림을 그리는 로봇인 CNC Plotter을 제작했다.</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="../blog/TicTacToeRobot" target="_blank" rel="noopener" class="url-card__link" aria-label="CNC Plotter 제작"></a>
+</div>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">02</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">CNC Plotter 제어</h4>
+    
+      <p class="url-card__description">C++을 이용해 CNC Plotter을 제어하는 라이브러리를 구현했다.</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="../blog/TicTacToeRobotControl" target="_blank" rel="noopener" class="url-card__link" aria-label="CNC Plotter 제어"></a>
+</div>
+
+<h2 id="4--결과--성과">4. 📊 결과 &amp; 성과</h2>
+<ul>
+  <li>틱택토는 승리 패턴이 적기 때문에 두 번째 플레이어가 불리합니다. 알파제로를 적용한 틱택토 에이전트는 <mark class="px-2">두 번째 플레이어일 때도 낮은 패배율을 보였으며 다른 고전 듀얼 제로섬 에이전트보다 높은 승률</mark> 을 보였습니다.</li>
+</ul>
+
+<table class="project-image-grid">
+  <tr>
+    <td><img src="../assets/images/TicTacToe/Robot/blueprint.png" alt="CNC blueprint" /></td>
+    <td><img src="../assets/images/TicTacToe/Robot/circuit.png" alt="Control circuit" /></td>
+  </tr>
+  <tr>
+    <td><img src="../assets/images/TicTacToe/Robot/real.png" alt="Robot assembly" /></td>
+    <td><img src="../assets/images/TicTacToe/Robot/realWorld.gif" alt="Real-world play demo" /></td>
+  </tr>
+</table>
+
+<p><br />
+<a class="m-1 btn btn-outline-primary btn-3 btn-block" href="../assets/images/archives/TicTacToe.pdf">
+  📄 Report
+</a></p>
+
+<h2 id="5--배운-점--다음-단계">5. 💡 배운 점 &amp; 다음 단계</h2>
+<ul>
+  <li>싱글 에이전트와 달리 듀얼 에이전트는 상대까지 고려해 행동해야하기 때문에 사용하는 이론도, 난이도도 상이했습니다. 제로섬 게임 플레이어 이론이 어떻게 발전되어 왔고, 강화학습에서 어떻게 구현되었는지 배우는 과정이 새로웠습니다.</li>
+  <li>전체 구조를 짤 때는 어렵지 않을 거라 생각하고 호기롭게 시작한 프로젝트였습니다. 하지만 로보틱스에 대한 지식이 아예 없어 아주 단순한 현상이라도 문제를 명확히 규정하는 것부터가 많은 시간이 소요됐습니다. 문제를 인지하는 것부터가 해결의 시발점이라는 걸 알게 되었습니다.</li>
+</ul>
+
+
+</div>
+
+<div class="lang-content" data-lang="en" data-lang-group="project-body">
+  
+<h1 id="tictactoeartist-end-to-end-ai-for-tictactoe-with-vision-and-robotics">TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics</h1>
+
+<h2 id="1--overview--links">1. 🔗 Overview &amp; Links</h2>
+<p><br />
+Built an end-to-end loop that blends <strong>CNC plotter robotics, TicTacToe board perception, and dual zero-sum reinforcement learning agents</strong>.</p>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">GitHub</h4>
+    
+      <p class="url-card__description">Source code for robotics, CV pipeline, and RL agents</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/Tonnonssi/TicTacToeArtist.git" target="_blank" rel="noopener" class="url-card__link" aria-label="GitHub"></a>
+</div>
+
+<h2 id="2--core-strengths--problem-solving">2. ✨ Core Strengths &amp; Problem Solving</h2>
+
+<div class="callout callout--default">
+  <div class="callout__icon" aria-hidden="true">👩‍💻</div>
+  <div class="callout__body">
+    
+      <p class="callout__title">Role: Team Member</p>
+    
+    
+      <p class="callout__text">Led dual-agent zero-sum algorithm sessions and engineered the robotics stack</p>
+    
+  </div>
+</div>
+
+<ul>
+  <li>Mentored club members through the progression from Minimax/MCTS to AlphaZero, distilling the theory into practical agent implementations.</li>
+  <li>Completed the robotics layer early so teammates could focus on CV and AI, integrating hardware, firmware, and calibration.</li>
+  <li>Eliminated Arduino instability by authoring a C/C++ motion library tailored to the CNC plotter’s mechanics.</li>
+</ul>
+
+<h2 id="3-️-development-process">3. ⚙️ Development Process</h2>
+<ul>
+  <li>Authored the dual-agent research notes and implemented the robotics subsystem.</li>
+</ul>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">Study Notes</h4>
+    
+      <p class="url-card__description">Personal repository covering dual-agent theory and experiments</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/Tonnonssi/tic_tac_toe.git" target="_blank" rel="noopener" class="url-card__link" aria-label="Study Notes"></a>
+</div>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">01</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">[TicTacToe/01] Building the CNC Plotter</h4>
+    
+      <p class="url-card__description">How we constructed a drawing robot so the AI could interact with humans in the physical world.</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="../blog/TicTacToeRobot" target="_blank" rel="noopener" class="url-card__link" aria-label="[TicTacToe/01] Building the CNC Plotter"></a>
+</div>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">02</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">[TicTacToe/02] Controlling the CNC Plotter</h4>
+    
+      <p class="url-card__description">Implemented a C++ library to drive the plotter precisely for turn-by-turn play.</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="../blog/TicTacToeRobotControl" target="_blank" rel="noopener" class="url-card__link" aria-label="[TicTacToe/02] Controlling the CNC Plotter"></a>
+</div>
+
+<h2 id="4--results--outcomes">4. 📊 Results &amp; Outcomes</h2>
+<ul>
+  <li>Because TicTacToe offers few winning lines, the second player is typically disadvantaged. The AlphaZero-inspired agent maintained <mark class="px-2">a low loss rate even when playing second and outperformed classical zero-sum baselines</mark>.</li>
+</ul>
+
+<table class="project-image-grid">
+  <tr>
+    <td><img src="../assets/images/TicTacToe/Robot/blueprint.png" alt="CNC blueprint" /></td>
+    <td><img src="../assets/images/TicTacToe/Robot/circuit.png" alt="Control circuit" /></td>
+  </tr>
+  <tr>
+    <td><img src="../assets/images/TicTacToe/Robot/real.png" alt="Robot assembly" /></td>
+    <td><img src="../assets/images/TicTacToe/Robot/realWorld.gif" alt="Real-world play demo" /></td>
+  </tr>
+</table>
+
+<p><br />
+<a class="m-1 btn btn-outline-primary btn-3 btn-block" href="../assets/images/archives/TicTacToe.pdf">
+  📄 Report
+</a></p>
+
+<h2 id="5--learnings--next-steps">5. 💡 Learnings &amp; Next Steps</h2>
+<ul>
+  <li>Unlike single-agent RL, dual-agent systems must reason about an opponent. Tracing how zero-sum game theory evolved and how it translates into modern RL architectures was eye-opening.</li>
+  <li>With no prior robotics experience, even diagnosing simple mechanical issues took significant time. Recognizing and articulating the problem turned out to be the critical first step toward a fix.</li>
+</ul>
+
+</div>
+
+</div>
+
+<script src="https://utteranc.es/client.js"
+        repo="tonnonssi/tonnonssi.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Jimin Lee</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:tonnonssi@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.instagram.com/jiringsi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#405de6'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-instagram fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<!-- Add LaTex function -->
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+
+<script src="/assets/js/lang.js" defer></script>
+</body>
+
+</html>

@@ -6,10 +6,11 @@
   https://github.com/yousinix/portfolYOU
 -->
 
-<html lang="en" class="h-100">
+<html lang="ko" class="h-100">
 
 <head>
 
+  
   
   
 
@@ -52,7 +53,7 @@
 <body class="h-100 d-flex flex-column">
 
   <main class="flex-shrink-0 container mt-5">
-    <nav class="navbar navbar-expand-lg navbar-themed">
+    <nav class="navbar navbar-expand-lg navbar-themed bg-themed navbar--fixed">
 
   <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
 
@@ -73,17 +74,17 @@
 
       
 
-      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+      <div class="nav-item language-toggle language-toggle--nav" data-lang-toggle-container="always">
+        <button type="button" class="language-toggle__btn" data-lang-switcher>View in English</button>
+      </div>
+
+      <span id="theme-toggler" class="nav-item nav-link d-none" aria-hidden="true"></span>
     </div>
   </div>
 
 </nav>
-    <div class="language-toggle">
-  <button id="toggle-ko" class="styled-button">View in English</button>
-  <button id="toggle-en" class="styled-button" style="display: none;">한국어로 보기</button>
-</div>
 
-<div class="col-lg-10 mx-auto mt-5 markdown-body">
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
   <div class="title-container">
   <h1><b>[TicTacToe/02] CNC Plotter 제어</b></h1>
 </div>
@@ -152,23 +153,37 @@
 
 <p>스텝 모터 제어 라이브러리와 로봇 제어 코드는 전부 C++으로 구현했다. C++의 클래스와 포인터, 참조, 복사를 다룬 아래 두 글은 라이브러리를 구현하며 공부한 내용이다.</p>
 
-<p><a href="https://tonnonssi.github.io/blog/CppClass" target="_blank" style="display: block; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px; cursor: pointer; text-decoration: none; color: black;">
-    <!-- Row number with larger font and gray color -->
-    <span style="display: block; font-weight: bold; font-size: 24px; color: gray;">01</span>
-    <!-- Title -->
-    <span style="display: block; font-weight: bold; margin: 0; font-size: 18px; color: black;">C++ Class</span>
-    <!-- Description -->
-    <span style="display: block; margin: 0; color: black;"> </span>
-  </a></p>
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">01</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">C++ Class</h4>
+    
+      <p class="url-card__description"> </p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://tonnonssi.github.io/blog/CppClass" target="_blank" rel="noopener" class="url-card__link" aria-label="C++ Class"></a>
+</div>
 
-<p><a href="https://tonnonssi.github.io/blog/CppPointerReference" target="_blank" style="display: block; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px; cursor: pointer; text-decoration: none; color: black;">
-    <!-- Row number with larger font and gray color -->
-    <span style="display: block; font-weight: bold; font-size: 24px; color: gray;">02</span>
-    <!-- Title -->
-    <span style="display: block; font-weight: bold; margin: 0; font-size: 18px; color: black;">C++ Pointer &amp; Reference</span>
-    <!-- Description -->
-    <span style="display: block; margin: 0; color: black;"> </span>
-  </a></p>
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">02</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">C++ Pointer &amp; Reference</h4>
+    
+      <p class="url-card__description"> </p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://tonnonssi.github.io/blog/CppPointerReference" target="_blank" rel="noopener" class="url-card__link" aria-label="C++ Pointer &amp; Reference"></a>
+</div>
 
 <h3 id="문제-상황-및-해결">문제 상황 및 해결</h3>
 
@@ -229,15 +244,23 @@
 <p>-&gt; <a href="https://github.com/Tonnonssi/TicTacToeArtist/tree/5dfdc4c61e742037216b356ab2e49052417dac10/Robotics/controlCNC">로봇 제어 코드 바로가기</a></p>
 
 <h2 id="04-시리얼-통신-제어">04. 시리얼 통신 제어</h2>
-<p>로봇은 AI의 선택을 현실세계로 가져오는 역할이며, 이를 구현하기 위해 python에서 시리얼 통신을 실행했다. 이 부분은 오목 로봇팔 구현과 매커니즘이 유사하기 때문에 별도로 설명하지 않는다. 방법이 궁금하다면 하단의 오목 문서에서 확인할 수 있다.<br />
-<a href="https://tonnonssi.github.io/blog/OmokRobotCircuit" target="_blank" style="display: block; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px; cursor: pointer; text-decoration: none; color: black;">
-    <!-- Row number with larger font and gray color -->
-    <span style="display: block; font-weight: bold; font-size: 24px; color: gray;">02</span>
-    <!-- Title -->
-    <span style="display: block; font-weight: bold; margin: 0; font-size: 18px; color: black;">오목 로봇 회로 제작 및 제어</span>
-    <!-- Description -->
-    <span style="display: block; margin: 0; color: black;"> </span>
-  </a></p>
+<p>로봇은 AI의 선택을 현실세계로 가져오는 역할이며, 이를 구현하기 위해 python에서 시리얼 통신을 실행했다. 이 부분은 오목 로봇팔 구현과 매커니즘이 유사하기 때문에 별도로 설명하지 않는다. 방법이 궁금하다면 하단의 오목 문서에서 확인할 수 있다.</p>
+
+<div class="url-card url-card--default">
+  <div class="url-card__media">
+    
+      <span class="url-card__placeholder">02</span>
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">오목 로봇 회로 제작 및 제어</h4>
+    
+      <p class="url-card__description"> </p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://tonnonssi.github.io/blog/OmokRobotCircuit" target="_blank" rel="noopener" class="url-card__link" aria-label="오목 로봇 회로 제작 및 제어"></a>
+</div>
 
 <h3 id="실제-움직임">실제 움직임</h3>
 <p><img src="../assets/images/TicTacToe/Robot/realWorld.gif" alt="움짤" /></p>
@@ -298,58 +321,6 @@
         async>
 </script>
 
-<script>
-  const btnKo = document.getElementById("toggle-ko");
-  const btnEn = document.getElementById("toggle-en");
-  const contentKo = document.getElementById("content-ko");
-  const contentEn = document.getElementById("content-en");
-
-  // Set initial state to show Korean content by default
-  contentKo.style.display = "block";
-  contentEn.style.display = "none";
-  btnKo.style.display = "inline-block";
-  btnEn.style.display = "none";
-
-  // Event listeners to toggle language
-  btnKo.addEventListener("click", () => {
-    contentKo.style.display = "none";
-    contentEn.style.display = "block";
-    btnKo.style.display = "none";
-    btnEn.style.display = "inline-block";
-  });
-
-  btnEn.addEventListener("click", () => {
-    contentKo.style.display = "block";
-    contentEn.style.display = "none";
-    btnKo.style.display = "inline-block";
-    btnEn.style.display = "none";
-  });
-</script>
-
-<style>
-  .language-toggle {
-    display: flex;
-    justify-content: flex-end; /* Align buttons to the right */
-    gap: 8px; /* Space between buttons */
-    margin-top: 10px; /* Optional: Adjust spacing from the top */
-  }
-
-  .styled-button {
-    background-color: transparent; /* Transparent background */
-    color: #000000; /* Black text color */
-    border: 2px solid #000000; /* Black border */
-    padding: 8px 20px; /* Adjust padding for size */
-    font-size: 16px; /* Adjust font size */
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
-  }
-
-  .styled-button:hover {
-    background-color: #000000; /* Black background on hover */
-    color: #fff; /* White text on hover */
-  }
-</style>
   </main>
   <footer class="mt-auto py-3 text-center">
 
@@ -426,6 +397,9 @@ $(function () {
      },
      "HTML-CSS": { availableFonts: ["TeX"] }
    });
-</script></body>
+</script>
+
+<script src="/assets/js/lang.js" defer></script>
+</body>
 
 </html>

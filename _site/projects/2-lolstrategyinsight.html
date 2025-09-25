@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="ko" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{&quot;ko&quot;=&gt;&quot;리그오브레전드 전략 패턴 시각화&quot;, &quot;en&quot;=&gt;&quot;LoL-StrategyInsight: Visual Analytics of League of Legends Strategy Patterns&quot;}">
+  <meta property="og:description" content="진입 장벽이 높은 게임인 *리그 오브 레전드(LoL)*의 기본적인 게임 양상을 시각화하여 초심자의 이해를 돕는 것을 목표로 했습니다. 파이썬을 활용한 데이터 크롤링과 전처리를 기반으로, R의 Tidyverse 패키지와 다양한 시각화 기법을 적용했으며, Shiny를 통해 복잡한 네트...">
+  <meta property="og:image" content="">
+
+  <title>{&quot;ko&quot;=&gt;&quot;리그오브레전드 전략 패턴 시각화&quot;, &quot;en&quot;=&gt;&quot;LoL-StrategyInsight: Visual Analytics of League of Legends Strategy Patterns&quot;}</title>
+  <meta name="description" content="진입 장벽이 높은 게임인 *리그 오브 레전드(LoL)*의 기본적인 게임 양상을 시각화하여 초심자의 이해를 돕는 것을 목표로 했습니다. 파이썬을 활용한 데이터 크롤링과 전처리를 기반으로, R의 Tidyverse 패키지와 다양한 시각화 기법을 적용했으며, Shiny를 통해 복잡한 네트...">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<!--  -->
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed bg-themed navbar--fixed">
+
+  <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/publication">Publication</a>
+
+      <a class="nav-item nav-link " href="/content">Content</a>
+
+      <a class="nav-item nav-link " href="/project/">Project</a>
+
+      <a class="nav-item nav-link " href="/article/">Article</a>
+
+      <a class="nav-item nav-link " href="https://github.com/tonnonssi"><i class="fab fa-1x fa-github"></i></a>
+
+      
+
+      <div class="nav-item language-toggle language-toggle--nav" data-lang-toggle-container="always">
+        <button type="button" class="language-toggle__btn" data-lang-switcher>View in English</button>
+      </div>
+
+      <span id="theme-toggler" class="nav-item nav-link d-none" aria-hidden="true"></span>
+    </div>
+  </div>
+
+</nav>
+
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  
+<div class="lang-content" data-lang="ko" data-lang-group="project-body">
+  
+<h1 id="리그오브레전드-전략-패턴-시각화">리그오브레전드 전략 패턴 시각화</h1>
+
+<h2 id="1--프로젝트-개요--링크">1. 🔗 프로젝트 개요 &amp; 링크</h2>
+<p>진입 장벽이 높은 게임인 <strong>리그 오브 레전드(LoL)</strong>의 기본적인 게임 양상을 시각화하여 초심자의 이해를 돕는 것을 목표로 했습니다.</p>
+
+<h2 id="2--핵심-역량--문제-해결">2. ✨ 핵심 역량 &amp; 문제 해결</h2>
+<div class="callout callout--default">
+  <div class="callout__icon" aria-hidden="true">👩‍💻</div>
+  <div class="callout__body">
+    
+      <p class="callout__title">역할: 리더 · 23-2 이화여자대학교 빅데이터를이용한통계그래픽스 </p>
+    
+    
+      <p class="callout__text">전처리 · Shiny 시각화 · 크롤링 · 세부 항목 시각화</p>
+    
+  </div>
+</div>
+
+<ul>
+  <li>가독성이 떨어지는 데이터 프레임을 분석할 자료에 맞게 재구성했습니다. 데이터를 분리 및 분류할 때 사용한 모든 정보는 공식 홈페이지 정보를 참고 및 크롤링하여 사용했습니다.</li>
+  <li>파이썬 · R을 각각 전처리와 시각화에 이용했습니다. 정규 수업 시간에 배운 내용 이외 (라이더 맵, 워드 클라우드, Shiny etc.) 다양한 시각화를 추가적으로 진행했습니다.</li>
+  <li>전반적인 가독성을 높이기 위해 반복되는 요소들의 색을 고정했습니다. 각 라인 별 5가지의 색과, 상반되는 주황-초록색을 지정했습니다.</li>
+</ul>
+
+<h2 id="3-️-개발-과정">3. ⚙️ 개발 과정</h2>
+<ol>
+  <li>데이터 전처리 및 크롤링</li>
+  <li>ggplot과 dplyr을 중심으로 시각화</li>
+  <li>시각화를 바탕으로 분석</li>
+</ol>
+
+<h2 id="4--결과--성과">4. 📊 결과 &amp; 성과</h2>
+
+<div class="url-card url-card--website">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm6.91 6h-2.77a15.631 15.631 0 0 0-1.13-3.13A8.03 8.03 0 0 1 18.91 8ZM12 4a12.826 12.826 0 0 1 1.88 4H10.12A12.826 12.826 0 0 1 12 4ZM4 12a7.977 7.977 0 0 1 .62-3h2.77a16.588 16.588 0 0 0-.12 3 16.588 16.588 0 0 0 .12 3H4.62A7.977 7.977 0 0 1 4 12Zm2.09 4h2.77a15.631 15.631 0 0 0 1.13 3.13A8.03 8.03 0 0 1 6.09 16ZM11.99 20a12.784 12.784 0 0 1-1.87-4h3.76A12.784 12.784 0 0 1 12 20Zm2.91-6H9.1a15.251 15.251 0 0 1-.13-2 15.251 15.251 0 0 1 .13-2h5.82a15.251 15.251 0 0 1 .13 2 15.251 15.251 0 0 1-.13 2Zm.19 5.13A15.631 15.631 0 0 0 16.14 16h2.77a8.03 8.03 0 0 1-4 3.13ZM17.88 12a16.588 16.588 0 0 0-.12-3h2.77a7.977 7.977 0 0 1 0 6h-2.77a16.588 16.588 0 0 0 .12-3Z" /></svg></span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">프로젝트 보고서</h4>
+    
+      <p class="url-card__description">Notion 문서에서 데이터 전처리와 시각화 결과물을 확인해주세요.</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://recondite-lungfish-fd3.notion.site/27984d3f783080f5bbe1e93a51fbd42d?source=copy_link" target="_blank" rel="noopener" class="url-card__link" aria-label="프로젝트 보고서"></a>
+</div>
+
+<h2 id="5--배운-점--다음-단계">5. 💡 배운 점 &amp; 다음 단계</h2>
+<ul>
+  <li>다양한 시각화를 원없이 만들었습니다. 다음에는 더 잘, 예쁘고 가독성을 챙기면서 만들 수 있을 것 같습니다.</li>
+  <li>게임에 대해 잘 몰라서 좀 더 확실한 관점을 세우지 못해 주제가 피상적인 수준에 머물렀던 것 같아 아쉽습니다. 이상치를 집중적으로 탐구해봤어도 좋을 것 같습니다.</li>
+</ul>
+
+</div>
+
+<div class="lang-content" data-lang="en" data-lang-group="project-body">
+  
+<h1 id="lol-strategyinsight-visual-analytics-of-league-of-legends-strategy-patterns">LoL-StrategyInsight: Visual Analytics of League of Legends Strategy Patterns</h1>
+
+<h2 id="1--overview--links">1. 🔗 Overview &amp; Links</h2>
+<p>Mapped core match patterns from <em>League of Legends</em> and translated them into visual narratives so newcomers can understand the flow of the game faster.</p>
+
+<h2 id="2--core-strengths--problem-solving">2. ✨ Core Strengths &amp; Problem Solving</h2>
+<div class="callout callout--default">
+  <div class="callout__icon" aria-hidden="true">👩‍💻</div>
+  <div class="callout__body">
+    
+      <p class="callout__title">Role: Project Lead · Ewha Womans University (2023-2)</p>
+    
+    
+      <p class="callout__text">Data collection · Shiny dashboards · Detailed tactical visualizations</p>
+    
+  </div>
+</div>
+
+<ul>
+  <li>Led the entire data pipeline from scraping to preprocessing, ensuring consistent stats across patches and leagues.</li>
+  <li>Built interactive Shiny dashboards so users can explore champion pools, lane rotations, and vision control without manual filtering.</li>
+  <li>Designed small-multiple visualizations that explain win conditions (lane priority, objective timing, ward density) at a glance.</li>
+</ul>
+
+<h2 id="3-️-development-process-optional">3. ⚙️ Development Process (Optional)</h2>
+<ol>
+  <li>Crawled and cleaned match histories with Python, Selenium, and BeautifulSoup.</li>
+  <li>Modeled the dataset in R and crafted visuals with <code class="language-plaintext highlighter-rouge">ggplot2</code>, <code class="language-plaintext highlighter-rouge">dplyr</code>, and custom themes.</li>
+  <li>Composed the narrative and packaged the dashboards for live demos and mentoring sessions.</li>
+</ol>
+
+<h2 id="4--results--outcomes">4. 📊 Results &amp; Outcomes</h2>
+
+<div class="url-card url-card--website">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm6.91 6h-2.77a15.631 15.631 0 0 0-1.13-3.13A8.03 8.03 0 0 1 18.91 8ZM12 4a12.826 12.826 0 0 1 1.88 4H10.12A12.826 12.826 0 0 1 12 4ZM4 12a7.977 7.977 0 0 1 .62-3h2.77a16.588 16.588 0 0 0-.12 3 16.588 16.588 0 0 0 .12 3H4.62A7.977 7.977 0 0 1 4 12Zm2.09 4h2.77a15.631 15.631 0 0 0 1.13 3.13A8.03 8.03 0 0 1 6.09 16ZM11.99 20a12.784 12.784 0 0 1-1.87-4h3.76A12.784 12.784 0 0 1 12 20Zm2.91-6H9.1a15.251 15.251 0 0 1-.13-2 15.251 15.251 0 0 1 .13-2h5.82a15.251 15.251 0 0 1 .13 2 15.251 15.251 0 0 1-.13 2Zm.19 5.13A15.631 15.631 0 0 0 16.14 16h2.77a8.03 8.03 0 0 1-4 3.13ZM17.88 12a16.588 16.588 0 0 0-.12-3h2.77a7.977 7.977 0 0 1 0 6h-2.77a16.588 16.588 0 0 0 .12-3Z" /></svg></span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">Project Report</h4>
+    
+      <p class="url-card__description">Read the Notion write-up covering data sourcing, visual design, and insights</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://recondite-lungfish-fd3.notion.site/27984d3f783080f5bbe1e93a51fbd42d?source=copy_link" target="_blank" rel="noopener" class="url-card__link" aria-label="Project Report"></a>
+</div>
+
+<ul>
+  <li>Delivered a guided dashboard that new club recruits used during onboarding to understand macro play fundamentals.</li>
+  <li>Identified repeatable macro patterns (fast mid rotations, objective setups) and converted them into training handouts for the team.</li>
+</ul>
+
+<h2 id="5--learnings--next-steps">5. 💡 Learnings &amp; Next Steps</h2>
+<ul>
+  <li>Learned how to keep fast-changing esports data consistent by versioning scrapers and annotating patch changes.</li>
+  <li>Plan to add automated storytelling captions that summarize each chart and to expand coverage to pro play-off series.</li>
+</ul>
+
+</div>
+
+</div>
+
+<script src="https://utteranc.es/client.js"
+        repo="tonnonssi/tonnonssi.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Jimin Lee</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:tonnonssi@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.instagram.com/jiringsi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#405de6'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-instagram fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<!-- Add LaTex function -->
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+
+<script src="/assets/js/lang.js" defer></script>
+</body>
+
+</html>

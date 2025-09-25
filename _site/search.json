@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "[RL] Actor Critic",
+      "category" : "",
+      "tags"     : "RL",
+      "url"      : "/blog/ActorCritic",
+      "date"     : "2025-05-06 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "[MARL/01] Multi Agent Reinforcement Learning 기초 ",
       "category" : "",
       "tags"     : "RL, MARL",
@@ -105,10 +113,10 @@
     } ,
   
     {
-      "title"    : "[Minesweeper/05] Rule Base",
+      "title"    : "[MineSolver] 개발 일지",
       "category" : "",
       "tags"     : "Minesweeper",
-      "url"      : "/blog/MinesweeperRuleBase",
+      "url"      : "/blog/MineSolver",
       "date"     : "2024-07-14 00:00:00 +0900"
     } ,
   

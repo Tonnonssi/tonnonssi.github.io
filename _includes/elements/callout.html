@@ -1,0 +1,11 @@
+<div class="callout callout--{{ include.variant | default: 'default' }}">
+  <div class="callout__icon" aria-hidden="true">{{ include.icon | default: 'ℹ️' }}</div>
+  <div class="callout__body">
+    {% if include.title %}
+      <p class="callout__title">{{ include.title }}</p>
+    {% endif %}
+    {% if include.body %}
+      <p class="callout__text">{{ include.body }}</p>
+    {% endif %}
+  </div>
+</div>

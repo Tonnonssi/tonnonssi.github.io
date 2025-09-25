@@ -1,41 +1,139 @@
-- title: "Solve Mineswepper with DQN"
-  article_link: "https://tonnonssi.github.io/projects/1-minesweeper"
-  year: "March, 2024-"
+- title:
+    ko: "KRAFT: 코스피 선물 RL 트레이더"
+    en: "KRAFT: KOSPI 200 Reinforcement-learning Agent for Futures Trading"
+  article_link: "../projects/1-minesweeper"
+  pinned: true
+  year:
+    ko: "2025년 6월 -"
+    en: "June 2025 - "
   dev_tool:
     - "Python"
-    - "RL"
-    - "Web"
-  abstract: "Solved Minesweeper using DQN. Trained a model with an average win rate of 84%(easy level). Solved theoretical minesweeper, web for deployment. <br>-<br>강화학습으로 지뢰찾기 문제를 해결했다. 초급 기준 평균 승률 84% 모델을 학습시켰고 배포를 위한 웹, 지뢰찾기의 이론적 풀이를 진행했다."
+    - "Pytorch"
+    - "Pandas"
+    - "NumPy"
+    - "Custom Futures Market Simulator"
+  abstract:
+    ko: >-  
+      PPO 알고리즘을 활용해 KOSPI 200 미니 선물 시장에서 스윙 트레이더 에이전트를 개발했습니다.
+      실제 거래를 반영하기 위해 슬리피지와 수수료를 포함한 강화학습 환경을 구축하고, Sharpe Ratio 0.8과 최대 낙폭 -12%를 기록했습니다.
+      복합 보상 설계와 KL Penalty를 통해 정책 안정화를 구현했으며, 현재는 xAI 적용 및 성능 향상을 위한 개선을 진행 중입니다.
+    en: "Developed a swing trader agent for the KOSPI 200 mini futures market using the PPO algorithm. Built a reinforcement learning environment that incorporates slippage and commissions to reflect actual trading conditions, achieving a Sharpe Ratio of 0.8 and a maximum drawdown of -12%. Implemented complex reward design and KL Penalty for policy stabilization, and currently working on xAI application and performance improvement."
   github: "https://github.com/Tonnonssi/-RL-Minesweeper"
-  image: "../assets/images/Minesweeper/minesweeper-2.gif" 
+  image: "../assets/images/ProjectThumbnail/theFuturess.png" 
 
-- title: "Solve Gomoku with AlphaZero"
+
+- title:
+    ko: "AiGO: CV·로보틱스 기반 오목 AI"
+    en: "AiGO: End-to-End AI for Gomoku with Vision and Robotics"
   article_link: "https://tonnonssi.github.io/projects/2-omok"
-  year: "October, 2024-"
+  pinned: true
+  year:
+    ko: "2024년 10월 - 2025년 2월"
+    en: "October 2024 - February 2025"
   dev_tool:
     - "Python"
-    - "c++"
-    - "CV"
-    - "RL"
-    - "Robotics"
-    - "Web"
-  abstract: "This project applies AlphaZero to a real-world Gomoku game with a robotic arm."
+    - "C++"
+    - "Pytorch"
+    - "OpenCV"
+    - "Arduino"
+    - "Flask"
+  abstract:
+    ko: >- 
+      4축 로봇팔(end-effector: suction)을 제어해 인간과 AI가 함께 오목(Gomoku)을 플레이하는 듀얼 에이전트 시스템을 개발했습니다.
+      오목 학습에는 AlphaZero 방법론을 적용하고, 로봇 제어에는 정·역기구학을 활용했습니다.
+      데이터 증강, 다양한 신경망 구조, 노이즈 기반 탐험을 통해 성능을 개선해 9×9 환경에서 평균 25스텝 이상의 플레이를 달성했습니다.
+    en: "Developed a dual-agent system where humans and AI play Gomoku using a 4-axis robotic arm (end-effector: suction). Applied the AlphaZero methodology for Gomoku learning and utilized forward and inverse kinematics for robot control. Enhanced performance through data augmentation, various neural network architectures, and noise-based exploration, achieving an average of over 25 steps in a 9x9 environment."
   github: "https://github.com/Tonnonssi/AiGO"
   pdf: "https://raw.githubusercontent.com/Tonnonssi/AiGO/main/img/report.pdf"
   image: " ../assets/images/Omok/Omok.gif"
 
-- title: "Solve TicTacToe with Dual Agent Methods"
+- title:
+    ko: "TicTacToeArtist: CV·로보틱스 기반 틱택토 AI"
+    en: "TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics"
   article_link: "https://tonnonssi.github.io/projects/3-tictactoe"
-  year: "October, 2024 - February, 2025"
+  year:
+    ko: "2024년 10월 - 2025년 2월"
+    en: "October 2024 - February 2025"
   dev_tool:
     - "Python"
-    - "c++"
-    - "CV"
-    - "RL"
-    - "Robotics"
-  abstract: "This project applies various dual agent methods to a real-world tictactoe game with a CNC model."
+    - "C++"
+    - "Pytorch"
+    - "OpenCV"
+    - "Arduino"
+  abstract:
+    ko: >- 
+      CNC 플로터 제어해 AI와 인간이 직접 상호작용하며 틱택토를 플레이할 수 있는 시스템을 구축했습니다.
+      MCS, MCTS, Min-Max, AlphaBeta 등 다양한 방법론을 구현해 비교했고, 특히 AlphaZero 기반 강화학습 모델을 통해 최적의 플레이어 신경망을 학습했습니다.
+      실험 결과, AlphaZero 기반 AI가 다른 방법론 대비 가장 높은 승률을 기록했습니다.
+    en: "Built a system where AI and humans can play TicTacToe interactively using a CNC plotter. Implemented and compared various methodologies including MCS, MCTS, Min-Max, and AlphaBeta, with a focus on training an optimal player neural network using an AlphaZero-based reinforcement learning model. Experimental results showed that the AlphaZero-based AI achieved the highest win rate compared to other methodologies."
   github: "https://github.com/Tonnonssi/TicTacToeArtist"
   pdf: "https://raw.githubusercontent.com/Tonnonssi/TicTacToeArtist/main/img/report.pdf"
   image: " ../assets/images/TicTacToe/Robot/realWorld.gif"
 
+- title:
+    ko: "MineSolver: 지뢰찾기 DQN 에이전트"
+    en: "MineSolver: DQN Agent for Minesweeper"
+  article_link: "https://tonnonssi.github.io/projects/1-minesweeper"
+  pinned: true
+  year:
+    ko: "2024년 3월 - 2024년 7월"
+    en: "March 2024 - July 2024"
+  dev_tool:
+    - "Python"
+    - "Pytorch"
+    - "Javascript"
+    - "matplotlib"
+  abstract:
+    ko: >-
+      DQN 방법론을 활용해 지뢰찾기 문제를 해결하는 에이전트를 개발했습니다.
+      초급 난이도에서 테스트 기준 평균 승률 84%를 달성한 모델을 학습시켰으며, 실제 활용을 위해 웹 배포까지 구현했습니다.
+      동아리 내에서 가장 높은 성능을 기록한 강화학습 에이전트로 개발 성공 사례를 만들었습니다.
+    en: "Developed an agent to solve the Minesweeper problem using the DQN methodology. Trained a model that achieved an average win rate of 84% on beginner difficulty, and implemented web deployment for practical use. Successfully created a high-performance reinforcement learning agent, marking a development success story within the club."
+  github: "https://github.com/Tonnonssi/-RL-Minesweeper"
+  image: "../assets/images/Minesweeper/minesweeper-2.gif" 
 
+
+- title:
+    ko: "리그오브레전드 전략 패턴 시각화"
+    en: "LoL-StrategyInsight: Visual Analytics of League of Legends Strategy Patterns"
+  article_link: "https://tonnonssi.github.io/projects/portfolio-rl"
+  year:
+    ko: "2023년"
+    en: "2023"
+  dev_tool:
+    - "Python"
+    - "BeautifulSoup"
+    - "Selenium"
+    - "R"
+    - "Tidyverse"
+    - "Shiny"
+    - "Visualization"
+  abstract:
+    ko: >-
+      진입 장벽이 높은 게임인 *리그 오브 레전드(LoL)*의 기본적인 게임 양상을 시각화하여 초심자의 이해를 돕는 것을 목표로 했습니다.
+      파이썬을 활용한 데이터 크롤링과 전처리를 기반으로, R의 Tidyverse 패키지와 다양한 시각화 기법을 적용했으며, Shiny를 통해 복잡한 네트워크 관계를 분석·표현했습니다.
+      이를 통해 LoL의 전략적 패턴을 직관적으로 탐색할 수 있는 시각화 자료를 구축했습니다.
+
+    en: >-
+      Developed a visual analytics tool to help beginners understand the complex gameplay of *League of Legends (LoL)* by visualizing its fundamental game aspects.
+      Leveraged Python for data crawling and preprocessing, applied various visualization techniques using R's Tidyverse package, and utilized Shiny to analyze and represent complex network relationships.
+      This resulted in the creation of a visualization resource that allows for intuitive exploration of strategic patterns in LoL.
+
+- title:
+    ko: "DigitFusion: 필기 숫자 분류기"
+    en: "DigitFusion: Handwritten Digit Classifier"
+  article_link: "/projects/1-digitfusion"
+  year:
+    ko: "2023년"
+    en: "2023"
+  dev_tool:
+    - "Python"
+    - "Pytorch"
+    - "PyQt5"
+  abstract:
+    ko: >-
+      MNIST 데이터셋을 기반으로 CNN 신경망을 학습해 숫자 분류기를 제작하고, 직접 수집한 필기 데이터셋을 추가 학습에 활용했습니다.
+      데이터 증강(회전, 확대 등)과 스케일링 기법을 적용해 예측 성능을 개선했으며, 학습 과정에서 발생한 문제들을 해결하며 모델을 발전시켰습니다.
+    en: >-
+      Developed a digit classifier based on the MNIST dataset using a CNN architecture, and further trained it with a custom handwritten dataset that I collected.
+      Applied data augmentation techniques (rotation, scaling, etc.) and scaling methods to improve prediction performance, while addressing issues that arose during the training process to enhance the model.

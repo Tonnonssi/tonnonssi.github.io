@@ -1,7 +1,18 @@
 <head>
 
   {% assign title = page.title | default: site.title | escape %}
-  {% assign description = page.description | default: site.description | strip_html | strip_newlines | truncate: 160 %}
+  {% assign page_lang = page.lang | default: site.lang | default: 'ko' %}
+  {% assign description_source = page.description | default: site.description %}
+
+  {%- if description_source and description_source[page_lang] -%}
+    {% assign description = description_source[page_lang] | default: description_source['en'] | default: description_source['ko'] %}
+  {%- elsif description_source and description_source['en'] -%}
+    {% assign description = description_source['en'] %}
+  {%- else -%}
+    {% assign description = description_source %}
+  {%- endif -%}
+
+  {% assign description = description | to_s | strip_html | strip_newlines | truncate: 160 %}
 
   {% if page.name and page.collection == 'projects' %}
     {% assign title = page.name | escape %}

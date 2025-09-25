@@ -6,10 +6,11 @@
   https://github.com/yousinix/portfolYOU
 -->
 
-<html lang="en" class="h-100">
+<html lang="ko" class="h-100">
 
 <head>
 
+  
   
   
 
@@ -52,7 +53,7 @@
 <body class="h-100 d-flex flex-column">
 
   <main class="flex-shrink-0 container mt-5">
-    <nav class="navbar navbar-expand-lg navbar-themed">
+    <nav class="navbar navbar-expand-lg navbar-themed bg-themed navbar--fixed">
 
   <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
 
@@ -73,11 +74,16 @@
 
       
 
-      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+      <div class="nav-item language-toggle language-toggle--nav" data-lang-toggle-container="always">
+        <button type="button" class="language-toggle__btn" data-lang-switcher>View in English</button>
+      </div>
+
+      <span id="theme-toggler" class="nav-item nav-link d-none" aria-hidden="true"></span>
     </div>
   </div>
 
 </nav>
+
     
 <div class="card-columns m-3 mt-5">
 
@@ -85,45 +91,66 @@
   
 
   <!-- Local Projects -->
+  
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/1-minesweeper" class="project card text-themed"><img id="minesweeper-img" class="card-img-top" src="../assets/images/ProjectThumbnail/Minesweeper.png" alt="Minesweeper" /><div class="card-body">
-      <h5 id="minesweeper-name" class="card-title">Minesweeper
-      </h5>
-      <p id="minesweeper-desc" class="card-text">Solved Minesweeper using DQN. Trained a model with an average win rate of 84%(easy level). Solved theoretical minesweeper, web for deployment. <br>-<br>강화학습으로 지뢰찾기 문제를 해결했다. 초급 기준 평균 승률 84% 모델을 학습시켰고 배포를 위한 웹, 지뢰찾기의 이론적 풀이를 진행했다.</p>
-      <p id="minesweeper-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">python</span><span class="badge badge-pill text-primary border border-primary ml-1">web</span><span class="badge badge-pill text-primary border border-primary ml-1">RL</span></p>
+  <a href="/projects/6-kraft" class="project card text-themed"><img id="6-kraft-img" class="card-img-top" src="../assets/images/ProjectThumbnail/theFuturess.png" alt="KRAFT: KOSPI 200 Reinforcement-learning Agent for Futures Trading" /><div class="card-body">
+      <h5 id="6-kraft-name" class="card-title"><span class="lang-content" data-lang="ko" data-lang-group="6-kraft-name">KRAFT: 코스피 선물 RL 트레이더</span>
+        <span class="lang-content" data-lang="en" data-lang-group="6-kraft-name">KRAFT: KOSPI 200 Reinforcement-learning Agent for Futures Trading</span>
+      </h5><p id="6-kraft-desc" class="card-text"><span class="lang-content" data-lang="ko" data-lang-group="6-kraft-desc">PPO 알고리즘을 활용해 KOSPI 200 미니 선물 시장에서 스윙 트레이더 에이전트를 개발했습니다. 실제 거래를 반영하기 위해 슬리피지와 수수료를 포함한 강화학습 환경을 구축하고, Sharpe Ratio 0.8과 최대 낙폭 -12%를 기록했습니다. 복합 보상 설계와 KL Penalty를 통해 정책 안정화를 구현했으며, 현재는 xAI 적용 및 성능 향상을 위한 개선을 진행 중입니다.</span><span class="lang-content" data-lang="en" data-lang-group="6-kraft-desc">Developed a swing trader agent for the KOSPI 200 mini futures market using the PPO algorithm. Built a reinforcement learning environment that incorporates slippage and commissions to reflect actual trading conditions, achieving a Sharpe Ratio of 0.8 and a maximum drawdown of -12%. Implemented complex reward design and KL Penalty for policy stabilization, and currently working on xAI application and performance improvement.</span></p><p id="6-kraft-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">Python</span><span class="badge badge-pill text-primary border border-primary ml-1">Pytorch</span><span class="badge badge-pill text-primary border border-primary ml-1">Pandas</span><span class="badge badge-pill text-primary border border-primary ml-1">NumPy</span><span class="badge badge-pill text-primary border border-primary ml-1">Custom Futures Market Simulator</span></p>
     </div>
   </a>
 </div>
 
+
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/2-omok" class="project card text-themed"><div class="card-body">
-      <h5 id="omok-name" class="card-title">Omok
-      </h5>
-      <p id="omok-desc" class="card-text">Trained an 'Omok' model based on AlphaZero. To interact with humans in the real world, an Arduino-controlled robotic arm was built and taught to move. <br>-<br>알파제로를 기반으로 오목을 두는 모델을 만들었다. 현실에서 인간과 상호작용하기 위해 아두이노로 제어하는 로봇팔을 제작하고 수를 두도록 학습시켰다. </p>
-      <p id="omok-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">python</span><span class="badge badge-pill text-primary border border-primary ml-1">RL</span><span class="badge badge-pill text-primary border border-primary ml-1">Robotics</span><span class="badge badge-pill text-primary border border-primary ml-1">IssacSim</span><span class="badge badge-pill text-primary border border-primary ml-1">Arduino</span><span class="badge badge-pill text-primary border border-primary ml-1">C++</span><span class="badge badge-pill text-primary border border-primary ml-1">web</span></p>
+  <a href="/projects/5-aigo" class="project card text-themed"><img id="5-aigo-img" class="card-img-top" src="../assets/images/ProjectThumbnail/Omok.png" alt="AiGO: End-to-End AI for Gomoku with Vision and Robotics" /><div class="card-body">
+      <h5 id="5-aigo-name" class="card-title"><span class="lang-content" data-lang="ko" data-lang-group="5-aigo-name">AiGO: CV·로보틱스 기반 오목 AI</span>
+        <span class="lang-content" data-lang="en" data-lang-group="5-aigo-name">AiGO: End-to-End AI for Gomoku with Vision and Robotics</span>
+      </h5><p id="5-aigo-desc" class="card-text"><span class="lang-content" data-lang="ko" data-lang-group="5-aigo-desc">4축 로봇팔(end-effector: suction)을 제어해 인간과 AI가 함께 오목(Gomoku)을 플레이하는 듀얼 에이전트 시스템을 개발했습니다. 오목 학습에는 AlphaZero 방법론을 적용하고, 로봇 제어에는 정·역기구학을 활용했습니다. 데이터 증강, 다양한 신경망 구조, 노이즈 기반 탐험을 통해 성능을 개선해 9×9 환경에서 평균 25스텝 이상의 플레이를 달성했습니다.</span><span class="lang-content" data-lang="en" data-lang-group="5-aigo-desc">Developed a dual-agent system where humans and AI play Gomoku using a 4-axis robotic arm (end-effector: suction). Applied the AlphaZero methodology for Gomoku learning and utilized forward and inverse kinematics for robot control. Enhanced performance through data augmentation, various neural network architectures, and noise-based exploration, achieving an average of over 25 steps in a 9x9 environment.</span></p><p id="5-aigo-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">Python</span><span class="badge badge-pill text-primary border border-primary ml-1">C++</span><span class="badge badge-pill text-primary border border-primary ml-1">Pytorch</span><span class="badge badge-pill text-primary border border-primary ml-1">OpenCV</span><span class="badge badge-pill text-primary border border-primary ml-1">Arduino</span><span class="badge badge-pill text-primary border border-primary ml-1">Flask</span></p>
     </div>
   </a>
 </div>
 
+
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/3-tictactoe" class="project card text-themed"><div class="card-body">
-      <h5 id="tic-tac-toe-name" class="card-title">Tic-Tac-Toe
-      </h5>
-      <p id="tic-tac-toe-desc" class="card-text">From classical learning strategies to AlphaZero to study tic-tac-toe. Implemented a CNC robot to interact with humans in the real world.<br>-<br>고전적인 학습 전략부터 알파제로까지를 전부 사용해 틱택토를 학습했다. CNC 로봇을 구현해 현실에서 인간과 상호작용할 수 있게 만들었다.</p>
-      <p id="tic-tac-toe-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">python</span><span class="badge badge-pill text-primary border border-primary ml-1">RL</span><span class="badge badge-pill text-primary border border-primary ml-1">Robotics</span><span class="badge badge-pill text-primary border border-primary ml-1">Arduino</span><span class="badge badge-pill text-primary border border-primary ml-1">C++</span><span class="badge badge-pill text-primary border border-primary ml-1">web</span></p>
+  <a href="/projects/4-tictactoeartist" class="project card text-themed"><img id="4-tictactoeartist-img" class="card-img-top" src="../assets/images/ProjectThumbnail/TTT.png" alt="TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics" /><div class="card-body">
+      <h5 id="4-tictactoeartist-name" class="card-title"><span class="lang-content" data-lang="ko" data-lang-group="4-tictactoeartist-name">TicTacToeArtist: CV·로보틱스 기반 틱택토 AI</span>
+        <span class="lang-content" data-lang="en" data-lang-group="4-tictactoeartist-name">TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics</span>
+      </h5><p id="4-tictactoeartist-desc" class="card-text"><span class="lang-content" data-lang="ko" data-lang-group="4-tictactoeartist-desc">CNC 플로터 제어해 AI와 인간이 직접 상호작용하며 틱택토를 플레이할 수 있는 시스템을 구축했습니다. MCS, MCTS, Min-Max, AlphaBeta 등 다양한 방법론을 구현해 비교했고, 특히 AlphaZero 기반 강화학습 모델을 통해 최적의 플레이어 신경망을 학습했습니다. 실험 결과, AlphaZero 기반 AI가 다른 방법론 대비 가장 높은 승률을 기록했습니다.</span><span class="lang-content" data-lang="en" data-lang-group="4-tictactoeartist-desc">Built a system where AI and humans can play TicTacToe interactively using a CNC plotter. Implemented and compared various methodologies including MCS, MCTS, Min-Max, and AlphaBeta, with a focus on training an optimal player neural network using an AlphaZero-based reinforcement learning model. Experimental results showed that the AlphaZero-based AI achieved the highest win rate compared to other methodologies.</span></p><p id="4-tictactoeartist-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">Python</span><span class="badge badge-pill text-primary border border-primary ml-1">C++</span><span class="badge badge-pill text-primary border border-primary ml-1">Pytorch</span><span class="badge badge-pill text-primary border border-primary ml-1">OpenCV</span><span class="badge badge-pill text-primary border border-primary ml-1">Arduino</span></p>
     </div>
   </a>
 </div>
 
+
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/4-suzume" class="project card text-themed"><img id="suzume-souta-img" class="card-img-top" src="https://www.sketchappsources.com/resources/source-image/coo-app-concept-subgaurav.jpg" alt="Suzume-Souta" /><div class="card-body">
-      <h5 id="suzume-souta-name" class="card-title">Suzume-Souta
-      </h5>
-      <p id="suzume-souta-desc" class="card-text">Implemented a three-legged chair from the movie 'Suzume'. Controlled by an Arduino and simulated using issac Sim.<br>-<br>영화 스즈메의 문단속에 나오는 3족 의자를 구현했다. 아두이노로 몸체를 제어했으며, issac Sim을 이용해 시뮬레이션을 진행했다.</p>
-      <p id="suzume-souta-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">python</span><span class="badge badge-pill text-primary border border-primary ml-1">RL</span><span class="badge badge-pill text-primary border border-primary ml-1">issacSim</span><span class="badge badge-pill text-primary border border-primary ml-1">Robotics</span><span class="badge badge-pill text-primary border border-primary ml-1">Arduino</span><span class="badge badge-pill text-primary border border-primary ml-1">C++</span></p>
+  <a href="/projects/3-minesolver" class="project card text-themed"><img id="3-minesolver-img" class="card-img-top" src="../assets/images/ProjectThumbnail/Minesweeper.png" alt="MineSolver: DQN Agent for Minesweeper" /><div class="card-body">
+      <h5 id="3-minesolver-name" class="card-title"><span class="lang-content" data-lang="ko" data-lang-group="3-minesolver-name">MineSolver: 지뢰찾기 DQN 에이전트</span>
+        <span class="lang-content" data-lang="en" data-lang-group="3-minesolver-name">MineSolver: DQN Agent for Minesweeper</span>
+      </h5><p id="3-minesolver-desc" class="card-text"><span class="lang-content" data-lang="ko" data-lang-group="3-minesolver-desc">DQN 방법론을 활용해 지뢰찾기 문제를 해결하는 에이전트를 개발했습니다. 초급 난이도에서 평균 승률 84%를 달성했으며, 실제 활용을 위해 웹 배포까지 구현했습니다. 동아리 내에서 가장 높은 성능을 기록한 강화학습 에이전트로 자리매김했습니다.</span><span class="lang-content" data-lang="en" data-lang-group="3-minesolver-desc">Developed a DQN-based agent to solve the Minesweeper problem. Trained a model that achieved an average win rate of 84% on beginner difficulty, and deployed it on the web for practical use. Recognized as the highest-performing reinforcement learning agent within the club.</span></p><p id="3-minesolver-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">Python</span><span class="badge badge-pill text-primary border border-primary ml-1">Pytorch</span><span class="badge badge-pill text-primary border border-primary ml-1">Javascript</span><span class="badge badge-pill text-primary border border-primary ml-1">matplotlib</span></p>
     </div>
   </a>
 </div>
+
+
+  <div class="wow animated fadeIn" data-wow-delay=".15s">
+  <a href="/projects/2-lolstrategyinsight" class="project card text-themed"><img id="2-lolstrategyinsight-img" class="card-img-top" src="../assets/images/ProjectThumbnail/lol.jpg" alt="LoL-StrategyInsight: Visual Analytics of League of Legends Strategy Patterns" /><div class="card-body">
+      <h5 id="2-lolstrategyinsight-name" class="card-title"><span class="lang-content" data-lang="ko" data-lang-group="2-lolstrategyinsight-name">리그오브레전드 전략 패턴 시각화</span>
+        <span class="lang-content" data-lang="en" data-lang-group="2-lolstrategyinsight-name">LoL-StrategyInsight: Visual Analytics of League of Legends Strategy Patterns</span>
+      </h5><p id="2-lolstrategyinsight-desc" class="card-text"><span class="lang-content" data-lang="ko" data-lang-group="2-lolstrategyinsight-desc">진입 장벽이 높은 게임인 *리그 오브 레전드(LoL)*의 기본적인 게임 양상을 시각화하여 초심자의 이해를 돕는 것을 목표로 했습니다. 파이썬을 활용한 데이터 크롤링과 전처리를 기반으로, R의 Tidyverse 패키지와 다양한 시각화 기법을 적용했으며, Shiny를 통해 복잡한 네트워크 관계를 분석·표현했습니다. 이를 통해 LoL의 전략적 패턴을 직관적으로 탐색할 수 있는 시각화 자료를 구축했습니다.</span><span class="lang-content" data-lang="en" data-lang-group="2-lolstrategyinsight-desc">Developed a visual analytics tool to help beginners understand the complex gameplay of *League of Legends (LoL)* by visualizing its fundamental game aspects. Leveraged Python for data crawling and preprocessing, applied various visualization techniques using R's Tidyverse package, and utilized Shiny to analyze and represent complex network relationships. This resulted in the creation of a visualization resource that allows for intuitive exploration of strategic patterns in LoL.</span></p><p id="2-lolstrategyinsight-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">Python</span><span class="badge badge-pill text-primary border border-primary ml-1">BeautifulSoup</span><span class="badge badge-pill text-primary border border-primary ml-1">Selenium</span><span class="badge badge-pill text-primary border border-primary ml-1">R</span><span class="badge badge-pill text-primary border border-primary ml-1">Tidyverse</span><span class="badge badge-pill text-primary border border-primary ml-1">Shiny</span><span class="badge badge-pill text-primary border border-primary ml-1">Visualization</span></p>
+    </div>
+  </a>
+</div>
+
+
+  <div class="wow animated fadeIn" data-wow-delay=".15s">
+  <a href="/projects/1-digitfusion" class="project card text-themed"><img id="1-digitfusion-img" class="card-img-top" src="../assets/images/ProjectThumbnail/digit.jpg" alt="DigitFusion: Handwritten Digit Classifier" /><div class="card-body">
+      <h5 id="1-digitfusion-name" class="card-title"><span class="lang-content" data-lang="ko" data-lang-group="1-digitfusion-name">DigitFusion: 필기 숫자 분류기</span>
+        <span class="lang-content" data-lang="en" data-lang-group="1-digitfusion-name">DigitFusion: Handwritten Digit Classifier</span>
+      </h5><p id="1-digitfusion-desc" class="card-text"><span class="lang-content" data-lang="ko" data-lang-group="1-digitfusion-desc">MNIST 데이터셋을 기반으로 CNN 신경망을 학습해 숫자 분류기를 제작하고, 직접 수집한 필기 데이터셋을 추가 학습에 활용했습니다. 데이터 증강(회전, 확대 등)과 스케일링 기법을 적용해 예측 성능을 개선했으며, 학습 과정에서 발생한 문제들을 해결하며 모델을 발전시켰습니다.</span><span class="lang-content" data-lang="en" data-lang-group="1-digitfusion-desc">Developed a digit classifier based on the MNIST dataset using a CNN architecture, and further trained it with a custom handwritten dataset that I collected. Applied data augmentation techniques (rotation, scaling, etc.) and scaling methods to improve prediction performance, while addressing issues that arose during the training process to enhance the model.</span></p><p id="1-digitfusion-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">Python</span><span class="badge badge-pill text-primary border border-primary ml-1">Pytorch</span><span class="badge badge-pill text-primary border border-primary ml-1">PyQt5</span></p>
+    </div>
+  </a>
+</div>
+
 
   
 
@@ -205,6 +232,9 @@ $(function () {
      },
      "HTML-CSS": { availableFonts: ["TeX"] }
    });
-</script></body>
+</script>
+
+<script src="/assets/js/lang.js" defer></script>
+</body>
 
 </html>

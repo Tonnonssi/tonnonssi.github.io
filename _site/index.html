@@ -6,10 +6,11 @@
   https://github.com/yousinix/portfolYOU
 -->
 
-<html lang="en" class="h-100">
+<html lang="ko" class="h-100">
 
 <head>
 
+  
   
   
 
@@ -52,7 +53,7 @@
 <body class="h-100 d-flex flex-column">
 
   <main class="flex-shrink-0 container mt-5">
-    <nav class="navbar navbar-expand-lg navbar-themed">
+    <nav class="navbar navbar-expand-lg navbar-themed bg-themed navbar--fixed">
 
   <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
 
@@ -61,8 +62,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav ml-auto">
-<a class="nav-item nav-link " href="/publication">Publication</a>
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/publication">Publication</a>
 
       <a class="nav-item nav-link " href="/content">Content</a>
 
@@ -74,25 +74,37 @@
 
       
 
-      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+      <div class="nav-item language-toggle language-toggle--nav" data-lang-toggle-container="always">
+        <button type="button" class="language-toggle__btn" data-lang-switcher>View in English</button>
+      </div>
+
+      <span id="theme-toggler" class="nav-item nav-link d-none" aria-hidden="true"></span>
     </div>
   </div>
 
 </nav>
-    <div class="row justify-content-center align-items-center p-4">
+
+    
+<div class="row justify-content-center align-items-center p-4">
   <div class="col-lg-4 col-md-6 text-center mt-4">
 
     <!-- Fine Circle Responsive Image -->
     <div id="container" class="my-2">
       <div id="dummy"></div>
       <div id="element">
-        <img src="./assets/images/Profile/Jimin.png" alt="tonnonssi" class="circle-image wow animated zoomIn" data-wow-delay=".1s">
+        <img src="./assets/images/Profile/Jimin.png" alt="tonnonssi" class="circle-image wow animated zoomIn" data-wow-delay=".1s" />
       </div>
     </div>
-
-    <p class="text-muted wow animated slideInUp" data-wow-delay=".15s"></p>
-<h3>Jimin Lee</h3>
-<br>AI Engineer<br>•<br>Statistician<br> 
+    <br /> 
+    <br /> 
+    <p class="text-muted wow animated slideInUp lang-content" data-wow-delay=".15s" data-lang="ko" data-lang-group="landing-hero">
+      <span class="d-block h3 mb-2">이지민</span>
+      <span class="d-block">ML 엔지니어</span>
+    </p>
+    <p class="text-muted wow animated slideInUp lang-content" data-wow-delay=".15s" data-lang="en" data-lang-group="landing-hero">
+      <span class="d-block h3 mb-2">Jimin Lee</span>
+      <span class="d-block">ML Engineer</span>
+    </p>
 
   </div>
 </div>
@@ -100,471 +112,795 @@
 <!-- 소개 멘트 -->
 <div class="row justify-content-center mt-4">
   <div class="col-lg-10 col-md-12 px-5">
-    <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
-    <h3>AboutME</h3>
-    <p>Hi I am <b>Jimin Lee</b> <img class="emoji" title=":wave:" alt=":wave:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png" height="20" width="20">,<br> Currently interested in RL, DL, Robotics and Time Series Data Analysis. <br> A senior at Ewha Womans University in South Korea, double majoring in Statistics and Computational Science.</p>
-      <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
-    </div>
-</div>
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;" />
+    
+    
+    
+    
 
-<p><br></p>
+    
 
-<!-- Skills Section (더 넓게 조정) -->
-<div class="row justify-content-center mt-4">
-  <div class="col-lg-10 col-md-12">
-    <div class="row">
-      <div class="col-md-6 px-3"> <!-- 좌측 -->
-        <div class="col-lg">
+    
+      <h3 class="lang-content" data-lang="ko" data-lang-group="landing-about-heading">소개</h3>
+      <h3 class="lang-content" data-lang="en" data-lang-group="landing-about-heading">About Me</h3>
+    
+    <p class="lang-content" data-lang="ko" data-lang-group="landing-about">
+      아이디어 발굴부터 구현·실험·개선까지 코드의 전 과정을 즐깁니다.  새로운 구조를 설계하고 시스템을 완성해 가는 과정에서 큰 재미를 느껴, 부분이 아닌 전체를 다루는 강화학습(RL)을 집중적으로 탐구해 왔습니다.  게임, 로보틱스, 금융 등 다양한 주제를 다루며 강화학습을 연구하는 동시에, 딥러닝과 머신러닝 전반에 대한 학습도 꾸준히 이어가며 폭넓게 성장하고 있습니다.
+    </p>
+    <p class="lang-content" data-lang="en" data-lang-group="landing-about">
+      Enjoy the full lifecycle of code, from ideation to implementation, experimentation, and refinement. Thrives on designing new architectures and building complete systems, which aligns well with a focus on reinforcement learning (RL). Explores RL across diverse domains like gaming, robotics, and finance, while continuously expanding knowledge in deep learning and machine learning.
+    </p>
 
-  <h3 class="mb-3">Programming Skills</h3>
-
-  
-
-  <div class="row justify-content-between align-items-center">
-    <div class="col-10">
-      <p class="mb-1">Python</p>
-    </div>
-    <div class="col-2 text-right">
-      <p class="mb-1 text-muted">80%</p>
-    </div>
-  </div>
-
-  <div class="progress mb-4 bg-themed" style="height: 8px;">
-    <div class="progress-bar bg-danger wow animated slideInLeft" data-wow-delay="0.05" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-    </div>
-  </div>
-
-  
-
-  <div class="row justify-content-between align-items-center">
-    <div class="col-10">
-      <p class="mb-1">R</p>
-    </div>
-    <div class="col-2 text-right">
-      <p class="mb-1 text-muted">60%</p>
-    </div>
-  </div>
-
-  <div class="progress mb-4 bg-themed" style="height: 8px;">
-    <div class="progress-bar bg-primary wow animated slideInLeft" data-wow-delay="0.1" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-    </div>
-  </div>
-
-  
-
-  <div class="row justify-content-between align-items-center">
-    <div class="col-10">
-      <p class="mb-1">C++</p>
-    </div>
-    <div class="col-2 text-right">
-      <p class="mb-1 text-muted">30%</p>
-    </div>
-  </div>
-
-  <div class="progress mb-4 bg-themed" style="height: 8px;">
-    <div class="progress-bar bg-secondary wow animated slideInLeft" data-wow-delay="0.15" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-    </div>
-  </div>
-
-  
-
-  <div class="row justify-content-between align-items-center">
-    <div class="col-10">
-      <p class="mb-1">html/css/js</p>
-    </div>
-    <div class="col-2 text-right">
-      <p class="mb-1 text-muted">20%</p>
-    </div>
-  </div>
-
-  <div class="progress mb-4 bg-themed" style="height: 8px;">
-    <div class="progress-bar bg-warning wow animated slideInLeft" data-wow-delay="0.2" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-    </div>
-  </div>
-
-  
-
-</div>
-      </div>
-      <div class="col-md-6 px-3"> <!-- 우측 -->
-        <div class="col-lg">
-
-  <h3 class="mb-3">Languages Skills</h3>
-
-  
-
-  <div class="row justify-content-between align-items-center">
-    <div class="col-10">
-      <p class="mb-1">Korean</p>
-    </div>
-    <div class="col-2 text-right">
-      <p class="mb-1 text-muted">100%</p>
-    </div>
-  </div>
-
-  <div class="progress mb-4 bg-themed" style="height: 8px;">
-    <div class="progress-bar bg-info wow animated slideInLeft" data-wow-delay="0.05" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-    </div>
-  </div>
-
-  
-
-  <div class="row justify-content-between align-items-center">
-    <div class="col-10">
-      <p class="mb-1">English</p>
-    </div>
-    <div class="col-2 text-right">
-      <p class="mb-1 text-muted">60%</p>
-    </div>
-  </div>
-
-  <div class="progress mb-4 bg-themed" style="height: 8px;">
-    <div class="progress-bar bg-success wow animated slideInLeft" data-wow-delay="0.1" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-    </div>
-  </div>
-
-  
-
-  <div class="row justify-content-between align-items-center">
-    <div class="col-10">
-      <p class="mb-1">Japanese</p>
-    </div>
-    <div class="col-2 text-right">
-      <p class="mb-1 text-muted">30%</p>
-    </div>
-  </div>
-
-  <div class="progress mb-4 bg-themed" style="height: 8px;">
-    <div class="progress-bar bg-primary wow animated slideInLeft" data-wow-delay="0.15" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-    </div>
-  </div>
-
-  
-
-</div>
-      </div>
-    </div>
-  </div>
-</div>
-<p><br></p>
-
-<div class="row justify-content-center mt-4">
-  <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
-    <h3>Projects</h3>
-    <br>
-    <div class="project-list">
-  
-  
-  
-  <a href="https://tonnonssi.github.io/projects/1-minesweeper" style="text-decoration: none; color: inherit; display: block;">
-  
-
-    <div class="project" style="position: relative; display: flex; flex-direction: row; padding: 20px; border: 1px solid #ccc; margin-bottom: 20px; cursor: pointer; align-items: center;">
-
-      <!-- 프로젝트 이미지 (왼쪽 정렬, 150px) -->
-      
-      <div style="height: auto; width: 150px; border: 1px solid #000; text-align: center; display: flex; align-items: center; justify-content: center; margin-right: 20px;">
-        <img src="../assets/images/Minesweeper/minesweeper-2.gif" alt="Project Image" style="max-width: 100%; max-height: 100%;">
-      </div>
-      
-
-      <!-- 프로젝트 제목 및 기본 정보 -->
-      <div style="flex: 1;">
-        <h6 class="title" style="font-size: 1.5em; margin-bottom: 10px;">Solve Mineswepper with DQN</h6>
-        <p class="authors" style="margin-bottom: 10px;">
-          
-            <strong>Python</strong>, 
-          
-            <strong>RL</strong>, 
-          
-            <strong>Web</strong>
-          
-        </p>
-        <p></p>
-
-        <!-- Abstract (항상 표시, 회색 글씨) -->
-        <p style="color: gray; font-size: 0.9em; margin-top: 10px;">Solved Minesweeper using DQN. Trained a model with an average win rate of 84%(easy level). Solved theoretical minesweeper, web for deployment. <br>-<br>강화학습으로 지뢰찾기 문제를 해결했다. 초급 기준 평균 승률 84% 모델을 학습시켰고 배포를 위한 웹, 지뢰찾기의 이론적 풀이를 진행했다.</p>
-
-         
-        
-          <a href="https://github.com/Tonnonssi/-RL-Minesweeper" class="pdf-button" style="text-decoration: none; color: #027bff;">Github</a>
-        
-         
-        
-      </div>
-
-      <!-- 연도 위치 조정 -->
-      <div class="year" style="position: absolute; bottom: 10px; right: 20px; font-size: 30px; font-weight: bold; color: rgba(0, 0, 0, 0.05); pointer-events: none;">
-        March, 2024-
-      </div>
-
-    </div>
-
-  
-  </a>
-  
-
-  
-  
-  
-  <a href="https://tonnonssi.github.io/projects/2-omok" style="text-decoration: none; color: inherit; display: block;">
-  
-
-    <div class="project" style="position: relative; display: flex; flex-direction: row; padding: 20px; border: 1px solid #ccc; margin-bottom: 20px; cursor: pointer; align-items: center;">
-
-      <!-- 프로젝트 이미지 (왼쪽 정렬, 150px) -->
-      
-      <div style="height: auto; width: 150px; border: 1px solid #000; text-align: center; display: flex; align-items: center; justify-content: center; margin-right: 20px;">
-        <img src="../assets/images/Omok/Omok.gif" alt="Project Image" style="max-width: 100%; max-height: 100%;">
-      </div>
-      
-
-      <!-- 프로젝트 제목 및 기본 정보 -->
-      <div style="flex: 1;">
-        <h6 class="title" style="font-size: 1.5em; margin-bottom: 10px;">Solve Gomoku with AlphaZero</h6>
-        <p class="authors" style="margin-bottom: 10px;">
-          
-            <strong>Python</strong>, 
-          
-            <strong>c++</strong>, 
-          
-            <strong>CV</strong>, 
-          
-            <strong>RL</strong>, 
-          
-            <strong>Robotics</strong>, 
-          
-            <strong>Web</strong>
-          
-        </p>
-        <p></p>
-
-        <!-- Abstract (항상 표시, 회색 글씨) -->
-        <p style="color: gray; font-size: 0.9em; margin-top: 10px;">This project applies AlphaZero to a real-world Gomoku game with a robotic arm.</p>
-
-         
-        
-          <a href="https://github.com/Tonnonssi/AiGO" class="pdf-button" style="text-decoration: none; color: #027bff;">Github</a>
-        
-         
-        
-          <a href="https://raw.githubusercontent.com/Tonnonssi/AiGO/main/img/report.pdf" class="pdf-button" style="text-decoration: none; color: #027bff;">PDF</a>
-        
-      </div>
-
-      <!-- 연도 위치 조정 -->
-      <div class="year" style="position: absolute; bottom: 10px; right: 20px; font-size: 30px; font-weight: bold; color: rgba(0, 0, 0, 0.05); pointer-events: none;">
-        October, 2024-
-      </div>
-
-    </div>
-
-  
-  </a>
-  
-
-  
-  
-  
-  <a href="https://tonnonssi.github.io/projects/3-tictactoe" style="text-decoration: none; color: inherit; display: block;">
-  
-
-    <div class="project" style="position: relative; display: flex; flex-direction: row; padding: 20px; border: 1px solid #ccc; margin-bottom: 20px; cursor: pointer; align-items: center;">
-
-      <!-- 프로젝트 이미지 (왼쪽 정렬, 150px) -->
-      
-      <div style="height: auto; width: 150px; border: 1px solid #000; text-align: center; display: flex; align-items: center; justify-content: center; margin-right: 20px;">
-        <img src="../assets/images/TicTacToe/Robot/realWorld.gif" alt="Project Image" style="max-width: 100%; max-height: 100%;">
-      </div>
-      
-
-      <!-- 프로젝트 제목 및 기본 정보 -->
-      <div style="flex: 1;">
-        <h6 class="title" style="font-size: 1.5em; margin-bottom: 10px;">Solve TicTacToe with Dual Agent Methods</h6>
-        <p class="authors" style="margin-bottom: 10px;">
-          
-            <strong>Python</strong>, 
-          
-            <strong>c++</strong>, 
-          
-            <strong>CV</strong>, 
-          
-            <strong>RL</strong>, 
-          
-            <strong>Robotics</strong>
-          
-        </p>
-        <p></p>
-
-        <!-- Abstract (항상 표시, 회색 글씨) -->
-        <p style="color: gray; font-size: 0.9em; margin-top: 10px;">This project applies various dual agent methods to a real-world tictactoe game with a CNC model.</p>
-
-         
-        
-          <a href="https://github.com/Tonnonssi/TicTacToeArtist" class="pdf-button" style="text-decoration: none; color: #027bff;">Github</a>
-        
-         
-        
-          <a href="https://raw.githubusercontent.com/Tonnonssi/TicTacToeArtist/main/img/report.pdf" class="pdf-button" style="text-decoration: none; color: #027bff;">PDF</a>
-        
-      </div>
-
-      <!-- 연도 위치 조정 -->
-      <div class="year" style="position: absolute; bottom: 10px; right: 20px; font-size: 30px; font-weight: bold; color: rgba(0, 0, 0, 0.05); pointer-events: none;">
-        October, 2024 - February, 2025
-      </div>
-
-    </div>
-
-  
-  </a>
-  
-
-  
-</div>
-  </div>
-</div>
-<p><br></p>
-
-<div class="row justify-content-center mt-4">
-  <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
-    <h3>Publication</h3>
-    <div class="publications-list">
-  
-  
     
       
-      <h5 style="font-size: 2em; margin-top: 40px; solid #ccc; padding-bottom: 10px;">2024</h5>
-    
-    <div class="publication" style="position: relative; padding: 20px; border: 1px solid #ccc; margin-bottom: 20px;">
-      <h6 class="title" style="font-size: 1.5em; margin-bottom: 10px;">🇰🇷 Solve Gomoku with AlphaZero</h6>
-      <p class="authors" style="margin-bottom: 10px;">
-        
-          <strong>Jimin Lee</strong>, 
-        
-          <strong>Team AiGO</strong>
-        
-      </p>
-      <p class="source" style="font-style: italic; margin-bottom: 10px;"> </p>
-      <p class="presented-at" style="margin-bottom: 10px;">KangHwaSisters In Club Conference</p>
-      <div class="links" style="margin-bottom: 10px;">
-        <a href="javascript:void(0);" onclick="toggleAbstract(1)" class="abs-button" style="text-decoration: none; color:  #027bff;">Abstract</a>
-        <div id="abstract-1" style="display:none; margin-top: 10px;">
-          <p>This research aims to enable a dual-agent Gomoku game where a human and an AI agent interact in real life through a 4-degree-of-freedom (4-DOF) robotic arm equipped with a suction-based end-effector. The AI agent is trained using the AlphaZero methodology, leveraging forward and inverse kinematics for robotic arm control. To enhance the performance of the Gomoku agent, data augmentation, neural network diversity, and noise-driven exploration were incorporated into the training process. The developed agent, trained in a 9×9 board environment, demonstrates an average step count exceeding 25 moves per game.</p>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="callout-simple mt-4">
+        <div class="callout-simple__icon" aria-hidden="true">✨</div>
+        <div class="callout-simple__body">
+          
+            <p class="callout-simple__title lang-content" data-lang="ko" data-lang-group="landing-callout-title-0">협업과 새로운 아이디어를 항상 환영해요.</p>
+          
+          
+            <p class="callout-simple__title lang-content" data-lang="en" data-lang-group="landing-callout-title-0">Always open to fresh ideas and collaboration.</p>
+          
+          
+            <p class="lang-content" data-lang="ko" data-lang-group="landing-callout-body-0">RL · Applied ML · 과거 진행한 여러 프로젝트에 관심이 있다면 편하게 메시지를 남겨주세요.
+<br />
+<a href="mailto:tonnonssi@gmail.com">tonnonssi@gmail.com</a> · <a href="https://github.com/tonnonssi" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/tonnonssi" target="_blank" rel="noopener">LinkedIn</a></p>
+          
+          
+            <p class="lang-content" data-lang="en" data-lang-group="landing-callout-body-0">Feel free to reach out if you're interested in RL, applied ML, or any of my past projects.
+<br />
+<a href="mailto:tonnonssi@gmail.com">tonnonssi@gmail.com</a> · <a href="https://github.com/tonnonssi" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/tonnonssi" target="_blank" rel="noopener">LinkedIn</a></p>
+          
         </div>
-         
-        
-          <a href="https://github.com/KanghwaSisters/24-2-Omok.git" class="html-button" style="text-decoration: none; color:  #027bff;">Link</a>
-        
-          
-        
-          <a href="https://raw.githubusercontent.com/Tonnonssi/AiGO/main/img/report.pdf" class="pdf-button" style="text-decoration: none; color:  #027bff;">PDF</a>
-        
       </div>
-      <div class="year" style="position: absolute; bottom: 0; right: 20px; font-size: 30px; font-weight: bold; color: rgba(0, 0, 0, 0.05); z-index: 0; pointer-events: none;">
-        2024
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="callout-simple callout-simple--neutral mt-3">
+        <div class="callout-simple__icon" aria-hidden="true">🛠</div>
+        <div class="callout-simple__body callout-simple__body--centered">
+          
+            <p class="callout-simple__title lang-content" data-lang="ko" data-lang-group="landing-callout-title-1">최근에는 선물 트레이더 에이전트 고도화 · 효율적인 따릉이 재배치 시스템을 개발 중이에요.</p>
+          
+          
+            <p class="callout-simple__title lang-content" data-lang="en" data-lang-group="landing-callout-title-1">Currently upgrading my futures trader agent and developing an efficient bike-sharing repositioning system.</p>
+          
+          
+          
+        </div>
       </div>
+    
+      <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;" />
     </div>
-    <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
+</div>
+
+<p><br /></p>
+
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
+    
+    
+    
+    
+
+    
+
+    
+      <h3>
+        <span class="lang-content" data-lang="ko" data-lang-group="landing-projects-heading">프로젝트</span>
+        <span class="lang-content" data-lang="en" data-lang-group="landing-projects-heading">Projects</span>
+      </h3>
+    
+    <br />
+    
+
+
+
+
+
+
+
+<div class="project-gallery">
+  
+    
+    
+
+    
+    
+    
+    
+
+    <article class="project-card project-card--linked">
+      
+        <a class="project-card__overlay" href="../projects/1-minesweeper" target="_blank" rel="noopener" aria-label="KRAFT: KOSPI 200 Reinforcement-learning Agent for Futures Trading"></a>
+      
+
+      <div class="project-card__thumb">
+        
+          <img src="../assets/images/ProjectThumbnail/theFuturess.png" alt="KRAFT: KOSPI 200 Reinforcement-learning Agent for Futures Trading thumbnail" loading="lazy" class="project-card__image" />
+        
+      </div>
+
+      <div class="project-card__content">
+        <header class="project-card__header">
+          
+            <div class="project-card__meta">
+              
+                <span class="project-card__year">
+                  <span class="lang-content" data-lang="ko" data-lang-group="project-0-year">2025년 6월 -</span>
+                  <span class="lang-content" data-lang="en" data-lang-group="project-0-year">June 2025 - </span>
+                </span>
+              
+              
+                <span class="project-card__pin-icon" title="Pinned" aria-hidden="true">📌</span>
+              
+            </div>
+          
+          <h4 class="project-card__title">
+            <span class="lang-content" data-lang="ko" data-lang-group="project-0-title">KRAFT: 코스피 선물 RL 트레이더</span>
+            <span class="lang-content" data-lang="en" data-lang-group="project-0-title">KRAFT: KOSPI 200 Reinforcement-learning Agent for Futures Trading</span>
+          </h4>
+        </header>
+
+        
+          <ul class="project-card__tags">
+            
+              <li class="project-card__tag">Python</li>
+            
+              <li class="project-card__tag">Pytorch</li>
+            
+              <li class="project-card__tag">Pandas</li>
+            
+              <li class="project-card__tag">NumPy</li>
+            
+              <li class="project-card__tag">Custom Futures Market Simulator</li>
+            
+          </ul>
+        
+
+        
+          <div class="project-card__abstract">
+            <p class="lang-content" data-lang="ko" data-lang-group="project-0-abstract">PPO 알고리즘을 활용해 KOSPI 200 미니 선물 시장에서 스윙 트레이더 에이전트를 개발했습니다. 실제 거래를 반영하기 위해 슬리피지와 수수료를 포함한 강화학습 환경을 구축하고, Sharpe Ratio 0.8과 최대 낙폭 -12%를 기록했습니다. 복합 보상 설계와 KL Penalty를 통해 정책 안정화를 구현했으며, 현재는 xAI 적용 및 성능 향상을 위한 개선을 진행 중입니다.</p>
+            <p class="lang-content" data-lang="en" data-lang-group="project-0-abstract">Developed a swing trader agent for the KOSPI 200 mini futures market using the PPO algorithm. Built a reinforcement learning environment that incorporates slippage and commissions to reflect actual trading conditions, achieving a Sharpe Ratio of 0.8 and a maximum drawdown of -12%. Implemented complex reward design and KL Penalty for policy stabilization, and currently working on xAI application and performance improvement.</p>
+          </div>
+        
+
+        <div class="project-card__actions">
+          
+            <a href="../projects/1-minesweeper" target="_blank" rel="noopener" class="project-card__action">Case Study</a>
+          
+          
+            <a href="https://github.com/Tonnonssi/-RL-Minesweeper" target="_blank" rel="noopener" class="project-card__action project-card__action--github">GitHub</a>
+          
+          
+        </div>
+      </div>
+    </article>
+  
+    
+    
+
+    
+    
+    
+    
+
+    <article class="project-card project-card--linked">
+      
+        <a class="project-card__overlay" href="https://tonnonssi.github.io/projects/2-omok" target="_blank" rel="noopener" aria-label="AiGO: End-to-End AI for Gomoku with Vision and Robotics"></a>
+      
+
+      <div class="project-card__thumb">
+        
+          <img src="../assets/images/Omok/Omok.gif" alt="AiGO: End-to-End AI for Gomoku with Vision and Robotics thumbnail" loading="lazy" class="project-card__image" />
+        
+      </div>
+
+      <div class="project-card__content">
+        <header class="project-card__header">
+          
+            <div class="project-card__meta">
+              
+                <span class="project-card__year">
+                  <span class="lang-content" data-lang="ko" data-lang-group="project-1-year">2024년 10월 - 2025년 2월</span>
+                  <span class="lang-content" data-lang="en" data-lang-group="project-1-year">October 2024 - February 2025</span>
+                </span>
+              
+              
+                <span class="project-card__pin-icon" title="Pinned" aria-hidden="true">📌</span>
+              
+            </div>
+          
+          <h4 class="project-card__title">
+            <span class="lang-content" data-lang="ko" data-lang-group="project-1-title">AiGO: CV·로보틱스 기반 오목 AI</span>
+            <span class="lang-content" data-lang="en" data-lang-group="project-1-title">AiGO: End-to-End AI for Gomoku with Vision and Robotics</span>
+          </h4>
+        </header>
+
+        
+          <ul class="project-card__tags">
+            
+              <li class="project-card__tag">Python</li>
+            
+              <li class="project-card__tag">C++</li>
+            
+              <li class="project-card__tag">Pytorch</li>
+            
+              <li class="project-card__tag">OpenCV</li>
+            
+              <li class="project-card__tag">Arduino</li>
+            
+              <li class="project-card__tag">Flask</li>
+            
+          </ul>
+        
+
+        
+          <div class="project-card__abstract">
+            <p class="lang-content" data-lang="ko" data-lang-group="project-1-abstract">4축 로봇팔(end-effector: suction)을 제어해 인간과 AI가 함께 오목(Gomoku)을 플레이하는 듀얼 에이전트 시스템을 개발했습니다. 오목 학습에는 AlphaZero 방법론을 적용하고, 로봇 제어에는 정·역기구학을 활용했습니다. 데이터 증강, 다양한 신경망 구조, 노이즈 기반 탐험을 통해 성능을 개선해 9×9 환경에서 평균 25스텝 이상의 플레이를 달성했습니다.</p>
+            <p class="lang-content" data-lang="en" data-lang-group="project-1-abstract">Developed a dual-agent system where humans and AI play Gomoku using a 4-axis robotic arm (end-effector: suction). Applied the AlphaZero methodology for Gomoku learning and utilized forward and inverse kinematics for robot control. Enhanced performance through data augmentation, various neural network architectures, and noise-based exploration, achieving an average of over 25 steps in a 9x9 environment.</p>
+          </div>
+        
+
+        <div class="project-card__actions">
+          
+            <a href="https://tonnonssi.github.io/projects/2-omok" target="_blank" rel="noopener" class="project-card__action">Case Study</a>
+          
+          
+            <a href="https://github.com/Tonnonssi/AiGO" target="_blank" rel="noopener" class="project-card__action project-card__action--github">GitHub</a>
+          
+          
+            <a href="https://raw.githubusercontent.com/Tonnonssi/AiGO/main/img/report.pdf" target="_blank" rel="noopener" class="project-card__action project-card__action--pdf">PDF</a>
+          
+        </div>
+      </div>
+    </article>
+  
+    
+    
+
+    
+    
+    
+    
+
+    <article class="project-card project-card--linked">
+      
+        <a class="project-card__overlay" href="https://tonnonssi.github.io/projects/1-minesweeper" target="_blank" rel="noopener" aria-label="MineSolver: DQN Agent for Minesweeper"></a>
+      
+
+      <div class="project-card__thumb">
+        
+          <img src="../assets/images/Minesweeper/minesweeper-2.gif" alt="MineSolver: DQN Agent for Minesweeper thumbnail" loading="lazy" class="project-card__image" />
+        
+      </div>
+
+      <div class="project-card__content">
+        <header class="project-card__header">
+          
+            <div class="project-card__meta">
+              
+                <span class="project-card__year">
+                  <span class="lang-content" data-lang="ko" data-lang-group="project-2-year">2024년 3월 - 2024년 7월</span>
+                  <span class="lang-content" data-lang="en" data-lang-group="project-2-year">March 2024 - July 2024</span>
+                </span>
+              
+              
+                <span class="project-card__pin-icon" title="Pinned" aria-hidden="true">📌</span>
+              
+            </div>
+          
+          <h4 class="project-card__title">
+            <span class="lang-content" data-lang="ko" data-lang-group="project-2-title">MineSolver: 지뢰찾기 DQN 에이전트</span>
+            <span class="lang-content" data-lang="en" data-lang-group="project-2-title">MineSolver: DQN Agent for Minesweeper</span>
+          </h4>
+        </header>
+
+        
+          <ul class="project-card__tags">
+            
+              <li class="project-card__tag">Python</li>
+            
+              <li class="project-card__tag">Pytorch</li>
+            
+              <li class="project-card__tag">Javascript</li>
+            
+              <li class="project-card__tag">matplotlib</li>
+            
+          </ul>
+        
+
+        
+          <div class="project-card__abstract">
+            <p class="lang-content" data-lang="ko" data-lang-group="project-2-abstract">DQN 방법론을 활용해 지뢰찾기 문제를 해결하는 에이전트를 개발했습니다. 초급 난이도에서 테스트 기준 평균 승률 84%를 달성한 모델을 학습시켰으며, 실제 활용을 위해 웹 배포까지 구현했습니다. 동아리 내에서 가장 높은 성능을 기록한 강화학습 에이전트로 개발 성공 사례를 만들었습니다.</p>
+            <p class="lang-content" data-lang="en" data-lang-group="project-2-abstract">Developed an agent to solve the Minesweeper problem using the DQN methodology. Trained a model that achieved an average win rate of 84% on beginner difficulty, and implemented web deployment for practical use. Successfully created a high-performance reinforcement learning agent, marking a development success story within the club.</p>
+          </div>
+        
+
+        <div class="project-card__actions">
+          
+            <a href="https://tonnonssi.github.io/projects/1-minesweeper" target="_blank" rel="noopener" class="project-card__action">Case Study</a>
+          
+          
+            <a href="https://github.com/Tonnonssi/-RL-Minesweeper" target="_blank" rel="noopener" class="project-card__action project-card__action--github">GitHub</a>
+          
+          
+        </div>
+      </div>
+    </article>
+  
+    
+    
+
+    
+    
+    
+    
+
+    <article class="project-card project-card--linked">
+      
+        <a class="project-card__overlay" href="https://tonnonssi.github.io/projects/3-tictactoe" target="_blank" rel="noopener" aria-label="TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics"></a>
+      
+
+      <div class="project-card__thumb">
+        
+          <img src="../assets/images/TicTacToe/Robot/realWorld.gif" alt="TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics thumbnail" loading="lazy" class="project-card__image" />
+        
+      </div>
+
+      <div class="project-card__content">
+        <header class="project-card__header">
+          
+            <div class="project-card__meta">
+              
+                <span class="project-card__year">
+                  <span class="lang-content" data-lang="ko" data-lang-group="project-3-year">2024년 10월 - 2025년 2월</span>
+                  <span class="lang-content" data-lang="en" data-lang-group="project-3-year">October 2024 - February 2025</span>
+                </span>
+              
+              
+            </div>
+          
+          <h4 class="project-card__title">
+            <span class="lang-content" data-lang="ko" data-lang-group="project-3-title">TicTacToeArtist: CV·로보틱스 기반 틱택토 AI</span>
+            <span class="lang-content" data-lang="en" data-lang-group="project-3-title">TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics</span>
+          </h4>
+        </header>
+
+        
+          <ul class="project-card__tags">
+            
+              <li class="project-card__tag">Python</li>
+            
+              <li class="project-card__tag">C++</li>
+            
+              <li class="project-card__tag">Pytorch</li>
+            
+              <li class="project-card__tag">OpenCV</li>
+            
+              <li class="project-card__tag">Arduino</li>
+            
+          </ul>
+        
+
+        
+          <div class="project-card__abstract">
+            <p class="lang-content" data-lang="ko" data-lang-group="project-3-abstract">CNC 플로터 제어해 AI와 인간이 직접 상호작용하며 틱택토를 플레이할 수 있는 시스템을 구축했습니다. MCS, MCTS, Min-Max, AlphaBeta 등 다양한 방법론을 구현해 비교했고, 특히 AlphaZero 기반 강화학습 모델을 통해 최적의 플레이어 신경망을 학습했습니다. 실험 결과, AlphaZero 기반 AI가 다른 방법론 대비 가장 높은 승률을 기록했습니다.</p>
+            <p class="lang-content" data-lang="en" data-lang-group="project-3-abstract">Built a system where AI and humans can play TicTacToe interactively using a CNC plotter. Implemented and compared various methodologies including MCS, MCTS, Min-Max, and AlphaBeta, with a focus on training an optimal player neural network using an AlphaZero-based reinforcement learning model. Experimental results showed that the AlphaZero-based AI achieved the highest win rate compared to other methodologies.</p>
+          </div>
+        
+
+        <div class="project-card__actions">
+          
+            <a href="https://tonnonssi.github.io/projects/3-tictactoe" target="_blank" rel="noopener" class="project-card__action">Case Study</a>
+          
+          
+            <a href="https://github.com/Tonnonssi/TicTacToeArtist" target="_blank" rel="noopener" class="project-card__action project-card__action--github">GitHub</a>
+          
+          
+            <a href="https://raw.githubusercontent.com/Tonnonssi/TicTacToeArtist/main/img/report.pdf" target="_blank" rel="noopener" class="project-card__action project-card__action--pdf">PDF</a>
+          
+        </div>
+      </div>
+    </article>
   
 </div>
 
-<script>
-function toggleAbstract(index) {
-  var abstract = document.getElementById('abstract-' + index);
-  if (abstract.style.display === 'none') {
-    abstract.style.display = 'block';
-  } else {
-    abstract.style.display = 'none';
-  }
-}
-</script>
+
+  <details class="project-collapsed" data-projects-toggle="">
+    <summary>
+      <span class="lang-content" data-lang="ko" data-lang-group="project-toggle">더 많은 프로젝트 보기</span>
+      <span class="lang-content" data-lang="en" data-lang-group="project-toggle">Show more projects</span>
+    </summary>
+
+    <div class="project-compact-list">
+      
+        
+        
+        
+        <div class="project-compact-item">
+          <span class="project-compact-item__year">
+            <span class="lang-content" data-lang="ko" data-lang-group="project-compact-0-year">2023년</span>
+            <span class="lang-content" data-lang="en" data-lang-group="project-compact-0-year">2023</span>
+          </span>
+          <a href="https://tonnonssi.github.io/projects/portfolio-rl" class="project-compact-item__title">
+            
+            <span class="lang-content" data-lang="ko" data-lang-group="project-compact-0-title">리그오브레전드 전략 패턴 시각화</span>
+            <span class="lang-content" data-lang="en" data-lang-group="project-compact-0-title">LoL-StrategyInsight: Visual Analytics of League of Legends Strategy Patterns</span>
+          </a>
+          
+            <span class="project-compact-item__tags">Python · BeautifulSoup · Selenium · R · Tidyverse · Shiny · Visualization</span>
+          
+        </div>
+      
+        
+        
+        
+        <div class="project-compact-item">
+          <span class="project-compact-item__year">
+            <span class="lang-content" data-lang="ko" data-lang-group="project-compact-1-year">2023년</span>
+            <span class="lang-content" data-lang="en" data-lang-group="project-compact-1-year">2023</span>
+          </span>
+          <a href="/projects/1-digitfusion" class="project-compact-item__title">
+            
+            <span class="lang-content" data-lang="ko" data-lang-group="project-compact-1-title">DigitFusion: 필기 숫자 분류기</span>
+            <span class="lang-content" data-lang="en" data-lang-group="project-compact-1-title">DigitFusion: Handwritten Digit Classifier</span>
+          </a>
+          
+            <span class="project-compact-item__tags">Python · Pytorch · PyQt5</span>
+          
+        </div>
+      
+    </div>
+  </details>
+
+
+
+    
+      <div class="projects-note">
+        <p class="lang-content" data-lang="ko" data-lang-group="projects-note">모든 프로젝트의 자세한 내용은 상단의 'Project' 메뉴에서 확인하실 수 있습니다.</p>
+        <p class="lang-content" data-lang="en" data-lang-group="projects-note">You can find detailed information about all projects in the 'Project' menu at the top.</p>
+      </div>
+    
   </div>
 </div>
-<p><br></p>
+<p><br /></p>
+
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-10 col-md-12 px-5">
+    <h3>
+      <span class="lang-content" data-lang="ko" data-lang-group="landing-techstack-heading">스킬</span>
+      <span class="lang-content" data-lang="en" data-lang-group="landing-techstack-heading">Tech Stack</span>
+    </h3>
+
+    <div class="tech-stack-shell">
+      <section class="python-stack">
+        <header class="python-stack__header">
+          <span class="python-stack__badge">Python</span>
+          <p class="python-stack__summary lang-content" data-lang="ko" data-lang-group="python-summary">주언어로, AI 구현 및 파이프라인 자동화, 경량 서비스 배포에 활용합니다.</p>
+          <p class="python-stack__summary lang-content" data-lang="en" data-lang-group="python-summary">Primary language used for AI implementation, pipeline automation, and lightweight service deployment.</p>
+        </header>
+
+        <div class="python-stack__grid">
+          
+            <div class="python-stack__group">
+              <h5>Core Python</h5>
+              <ul>
+                
+                  <li>Python 3.11+, Conda, uv</li>
+                
+                  <li>Typing, Dataclasses</li>
+                
+                  <li>Jupyter Notebook</li>
+                
+              </ul>
+            </div>
+          
+            <div class="python-stack__group">
+              <h5>ML / RL</h5>
+              <ul>
+                
+                  <li>PyTorch, TorchRL</li>
+                
+                  <li>Gymnasium, PettingZoo</li>
+                
+                  <li>Hydra, Pydantic</li>
+                
+              </ul>
+            </div>
+          
+            <div class="python-stack__group">
+              <h5>Data &amp; Visualization</h5>
+              <ul>
+                
+                  <li>NumPy, Pandas</li>
+                
+                  <li>Matplotlib, Seaborn, Plotly</li>
+                
+                  <li>Scikit-learn, Statsmodels</li>
+                
+              </ul>
+            </div>
+          
+        </div>
+      </section>
+
+      
+        <aside class="support-stack">
+          
+            <article class="support-card">
+              <header>
+                <span class="support-card__title">R</span>
+                <p class="support-card__summary lang-content" data-lang="ko" data-lang-group="support-0">보조 언어로, 통계 분석과 시각화에 사용합니다.</p>
+                <p class="support-card__summary lang-content" data-lang="en" data-lang-group="support-0">Used for statistical analysis and visualization.</p>
+              </header>
+              <ul>
+                
+                  <li>Tidyverse</li>
+                
+                  <li>Shiny · RMarkdown</li>
+                
+              </ul>
+            </article>
+          
+            <article class="support-card">
+              <header>
+                <span class="support-card__title">Web</span>
+                <p class="support-card__summary lang-content" data-lang="ko" data-lang-group="support-1">프로토타입이나 내부 도구 배포를 위해 가벼운 웹 인터페이스를 제작합니다.</p>
+                <p class="support-card__summary lang-content" data-lang="en" data-lang-group="support-1">Build lightweight web frontends for prototypes or internal tools.</p>
+              </header>
+              <ul>
+                
+                  <li>Flask · Javascript</li>
+                
+                  <li>Jekyll · GitHub Pages</li>
+                
+              </ul>
+            </article>
+          
+            <article class="support-card">
+              <header>
+                <span class="support-card__title">C / C++</span>
+                <p class="support-card__summary lang-content" data-lang="ko" data-lang-group="support-2">로보틱스 제어와 성능 최적화가 필요한 구간에 한정해 사용합니다.</p>
+                <p class="support-card__summary lang-content" data-lang="en" data-lang-group="support-2">Reserved for robotics control and performance-critical extensions.</p>
+              </header>
+              <ul>
+                
+                  <li>Arduino SDK</li>
+                
+                  <li>Pybind11 integration</li>
+                
+              </ul>
+            </article>
+          
+        </aside>
+      
+    </div>
+  </div>
+</div>
+<p><br />
+<br /></p>
+
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
+    
+    
+    
+    
+
+    
+
+    
+      <h3>
+        <span class="lang-content" data-lang="ko" data-lang-group="landing-publication-heading">활동·리더십</span>
+        <span class="lang-content" data-lang="en" data-lang-group="landing-publication-heading">Clubs &amp; Leadership / Activities</span>
+      </h3>
+    
+
+    <div class="leadership-timeline">
+      
+        <article class="leadership-event leadership-event--highlight">
+          <div class="leadership-event__marker"></div>
+          <div class="leadership-event__content">
+            
+              <span class="leadership-event__badge">Founder &amp; Leader</span>
+            
+            <h4 class="leadership-event__title">
+              <span class="lang-content" data-lang="ko" data-lang-group="leadership-title-0">강화시스터즈</span>
+              <span class="lang-content" data-lang="en" data-lang-group="leadership-title-0">KangHwaSisters</span>
+            </h4>
+            
+              <p class="leadership-event__meta">
+                <span class="lang-content" data-lang="ko" data-lang-group="leadership-meta-0">이화여자대학교 AI 동아리 · 2024년 3월 – 2026년 2월</span>
+                <span class="lang-content" data-lang="en" data-lang-group="leadership-meta-0">Ewha Womans University AI Club · Mar 2024 – Feb 2026</span>
+              </p>
+            
+            
+            
+              <ul class="leadership-event__list lang-content" data-lang="ko" data-lang-group="leadership-bullets-0">
+                
+                  <li>동아리 창립 후 2년 간 회장으로 활동하며 기초부터 심화까지 아우르는 커리큘럼을 설계·운영했습니다.</li>
+                
+                  <li>4학기 간 15명의 팀원들을 이끌며, 매학기 주요 프로젝트(게임, 금융, 로보틱스)에서 팀 리더로 활동했습니다.</li>
+                
+                  <li>논문 스터디·코드 리뷰 문화 정착했고, 동아리 내 프로젝트 결과물을 정리해 블로그에 게시했습니다.</li>
+                
+                  <li>동아리 내 대회 및 세미나를 기획·운영했습니다.</li>
+                
+              </ul>
+              <ul class="leadership-event__list lang-content" data-lang="en" data-lang-group="leadership-bullets-0">
+                
+                  <li>Founded and led the club for 2 years, designing and running a curriculum covering basics to advanced topics.</li>
+                
+                  <li>Led 15 members over 4 semesters, serving as team lead on key projects (Game RL, Finance RL, Robotics RL).</li>
+                
+                  <li>Established a culture of paper study and code review, documenting project outcomes on our blog.</li>
+                
+                  <li>Organized internal competitions and seminars.</li>
+                
+              </ul>
+            
+            
+              <div class="leadership-event__links">
+                
+                  <a href="https://github.com/KanghwaSisters" target="_blank" rel="noopener" class="leadership-event__link">GitHub</a>
+                
+                  <a href="https://kanghwasisters.github.io/" target="_blank" rel="noopener" class="leadership-event__link">Blog</a>
+                
+              </div>
+            
+          </div>
+        </article>
+      
+        <article class="leadership-event">
+          <div class="leadership-event__marker"></div>
+          <div class="leadership-event__content">
+            
+              <span class="leadership-event__badge">Mentor</span>
+            
+            <h4 class="leadership-event__title">
+              <span class="lang-content" data-lang="ko" data-lang-group="leadership-title-1">스터디 멘토</span>
+              <span class="lang-content" data-lang="en" data-lang-group="leadership-title-1">Study Mentor</span>
+            </h4>
+            
+              <p class="leadership-event__meta">
+                <span class="lang-content" data-lang="ko" data-lang-group="leadership-meta-1">이화여자대학교 통계수학 · 2023년 3월 – 2023년 6월</span>
+                <span class="lang-content" data-lang="en" data-lang-group="leadership-meta-1">Ewha Statistical Mathematics · Mar 2023 — Jun 2023</span>
+              </p>
+            
+            
+              <p class="leadership-event__summary lang-content" data-lang="ko" data-lang-group="leadership-summary-1">선형대수학 이론과 실습을 배우는 학부생 스터디 그룹을 만들고, 파이썬에 익숙하지 않은 학생들을 위해 기초 문법과 Numpy 활용법을 지도했습니다.</p>
+              <p class="leadership-event__summary lang-content" data-lang="en" data-lang-group="leadership-summary-1">Created an undergrad study group on linear algebra theory and practice, coaching students unfamiliar with Python on basic syntax and NumPy usage.</p>
+            
+            
+            
+              <div class="leadership-event__links">
+                
+                  <a href="https://recondite-lungfish-fd3.notion.site/23-1-c072eed5d13b463fbe9850591e4ab4f3?pvs=4" target="_blank" rel="noopener" class="leadership-event__link">Curriculum Notes</a>
+                
+              </div>
+            
+          </div>
+        </article>
+      
+    </div>
+  </div>
+</div>
+<p><br />
+<br /></p>
 
 <!-- Timeline Section (더 넓게 조정) -->
 <div class="row justify-content-center mt-4">
   <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
-    <h3>Timeline</h3>
-    <div class="col mt-4">
-  <div class="timeline-body bg-themed">
     
-      <div class="timeline-item">
-        <div class="content">
-          <h5>Bachelor, Ewha Womans University, South Korea</h5>
-          <h6 class="date">2022 — 2026</h6>
-          <p>Double Majored in Statistics and Computational Science</p>
+    
+    
+    
+
+    
+
+    
+      <h3>
+        <span class="lang-content" data-lang="ko" data-lang-group="landing-timeline-heading">학력</span>
+        <span class="lang-content" data-lang="en" data-lang-group="landing-timeline-heading">Education</span>
+      </h3>
+    
+    <div class="education-panel">
+      <div class="education-card">
+        <div class="education-card__icon" aria-hidden="true">🎓</div>
+        <div class="education-card__body">
+          <h4 class="education-card__title">
+            <span class="lang-content" data-lang="ko" data-lang-group="education-title">이화여자대학교 · 통계학 &amp; 계산과학 복수전공</span>
+            <span class="lang-content" data-lang="en" data-lang-group="education-title">Ewha Womans University · Double Major in Statistics &amp; Computational Science</span>
+          </h4>
+          <p class="education-card__meta">
+            <span class="lang-content" data-lang="ko" data-lang-group="education-meta">대한민국 · GPA 3.97/4.3</span>
+            <span class="lang-content" data-lang="en" data-lang-group="education-meta">South Korea · GPA 3.97/4.3</span>
+          </p>
+          <p class="education-card__summary lang-content" data-lang="ko" data-lang-group="education-summary">2022년 2월 입학, 2026년 2월 졸업 예정</p>
+          <p class="education-card__summary lang-content" data-lang="en" data-lang-group="education-summary">Feb 2022 – Feb 2026(Expected)</p>
         </div>
       </div>
-    
-      <div class="timeline-item">
-        <div class="content">
-          <h5>Study Group Organizer, Ewha</h5>
-          <h6 class="date">March, 2023 — June, 2023</h6>
-          <p>Organized an informal group while taking the "Statistical Mathmatics" course, focusing on linear algebra theory and implementation. Taught basic Python programming and hands-on members, fostersing collaborative learning and practical application of theoretical concepts. <br> <a href="https://recondite-lungfish-fd3.notion.site/23-1-c072eed5d13b463fbe9850591e4ab4f3?pvs=4">👉 Activity Details</a></p>
-        </div>
-      </div>
-    
-      <div class="timeline-item">
-        <div class="content">
-          <h5>Club Founder, KanghwaSisters, Ewha</h5>
-          <h6 class="date">2024 — 2025</h6>
-          <p>The first reinforcement learning club on campus <br>A portmanteau of 강화(Kanghwa) which is reinforcement in Korean and Sisters.<br>👉 GitHub  <a href="https://github.com/KanghwaSisters">https://github.com/KanghwaSisters</a> <br>👉 GitBlog <a href="https://kanghwasisters.github.io/">https://kanghwasisters.github.io/</a></p>
-        </div>
-      </div>
-    
+    </div>
   </div>
 </div>
-  </div>
-</div>
-<p><br></p>
+<p><br /></p>
 
 <div class="row justify-content-center mt-4">
   <div class="col-lg-10 col-md-12 px-5">  <!-- 크기 크게 설정 -->
     <div class="recent-posts">
-      <h3>Recent Posts</h3>
+      
+      
+      
+      
+
+      
+
+      
+        <h3>
+          <span class="lang-content" data-lang="ko" data-lang-group="landing-recent-heading">최근 글</span>
+          <span class="lang-content" data-lang="en" data-lang-group="landing-recent-heading">Recent Posts</span>
+        </h3>
+      
       <ul>
         
-        <br>
+        <br />
           <li>
-            <a href="/blog/MARL">[MARL/01] Multi Agent Reinforcement Learning 기초 </a>   
+            <a href="/blog/ActorCritic">[RL] Actor Critic</a> &nbsp; 
+            <span style="color: gray;">(2025-05-06)</span>
+            <br />
+          </li>
+        
+        <br />
+          <li>
+            <a href="/blog/MARL">[MARL/01] Multi Agent Reinforcement Learning 기초 </a> &nbsp; 
             <span style="color: gray;">(2025-05-05)</span>
-            <br>
+            <br />
           </li>
         
-        <br>
+        <br />
           <li>
-            <a href="/blog/DonkeyGYMMacSetting">[DonkeyGym/01] mac m1 환경 설정</a>   
+            <a href="/blog/DonkeyGYMMacSetting">[DonkeyGym/01] mac m1 환경 설정</a> &nbsp; 
             <span style="color: gray;">(2025-04-11)</span>
-            <br>
+            <br />
           </li>
         
-        <br>
+        <br />
           <li>
-            <a href="/blog/ARNet">[TimeSeries] AR-Net</a>   
+            <a href="/blog/ARNet">[TimeSeries] AR-Net</a> &nbsp; 
             <span style="color: gray;">(2025-03-20)</span>
-            <br>
+            <br />
           </li>
         
-        <br>
+        <br />
           <li>
-            <a href="/blog/NaiveBayesClassifer">[ML] Naive Bayes Classifer</a>   
+            <a href="/blog/NaiveBayesClassifer">[ML] Naive Bayes Classifer</a> &nbsp; 
             <span style="color: gray;">(2025-03-11)</span>
-            <br>
-          </li>
-        
-        <br>
-          <li>
-            <a href="/blog/AlphaZero">[RL] AlphaZero</a>   
-            <span style="color: gray;">(2025-02-12)</span>
-            <br>
+            <br />
           </li>
         
       </ul>
     </div>
 </div>
-<br>
+<br />
 </div>
 
   </main>
@@ -575,19 +911,29 @@ function toggleAbstract(index) {
     by <strong>Jimin Lee</strong>
   </small>
 
-  <div class="container-fluid justify-content-center">
-<a class="social mx-1" href="mailto:tonnonssi@gmail.com" style="color: #6c757d" onmouseover="this.style.color='#db4437'" onmouseout="this.style.color='#6c757d'">
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:tonnonssi@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
       <i class="fas fa-envelope fa-1x"></i>
-    </a><a class="social mx-1" href="https://www.github.com/tonnonssi" style="color: #6c757d" onmouseover="this.style.color='#333333'" onmouseout="this.style.color='#6c757d'">
+    </a><a class="social mx-1"  href="https://www.github.com/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
       <i class="fab fa-github fa-1x"></i>
-    </a><a class="social mx-1" href="https://www.instagram.com/jiringsi" style="color: #6c757d" onmouseover="this.style.color='#405de6'" onmouseout="this.style.color='#6c757d'">
+    </a><a class="social mx-1"  href="https://www.instagram.com/jiringsi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#405de6'"
+       onMouseOut="this.style.color='#6c757d'">
       <i class="fab fa-instagram fa-1x"></i>
-    </a><a class="social mx-1" href="https://www.linkedin.com/in/tonnonssi" style="color: #6c757d" onmouseover="this.style.color='#007bb5'" onmouseout="this.style.color='#6c757d'">
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
       <i class="fab fa-linkedin-in fa-1x"></i>
     </a>
 
-</div>
-<small id="attribution">
+</div><small id="attribution">
     theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
   </small>
 
@@ -618,7 +964,8 @@ $(function () {
 </script>
 
 <!-- Add LaTex function -->
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
 </script>
 
 <script type="text/x-mathjax-config">
@@ -632,6 +979,9 @@ $(function () {
      },
      "HTML-CSS": { availableFonts: ["TeX"] }
    });
-</script></body>
+</script>
+
+<script src="/assets/js/lang.js" defer></script>
+</body>
 
 </html>

@@ -1,16 +1,32 @@
+{%- assign name_group = project_id | append: '-name' -%}
+{%- assign desc_group = project_id | append: '-desc' -%}
+{%- assign project_name_alt = project_name_en | default: project_name_ko -%}
+
 <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="{{ project_url }}" class="project card text-themed" {%- if external and site.open_new_tab -%} target="_blank" {%- endif -%}>
+  <a href="{{ project_url }}" class="project card text-themed" {%- if external and site.open_new_tab -%} target="_blank" rel="noopener" {%- endif -%}>
     {%- if project_img -%}
-    <img id="{{ project_id }}-img" class="card-img-top" src="{{ project_img }}" alt="{{ project_name }}" />
+    <img id="{{ project_id }}-img" class="card-img-top" src="{{ project_img }}" alt="{{ project_name_alt }}" />
     {%- endif -%}
     <div class="card-body">
       <h5 id="{{ project_id }}-name" class="card-title">
           {%- if project_type == "remote" -%}
           <i class="fab fa-github" data-toggle="tooltip" data-placement="bottom" data-delay="250" title="GitHub Repository"></i> |&nbsp;
           {%- endif -%}
-        {{ project_name }}
+        <span class="lang-content" data-lang="ko" data-lang-group="{{ name_group }}">{{ project_name_ko }}</span>
+        <span class="lang-content" data-lang="en" data-lang-group="{{ name_group }}">{{ project_name_en }}</span>
       </h5>
-      <p id="{{ project_id }}-desc" class="card-text">{{ project_desc }}</p>
+      {%- assign desc_ko_trim = project_desc_ko | default: '' | strip -%}
+      {%- assign desc_en_trim = project_desc_en | default: '' | strip -%}
+      {%- if desc_ko_trim != '' or desc_en_trim != '' -%}
+      <p id="{{ project_id }}-desc" class="card-text">
+        {%- if desc_ko_trim != '' -%}
+        <span class="lang-content" data-lang="ko" data-lang-group="{{ desc_group }}">{{ project_desc_ko }}</span>
+        {%- endif -%}
+        {%- if desc_en_trim != '' -%}
+        <span class="lang-content" data-lang="en" data-lang-group="{{ desc_group }}">{{ project_desc_en }}</span>
+        {%- endif -%}
+      </p>
+      {%- endif -%}
       <p id="{{ project_id }}-tools" class="card-text">
         {%- for tool in project_tools -%}
         <span class="badge badge-pill text-primary border border-primary ml-1">{{ tool }}</span>

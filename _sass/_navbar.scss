@@ -33,3 +33,31 @@
     margin-top: -0.25em;
   }
 }
+
+.navbar--fixed {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .navbar--fixed {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.language-toggle--nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  margin-top: 0;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+
+  .language-toggle__btn {
+    padding: 0.35rem 0.95rem;
+    font-size: 0.85rem;
+  }
+}

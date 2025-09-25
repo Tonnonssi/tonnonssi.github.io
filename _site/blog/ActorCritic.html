@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="ko" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[RL] Actor Critic">
+  <meta property="og:description" content="Actor Critic 개념, A2C, A3C, 코드 구현-Actor Critic Notion, A2C, A3C, Code">
+  <meta property="og:image" content="">
+
+  <title>[RL] Actor Critic</title>
+  <meta name="description" content="Actor Critic 개념, A2C, A3C, 코드 구현-Actor Critic Notion, A2C, A3C, Code">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<!--  -->
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed bg-themed navbar--fixed">
+
+  <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/publication">Publication</a>
+
+      <a class="nav-item nav-link " href="/content">Content</a>
+
+      <a class="nav-item nav-link " href="/project/">Project</a>
+
+      <a class="nav-item nav-link " href="/article/">Article</a>
+
+      <a class="nav-item nav-link " href="https://github.com/tonnonssi"><i class="fab fa-1x fa-github"></i></a>
+
+      
+
+      <div class="nav-item language-toggle language-toggle--nav" data-lang-toggle-container="always">
+        <button type="button" class="language-toggle__btn" data-lang-switcher>View in English</button>
+      </div>
+
+      <span id="theme-toggler" class="nav-item nav-link d-none" aria-hidden="true"></span>
+    </div>
+  </div>
+
+</nav>
+
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <div class="title-container">
+  <h1><b>[RL] Actor Critic</b></h1>
+</div>
+
+<p class="post-metadata text-muted">
+  06 May 2025 -
+  <b>11 mins read time</b>
+
+  <br>Tags:
+    
+      <a class="text-decoration-none no-underline" href="/blog/tags#rl">
+        <span class="tag badge badge-pill text-primary border border-primary">RL</span>
+      </a>
+    </p>
+
+<!-- 마크다운 내용 표시 -->
+<!-- 한국어 콘텐츠 -->
+
+<!-- 영어 콘텐츠 -->
+
+<div id="content-ko" class="lang-content" data-lang="ko">
+  
+<h2 id="bg-정책-중심-rl-가치-중심-rl">[BG] 정책 중심 RL, 가치 중심 RL</h2>
+<p>강화학습 구현은 크게 <strong>정책</strong> 중점 방법론, <strong>가치</strong> 중점 방법론 두 개로 나뉜다.</p>
+
+<h3 id="정책-중심-rl">정책 중심 RL</h3>
+<p>먼저 정책 중점 방법론은 가치 함수를 명시적으로 근사하지 않고, 최적 정책을 직접적으로 근사한다. 정책 중점 방법론은  $\theta$ 로 조정가능한 정책 함수 $\pi_\theta(a|s)$ 를 정의하고 그래디언트 조정을 통해 최적 정책 함수를 구한다. 이는 기대 누적 보상을 극대화하는 강화학습의 학습 목표를 직접적으로 최적화한다는 점에서 이론적으로 일관성이 있다는 장점이 있다. 하지만 각 상태-행동 쌍의 정확한 가치 정보를 사용하지 못하고, 시뮬레이션 기반 추정치를 사용하기 때문에 그래디언트의 분산이 커질 수 있으며, 학습 안정성을 저해할 수 있다.</p>
+
+<h4 id="예시">예시</h4>
+
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta(a|s) \cdot Q_{\pi_\theta}(s, a) \right]\]
+
+<ul>
+  <li>폴리쉬 그래디언트의 정책 신경망 업데이트 식</li>
+</ul>
+
+<p>대표적인 정책 기반 RL인 Reinforce 알고리즘은 알 수 없는 $Q(s, a)$ 을 반환값인 $G_t$로 치환한다.</p>
+
+<h3 id="가치-중심-rl">가치 중심 RL</h3>
+<p>가치 중심 강화학습 방법론은 정책을 명시적으로 파라미터화하지 않고, 상태-행동 가치 함수  $Q(s, a)$ 를 근사하여 간접적으로 최적 정책을 유도한다. 가치 함수가 잘 근사된다면, 에이전트는 각 상태에서 가장 높은 가치를 갖는 행동을 선택하는 정책  $\pi(s) = \arg\max_a Q(s, a)$ 을 따름으로써 최적의 행동 전략을 수행할 수 있다. 이러한 방법은 일반적으로 Temporal Difference(시간차) 학습을 사용하여 벨만 방정식을 근사하고, 반복적인 예측-업데이트 과정을 통해 수렴한다. 그러나 정책을 직접 최적화하지 않기 때문에 <strong>확률적 정책 표현</strong>이 어렵고, 적절한 탐험(exploration)이 외부 메커니즘(예: ε-greedy)에 의해 보장되어야 원활한 학습이 가능하다.</p>
+
+<hr />
+<h3 id="-temporal-difference시간차-학습">💡 Temporal Difference(시간차) 학습</h3>
+
+<p><img src="../assets/images/RL/ActorCritic/image1.png" alt="" /></p>
+
+<p>시간차 학습(Temporal Difference Learning)은 model-free 환경에서 표본 경로를 이용해 가치 함수를 추정할 수 있는 Monte Carlo 방식의 장점과, 모든 에피소드가 종료되지 않아도 시간 단계별로 값을 업데이트할 수 있는 Dynamic Programming의 장점을 결합한 방법론이다. 이 방법은 벨만 기대 방정식을 기반으로 하며,</p>
+
+\[v_{\pi}(s) = \mathbb{E}_{\pi}[R_{t+1} + \gamma V_{\pi}(S_{t+1}) | S_t = s]\]
+
+<p>의 우변에 해당하는 값  $R_{t+1} + \gamma V_{\pi}(S_{t+1})$ 을 TD 타겟으로 삼아, 예측값과의 오차를 줄여가는 방식으로 학습을 진행한다.</p>
+
+<p>일반적으로 시간차 학습에서는 다음 상태에서의 예측값을 사용하여 현재 가치 추정을 업데이트하는데, 이때 1스텝 TD 타겟을 사용하는 방식을 TD(0) 라고 한다.
+반면, 미래  n  스텝에 걸친 실제 보상 시퀀스를 이용해 업데이트하는 방식을 TD(n) 이라고 하며,
+ $n \to \infty$ 인 경우는 에피소드 전체를 활용하는 Monte Carlo 방식, 즉 TD(1) 이 된다.</p>
+
+<h3 id="monte-carlo-vs-bootstrap-in-rl">Monte Carlo vs Bootstrap in RL</h3>
+<p>부트스트랩은 다음 상태의 가치 추정치를 활용해 현재의 가치를 갱신하는 방식이다. 이는 학습 속도가 빠르고 데이터 운용 효율성이 높지만, 추정치에 의존해 편차가 심하다. 반면 몬테카를로 방식은 모든 에피소드가 종료된 이후 전체 반환값을 기반으로 학습한다. 이 방식은 편차는 적지만, 분산이 크다는 단점과 에피소드가 종료된 이후에만 업데이트가 가능하다는 단점이 있다.</p>
+
+<ul>
+  <li><strong>시간차 학습, 다이나믹 프로그래밍</strong>은 전부 부트스트랩 방법론이다.</li>
+</ul>
+
+<hr />
+
+<h2 id="actor-critic">Actor Critic</h2>
+<p>Actor-Critic 알고리즘은 정책 중심 방법과 가치 중심 방법의 장점을 결합한 방법론으러, 직접적인 정책 최적화의 효율성과 Temporal Difference 기반 학습의 안정성을 동시에 추구한다. 이 구조는 정책을 근사하는 Actor와, 해당 정책의 성능을 TD 오차 기반으로 평가하여 피드백을 제공하는 Critic으로 구성된다. Actor는 정책 파라미터를 그래디언트 방식으로 업데이트하며, Critic은 TD 오차를 줄이기 위해 가치 함수를 학습한다. 따라서 Actor-Critic은 정책 그래디언트를 TD 기반으로 근사한 구조로 이해할 수 있다.</p>
+
+<p><img src="../assets/images/RL/ActorCritic/image.png" alt="" /></p>
+
+<p>정책 그래디언트 기반의 액터 크리틱 알고리즘은 아래와 같이 정의된다.</p>
+
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta(a|s) \cdot Q_{w}(s, a) \right]\]
+
+<ul>
+  <li>$\theta$ : 정책 신경망의 파라미터</li>
+  <li>$w$ : 가치 근사 신경망의 파라미터</li>
+</ul>
+
+<p>그러나 위와 같은 방식은 샘플링 기반 추정에서 분산이 커져 학습의 불안정성을 초래할 수 있다. 이를 완화하기 위해 Actor-Critic에 어드벤티지 함수를 도입한 방법론이 <strong>A2C : Advantage Actor-Critic</strong>이다.</p>
+
+<h3 id="a2c--advantage-actor-critic">A2C : Advantage Actor-Critic</h3>
+
+<blockquote>
+  <p>Advantage 함수</p>
+</blockquote>
+
+\[A(s, a) = Q_w(s, a) - V_v(s)\]
+
+<p>어드벤티지 함수는 상태 가치 함수  $V_v(s)$ 를 baseline으로 사용하여 Q-함수의 분산을 줄이는 것을 목적으로 한다. 상태 가치 함수는 각 행동이 아닌 상태 고유의 기대 가치를 근사하기 때문에 분산이 상대적으로 작다. 
+따라서  A(s, a) 는 상태-행동 가치 함수에서 상태 가치 함수를 제함으로써, 각 행동이 상태에서 갖는 <strong>상대적 우수성(advantage)</strong>만을 강조하며 정책 그래디언트의 분산을 효과적으로 감소시킨다.</p>
+
+<p>Q-함수와 V-함수를 별도로 학습하지 않고, TD 오차를 이용하여 어드벤티지 함수를 근사할 수 있다. TD 오차는 다음과 같이 정의된다:</p>
+
+\[\delta_v = R_{t+1} + \gamma V_v(S_{t+1}) - V_v(S_t)\]
+
+<p>이 오차는 실제 보상과 상태 가치 함수의 예측 간 차이를 나타내며,  $A(s_t, a_t) \approx \delta_v$ 로 간주될 수 있다.
+이를 활용한 정책 그래디언트는 다음과 같다:</p>
+
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta(a|s) \cdot \delta_v \right]\]
+
+<p>결과적으로, 어드벤티지 함수는 상태에 대한 baseline인  $V(s)$ 를 활용하여 gradient의 기대값은 유지하면서 분산을 줄이는 역할을 수행한다.</p>
+
+<h4 id="장단점">장단점</h4>
+<p>A2C는 온폴리쉬 방법론으로 실시간으로 학습가능하다는 장점이 있지만, 학습에 이용되는 샘플의 상관도가 높다는 한계가 존재한다.</p>
+
+<h3 id="a3c---asynchronous-advantage-actor-critic">A3C :  Asynchronous Advantage Actor-Critic</h3>
+<blockquote>
+  <p>논문 바로가기 : <a href="https://arxiv.org/pdf/1602.01783">Asynchronous Methods for Deep Reinforcement Learning (2016)</a></p>
+</blockquote>
+
+<p>A3C는 여러 에이전트를 <strong>비동기</strong>적으로 작동시켜 A2C의 샘플 간의 상관도 문제를 해결한다.</p>
+
+<p>A3C는 여러 에이전트들이 분리된 환경에서 독립적으로 학습하며, 여기서 발생한 샘플을 모아 학습하는 글로벌 신경망으로 이루어져 있다.</p>
+
+<p><img src="../assets/images/RL/ActorCritic/image2.png" alt="" /></p>
+
+<p>글로벌 신경망은 에이전트들이 만들어낸 에피소드를 일정 타임 스텝 동안 저장하고, 저장한 샘플을 이용해 업데이트를 진행한다. 각 에이전트의 신경망은 업데이트된 글로벌 신경망으로 업데이트된다. A3C는 이러한 사이클을 반복하며 온폴리쉬의 장점을 살려면서 샘플 간의 상관도를 낮춘다.</p>
+
+<h3 id="a2c-구현">A2C 구현</h3>
+<p>간단한 카트폴 예제를 사용했다.</p>
+
+<h5 id="00-setting">00 setting</h5>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gym</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="n">optim</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># AttributeError: module 'numpy' has no attribute 'bool8' 방지 
+</span><span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="s">'bool8'</span><span class="p">):</span>
+    <span class="n">np</span><span class="p">.</span><span class="n">bool8</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">bool_</span>   
+</code></pre></div></div>
+
+<h5 id="01-network">01 Network</h5>
+
+<p><img src="../assets/images/RL/ActorCritic/image3.png" alt="" /></p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## ActorCriticNetwork
+</span><span class="k">class</span> <span class="nc">ActorCriticNetwork</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="c1"># actor params 
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">actor_fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">actor_fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+
+        <span class="c1"># critic params 
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">critic_fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">critic_fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">critic_fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">actor_x</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">actor_fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">policy</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">softmax</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">actor_fc2</span><span class="p">(</span><span class="n">actor_x</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">critic_x</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">critic_fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">critic_x</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">critic_fc2</span><span class="p">(</span><span class="n">critic_x</span><span class="p">))</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">critic_fc3</span><span class="p">(</span><span class="n">critic_x</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">policy</span><span class="p">,</span> <span class="n">value</span> 
+</code></pre></div></div>
+
+<h5 id="02-agent">02 Agent</h5>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Agent
+</span><span class="k">class</span> <span class="nc">Agent</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">hyper_parameters</span><span class="p">:</span><span class="nb">dict</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">env</span> 
+        <span class="bp">self</span><span class="p">.</span><span class="n">action_size</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">action_space</span><span class="p">.</span><span class="n">n</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">state_shape</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">observation_space</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># hyper params 
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">hyper_parameters</span><span class="p">[</span><span class="s">'gamma'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">hyper_parameters</span><span class="p">[</span><span class="s">'lr'</span><span class="p">]</span>
+
+        <span class="c1"># actor critic network
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">a2c</span> <span class="o">=</span> <span class="n">ActorCriticNetwork</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">state_shape</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">action_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">a2c</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">lr</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span><span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">):</span>
+        <span class="n">policy</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">a2c</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">policy</span> <span class="o">=</span> <span class="n">policy</span><span class="p">.</span><span class="n">detach</span><span class="p">().</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">action_size</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">policy</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">action</span> 
+
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span><span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">reward</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">next_state</span><span class="p">:</span><span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">done</span><span class="p">:</span><span class="nb">bool</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">a2c</span><span class="p">.</span><span class="n">train</span><span class="p">()</span>
+
+        <span class="n">policy</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">a2c</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">next_value</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">a2c</span><span class="p">(</span><span class="n">next_state</span><span class="p">)</span>
+
+        <span class="n">target</span> <span class="o">=</span> <span class="n">reward</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">done</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">next_value</span>
+        <span class="n">advantage</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">value</span> 
+
+        <span class="c1"># actor(policy) nn 
+</span>        <span class="n">action_prob</span> <span class="o">=</span> <span class="n">policy</span><span class="p">[</span><span class="n">action</span><span class="p">]</span>
+        <span class="n">log_prob</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">action_prob</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
+        <span class="n">actor_loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">log_prob</span> <span class="o">*</span> <span class="n">advantage</span><span class="p">.</span><span class="n">detach</span><span class="p">()</span> <span class="c1"># policy update 과정이니, value 신경망이 개입하면 안된다. 
+</span>
+        <span class="c1"># critic nn 
+</span>        <span class="n">critic_loss</span> <span class="o">=</span> <span class="n">advantage</span><span class="p">.</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 제곱해 mse 꼴로 변환 
+</span>
+        <span class="c1"># total loss
+</span>        <span class="n">total_loss</span> <span class="o">=</span> <span class="n">actor_loss</span> <span class="o">+</span> <span class="n">critic_loss</span>
+
+        <span class="c1"># back propagation 
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">total_loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">total_loss</span><span class="p">.</span><span class="n">item</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<h5 id="03-main">03 Main</h5>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Hyper Params
+</span><span class="n">HYPER_PARAMETERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'gamma'</span> <span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span> 
+    <span class="s">'lr'</span> <span class="p">:</span> <span class="mf">1e-3</span>
+<span class="p">}</span>
+
+<span class="n">N_EPISODES</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">MAX_STEPS</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">PRINT_INTERVAL</span> <span class="o">=</span> <span class="mi">20</span>  
+
+
+<span class="c1">## Env Setting
+</span><span class="n">seed</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">env_name</span> <span class="o">=</span> <span class="s">"CartPole-v1"</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="n">make</span><span class="p">(</span><span class="n">env_name</span><span class="p">)</span>
+<span class="n">env</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="c1">## main 
+</span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="n">make</span><span class="p">(</span><span class="n">env_name</span><span class="p">)</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">HYPER_PARAMETERS</span><span class="p">)</span>
+
+<span class="n">reward_history</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">loss_history</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_EPISODES</span><span class="p">):</span>
+    <span class="n">done</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+    
+    <span class="n">total_reward</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_n_steps</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">loss_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">agent</span><span class="p">.</span><span class="n">get_action</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">next_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="n">next_state</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">next_state</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+        <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">reward</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">agent</span><span class="p">.</span><span class="n">train</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="p">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">loss</span><span class="p">):</span>
+            <span class="n">loss_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+
+        <span class="n">total_n_steps</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">total_n_steps</span> <span class="o">&gt;=</span> <span class="n">MAX_STEPS</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="n">state</span> <span class="o">=</span> <span class="n">next_state</span>
+
+    <span class="n">reward_history</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_reward</span><span class="p">)</span>
+    <span class="n">loss_history</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss_list</span><span class="p">))</span>
+
+    <span class="c1"># PRINT_INTERVAL 마다 평균 출력
+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">PRINT_INTERVAL</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">avg_reward</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">reward_history</span><span class="p">[</span><span class="o">-</span><span class="n">PRINT_INTERVAL</span><span class="p">:])</span>
+        <span class="n">avg_loss</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss_history</span><span class="p">[</span><span class="o">-</span><span class="n">PRINT_INTERVAL</span><span class="p">:])</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"[Episode </span><span class="si">{</span><span class="n">e</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s">] Average Reward: </span><span class="si">{</span><span class="n">avg_reward</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">, Average Loss: </span><span class="si">{</span><span class="n">avg_loss</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="출처">출처</h2>
+<ol>
+  <li>
+    <p><a href="https://cumulu-s.tistory.com/7">강화학습에서의 bootstrapping은 무엇인가? (What is bootstrapping in RL?)</a></p>
+  </li>
+  <li>
+    <p><a href="https://lilianweng.github.io/lil-log/2018/02/19/a-long-peek-into-reinforcement-learning.html">A (Long) Peek into Reinforcement Learning</a></p>
+  </li>
+  <li>
+    <p><a href="https://wnthqmffhrm.tistory.com/20">강화 학습 - A3C(Asynchronous Advantage Actor-Critic)</a></p>
+  </li>
+  <li>
+    <p><a href="https://medium.com/intro-to-artificial-intelligence/the-actor-critic-reinforcement-learning-algorithm-c8095a655c14">The Actor-Critic Reinforcement Learning algorithm</a></p>
+  </li>
+  <li>
+    <p><a href="https://theaisummer.com/Actor_critics/">The idea behind Actor-Critics and how A2C and A3C improve them</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.yes24.com/Product/Goods/101987210">파이썬과 케라스로 배우는 강화학습</a></p>
+  </li>
+</ol>
+
+
+</div>
+
+<div id="content-en" class="lang-content" data-lang="en" style="display: none;">
+  
+<p>To be continue…</p>
+
+
+</div>
+
+
+<!-- 이전 이후 글 -->
+<br>
+
+
+
+
+
+
+
+
+<div class="post-navigation">
+  
+    <a class="prev-post" href="/blog/MARL">
+      ← Previous: [MARL/01] Multi Agent Reinforcement Learning 기초 
+    </a>
+  
+  
+  
+</div>
+
+<br><br>
+<h3>Comments</h3>
+<br>
+
+</div>
+
+<script src="https://utteranc.es/client.js"
+        repo="tonnonssi/tonnonssi.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Jimin Lee</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:tonnonssi@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.instagram.com/jiringsi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#405de6'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-instagram fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<!-- Add LaTex function -->
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+
+<script src="/assets/js/lang.js" defer></script>
+</body>
+
+</html>

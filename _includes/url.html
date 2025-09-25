@@ -1,8 +1,44 @@
-<a href="{{ include.url }}" target="_blank" style="display: block; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px; cursor: pointer; text-decoration: none; color: black;">
-    <!-- Row number with larger font and gray color -->
-    <span style="display: block; font-weight: bold; font-size: 24px; color: gray;">{{ include.num }}</span>
-    <!-- Title -->
-    <span style="display: block; font-weight: bold; margin: 0; font-size: 18px; color: black;">{{ include.title }}</span>
-    <!-- Description -->
-    <span style="display: block; margin: 0; color: black;">{{ include.description }}</span>
-  </a>
+{% assign target = include.target | default: '_blank' %}
+{% assign aria_label = include.aria_label | default: include.title %}
+{% assign variant = include.variant | default: 'default' %}
+
+{% capture variant_icon %}
+  {% if include.icon %}
+    {{ include.icon }}
+  {% else %}
+    {% case variant %}
+      {% when 'website' %}
+        <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm6.91 6h-2.77a15.631 15.631 0 0 0-1.13-3.13A8.03 8.03 0 0 1 18.91 8ZM12 4a12.826 12.826 0 0 1 1.88 4H10.12A12.826 12.826 0 0 1 12 4ZM4 12a7.977 7.977 0 0 1 .62-3h2.77a16.588 16.588 0 0 0-.12 3 16.588 16.588 0 0 0 .12 3H4.62A7.977 7.977 0 0 1 4 12Zm2.09 4h2.77a15.631 15.631 0 0 0 1.13 3.13A8.03 8.03 0 0 1 6.09 16ZM11.99 20a12.784 12.784 0 0 1-1.87-4h3.76A12.784 12.784 0 0 1 12 20Zm2.91-6H9.1a15.251 15.251 0 0 1-.13-2 15.251 15.251 0 0 1 .13-2h5.82a15.251 15.251 0 0 1 .13 2 15.251 15.251 0 0 1-.13 2Zm.19 5.13A15.631 15.631 0 0 0 16.14 16h2.77a8.03 8.03 0 0 1-4 3.13ZM17.88 12a16.588 16.588 0 0 0-.12-3h2.77a7.977 7.977 0 0 1 0 6h-2.77a16.588 16.588 0 0 0 .12-3Z"/></svg>
+      {% when 'github' %}
+        <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+      {% when 'package' %}
+        <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M4.75 5.5 12 1.75l7.25 3.75V18.5L12 22.25 4.75 18.5Zm7.25-1.732L7.25 6.07 12 8.5l4.75-2.43ZM6.25 17.62l5.25 2.73V10.19L6.25 7.81Zm11.5 0V7.81l-5.25 2.38v10.16Z"/></svg>
+      {% else %}
+        {% if include.num %}{{ include.num }}{% endif %}
+    {% endcase %}
+  {% endif %}
+{% endcapture %}
+
+<div class="url-card url-card--{{ variant }}">
+  <div class="url-card__media">
+    {% if include.img %}
+      <img src="{{ include.img }}" alt="{{ include.title }} thumbnail" loading="lazy" class="url-card__image">
+      <span class="url-card__badge">{{ include.num }}</span>
+    {% elsif variant_icon | strip != '' and variant != 'default' %}
+      <span class="url-card__icon">{{ variant_icon | strip }}</span>
+      {% if include.num %}
+        <span class="url-card__badge">{{ include.num }}</span>
+      {% endif %}
+    {% else %}
+      <span class="url-card__placeholder">{{ include.num }}</span>
+    {% endif %}
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">{{ include.title }}</h4>
+    {% if include.description %}
+      <p class="url-card__description">{{ include.description }}</p>
+    {% endif %}
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="{{ include.url }}" target="{{ target }}" rel="noopener" class="url-card__link" aria-label="{{ aria_label }}"></a>
+</div>

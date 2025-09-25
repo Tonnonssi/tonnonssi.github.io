@@ -1,52 +1,113 @@
-<div class="project-list">
-  {% for project in include.source %}
-  
-  {% if project.article_link %}
-  <a href="{{ project.article_link }}" style="text-decoration: none; color: inherit; display: block;">
-  {% endif %}
+{% assign projects = include.source %}
+{% assign featured_count = include.featured | default: 3 %}
+{% assign pinned_projects = projects | where: 'pinned', true %}
+{% assign other_projects = projects | where_exp: 'item', 'item.pinned != true' %}
+{% assign projects = pinned_projects | concat: other_projects %}
+{% assign total_projects = projects | size %}
+{% assign show_toggle = total_projects > featured_count %}
 
-    <div class="project" style="position: relative; display: flex; flex-direction: row; padding: 20px; border: 1px solid #ccc; margin-bottom: 20px; cursor: {% if project.article_link %}pointer{% else %}default{% endif %}; align-items: center;">
+<div class="project-gallery">
+  {% for project in projects limit:featured_count %}
+    {% assign primary_link = project.article_link | default: project.github | default: project.pdf %}
+    {% assign card_group = 'project-' | append: forloop.index0 %}
 
-      <!-- 프로젝트 이미지 (왼쪽 정렬, 150px) -->
-      {% if project.image %}
-      <div style="height: auto; width: 150px; border: 1px solid #000; text-align: center; display: flex; align-items: center; justify-content: center; margin-right: 20px;">
-        <img src="{{ project.image }}" alt="Project Image" style="max-width: 100%; max-height: 100%;">
-      </div>
+    {% assign title_ko = project.title.ko | default: project.title %}
+    {% assign title_en = project.title.en | default: title_ko %}
+    {% assign abstract_ko = project.abstract.ko | default: project.abstract %}
+    {% assign abstract_en = project.abstract.en | default: abstract_ko %}
+
+    <article class="project-card{% if primary_link %} project-card--linked{% endif %}">
+      {% if primary_link %}
+        <a class="project-card__overlay" href="{{ primary_link }}" target="_blank" rel="noopener" aria-label="{{ title_en }}"></a>
       {% endif %}
 
-      <!-- 프로젝트 제목 및 기본 정보 -->
-      <div style="flex: 1;">
-        <h6 class="title" style="font-size: 1.5em; margin-bottom: 10px;">{{ project.title }}</h6>
-        <p class="authors" style="margin-bottom: 10px;">
-          {% for dev_tool in project.dev_tool %}
-            <strong>{{ dev_tool }}</strong>{% if forloop.last == false %}, {% endif %}
-          {% endfor %}
-        </p>
-        <p>{{ project.description }}</p>
-
-        <!-- Abstract (항상 표시, 회색 글씨) -->
-        <p style="color: gray; font-size: 0.9em; margin-top: 10px;">{{ project.abstract }}</p>
-
-        &nbsp;
-        {% if project.github %}
-          <a href="{{ project.github }}" class="pdf-button" style="text-decoration: none; color: #027bff;">Github</a>
-        {% endif %}
-        &nbsp;
-        {% if project.pdf %}
-          <a href="{{ project.pdf }}" class="pdf-button" style="text-decoration: none; color: #027bff;">PDF</a>
+      <div class="project-card__thumb">
+        {% if project.image %}
+          <img src="{{ project.image | strip }}" alt="{{ title_en }} thumbnail" loading="lazy" class="project-card__image">
+        {% else %}
+          <span class="project-card__thumb-placeholder">{{ title_en | slice: 0, 1 }}</span>
         {% endif %}
       </div>
 
-      <!-- 연도 위치 조정 -->
-      <div class="year" style="position: absolute; bottom: 10px; right: 20px; font-size: 30px; font-weight: bold; color: rgba(0, 0, 0, 0.05); pointer-events: none;">
-        {{ project.year }}
+      <div class="project-card__content">
+        <header class="project-card__header">
+          {% if project.year or project.pinned %}
+            <div class="project-card__meta">
+              {% if project.year %}
+                <span class="project-card__year">
+                  <span class="lang-content" data-lang="ko" data-lang-group="{{ card_group }}-year">{{ project.year.ko | default: project.year }}</span>
+                  <span class="lang-content" data-lang="en" data-lang-group="{{ card_group }}-year">{{ project.year.en | default: project.year }}</span>
+                </span>
+              {% endif %}
+              {% if project.pinned %}
+                <span class="project-card__pin-icon" title="Pinned" aria-hidden="true">📌</span>
+              {% endif %}
+            </div>
+          {% endif %}
+          <h4 class="project-card__title">
+            <span class="lang-content" data-lang="ko" data-lang-group="{{ card_group }}-title">{{ title_ko }}</span>
+            <span class="lang-content" data-lang="en" data-lang-group="{{ card_group }}-title">{{ title_en }}</span>
+          </h4>
+        </header>
+
+        {% if project.dev_tool %}
+          <ul class="project-card__tags">
+            {% for dev_tool in project.dev_tool %}
+              <li class="project-card__tag">{{ dev_tool }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if abstract_ko or abstract_en %}
+          <div class="project-card__abstract">
+            <p class="lang-content" data-lang="ko" data-lang-group="{{ card_group }}-abstract">{{ abstract_ko }}</p>
+            <p class="lang-content" data-lang="en" data-lang-group="{{ card_group }}-abstract">{{ abstract_en }}</p>
+          </div>
+        {% endif %}
+
+        <div class="project-card__actions">
+          {% if project.article_link %}
+            <a href="{{ project.article_link }}" target="_blank" rel="noopener" class="project-card__action">Case Study</a>
+          {% endif %}
+          {% if project.github %}
+            <a href="{{ project.github }}" target="_blank" rel="noopener" class="project-card__action project-card__action--github">GitHub</a>
+          {% endif %}
+          {% if project.pdf %}
+            <a href="{{ project.pdf }}" target="_blank" rel="noopener" class="project-card__action project-card__action--pdf">PDF</a>
+          {% endif %}
+        </div>
       </div>
-
-    </div>
-
-  {% if project.article_link %}
-  </a>
-  {% endif %}
-
+    </article>
   {% endfor %}
 </div>
+
+{% if show_toggle %}
+  <details class="project-collapsed" data-projects-toggle>
+    <summary>
+      <span class="lang-content" data-lang="ko" data-lang-group="project-toggle">더 많은 프로젝트 보기</span>
+      <span class="lang-content" data-lang="en" data-lang-group="project-toggle">Show more projects</span>
+    </summary>
+
+    <div class="project-compact-list">
+      {% for project in projects offset:featured_count %}
+        {% assign title_ko = project.title.ko | default: project.title %}
+        {% assign title_en = project.title.en | default: title_ko %}
+        {% assign compact_group = 'project-compact-' | append: forloop.index0 %}
+        <div class="project-compact-item">
+          <span class="project-compact-item__year">
+            <span class="lang-content" data-lang="ko" data-lang-group="{{ compact_group }}-year">{{ project.year.ko | default: project.year }}</span>
+            <span class="lang-content" data-lang="en" data-lang-group="{{ compact_group }}-year">{{ project.year.en | default: project.year }}</span>
+          </span>
+          <a href="{{ project.article_link | default: project.github | default: project.pdf | default: '#' }}" class="project-compact-item__title">
+            {% if project.pinned %}<span class="project-compact-item__pin" aria-hidden="true">📌</span>{% endif %}
+            <span class="lang-content" data-lang="ko" data-lang-group="{{ compact_group }}-title">{{ title_ko }}</span>
+            <span class="lang-content" data-lang="en" data-lang-group="{{ compact_group }}-title">{{ title_en }}</span>
+          </a>
+          {% if project.dev_tool %}
+            <span class="project-compact-item__tags">{{ project.dev_tool | join: ' · ' }}</span>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </details>
+{% endif %}

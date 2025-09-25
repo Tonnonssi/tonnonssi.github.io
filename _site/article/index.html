@@ -6,10 +6,11 @@
   https://github.com/yousinix/portfolYOU
 -->
 
-<html lang="en" class="h-100">
+<html lang="ko" class="h-100">
 
 <head>
 
+  
   
   
 
@@ -52,7 +53,7 @@
 <body class="h-100 d-flex flex-column">
 
   <main class="flex-shrink-0 container mt-5">
-    <nav class="navbar navbar-expand-lg navbar-themed">
+    <nav class="navbar navbar-expand-lg navbar-themed bg-themed navbar--fixed">
 
   <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
 
@@ -73,14 +74,19 @@
 
       
 
-      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+      <div class="nav-item language-toggle language-toggle--nav" data-lang-toggle-container="always">
+        <button type="button" class="language-toggle__btn" data-lang-switcher>View in English</button>
+      </div>
+
+      <span id="theme-toggler" class="nav-item nav-link d-none" aria-hidden="true"></span>
     </div>
   </div>
 
 </nav>
+
     <div style="margin-top: 2rem; padding-left: 1rem;">
     <br>
-    <h4 style="color: #027bff;">Total (19)</h4>
+    <h4 style="color: #027bff;">Total (20)</h4>
   </div>
   
   <!-- Simple-Jekyll-Search https://github.com/christian-fei/Simple-Jekyll-Search -->
@@ -111,6 +117,30 @@
   <div class="container">
   
     <div class="my-4 py-3 border-bottom wow animated fadeIn" data-wow-delay=".1s">
+  <a href="/blog/ActorCritic" class="d-flex text-decoration-none gap-3" style="align-items: stretch;">
+
+    <!-- 텍스트 왼쪽 영역 -->
+    <div style="flex: 1;">
+      <h2 class="mb-1" style="font-size: 1.1rem;">[RL] Actor Critic</h2>
+
+      <p class="text-muted mb-1" style="font-size: 0.9rem;">
+        
+        <span class="badge badge-secondary">RL</span>
+        
+      </p>
+
+      <p class="mb-1" style="color: #444;">Actor Critic 개념, A2C, A3C, 코드 구현<br>-<br>Actor Critic Notion, A2C, A3C, Code</p>
+
+      <p class="text-muted" style="font-size: 0.8rem;">2025. 05. 06</p>
+    </div>
+
+    <!-- 이미지 오른쪽 영역 --><div style="width: 160px; aspect-ratio: 1 / 1; flex-shrink: 0;">
+        <img src="/assets/images/RL/ActorCritic/image.png" alt="preview"
+             style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 8px;">
+      </div></a>
+</div>
+  
+    <div class="my-4 py-3 border-bottom wow animated fadeIn" data-wow-delay=".1s">
   <a href="/blog/MARL" class="d-flex text-decoration-none gap-3" style="align-items: stretch;">
 
     <!-- 텍스트 왼쪽 영역 -->
@@ -125,12 +155,15 @@
         
       </p>
 
-      <p class="mb-1" style="color: #444;">Basic Idea and Codes of Multi Agent Reinforcement Learning.<br>-<br>멀티 에이전트 강화학습 기초 이론과 코드를 다룬다.</p>
+      <p class="mb-1" style="color: #444;">Basic Notion of Multi Agent Reinforcement Learning.<br>-<br>멀티 에이전트 강화학습 기초 이론을 다룬다.</p>
 
       <p class="text-muted" style="font-size: 0.8rem;">2025. 05. 05</p>
     </div>
 
-    <!-- 이미지 오른쪽 영역 --></a>
+    <!-- 이미지 오른쪽 영역 --><div style="width: 160px; aspect-ratio: 1 / 1; flex-shrink: 0;">
+        <img src="/assets/images/MARL/Basic/LOL.png" alt="preview"
+             style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 8px;">
+      </div></a>
 </div>
   
     <div class="my-4 py-3 border-bottom wow animated fadeIn" data-wow-delay=".1s">
@@ -419,11 +452,11 @@
 </div>
   
     <div class="my-4 py-3 border-bottom wow animated fadeIn" data-wow-delay=".1s">
-  <a href="/blog/MinesweeperRuleBase" class="d-flex text-decoration-none gap-3" style="align-items: stretch;">
+  <a href="/blog/MineSolver" class="d-flex text-decoration-none gap-3" style="align-items: stretch;">
 
     <!-- 텍스트 왼쪽 영역 -->
     <div style="flex: 1;">
-      <h2 class="mb-1" style="font-size: 1.1rem;">[Minesweeper/05] Rule Base</h2>
+      <h2 class="mb-1" style="font-size: 1.1rem;">[MineSolver] 개발 일지</h2>
 
       <p class="text-muted mb-1" style="font-size: 0.9rem;">
         
@@ -431,12 +464,15 @@
         
       </p>
 
-      <p class="mb-1" style="color: #444;">To find a training baseline, we solved an optimal number of minesweepers and calculated the win rate.<br>-<br>baseline을 찾기 위해 최적의 수로 지뢰찾기를 풀고, 승률을 계산했다.</p>
+      <p class="mb-1" style="color: #444;">'Minesweeper' Player Agent Development Log <br>-<br>'지뢰찾기' 플레이어 에이전트 개발 일지</p>
 
       <p class="text-muted" style="font-size: 0.8rem;">2024. 07. 14</p>
     </div>
 
-    <!-- 이미지 오른쪽 영역 --></a>
+    <!-- 이미지 오른쪽 영역 --><div style="width: 160px; aspect-ratio: 1 / 1; flex-shrink: 0;">
+        <img src="https://github.com/user-attachments/assets/2c5ea448-b6cb-4ae7-b8ee-a3bdaf0c4b3e" alt="preview"
+             style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 8px;">
+      </div></a>
 </div>
   
     <div class="my-4 py-3 border-bottom wow animated fadeIn" data-wow-delay=".1s">
@@ -636,6 +672,9 @@ $(function () {
      },
      "HTML-CSS": { availableFonts: ["TeX"] }
    });
-</script></body>
+</script>
+
+<script src="/assets/js/lang.js" defer></script>
+</body>
 
 </html>

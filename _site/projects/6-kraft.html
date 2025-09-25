@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="ko" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{&quot;ko&quot;=&gt;&quot;KRAFT: 코스피 선물 RL 트레이더&quot;, &quot;en&quot;=&gt;&quot;KRAFT: KOSPI 200 Reinforcement-learning Agent for Futures Trading&quot;}">
+  <meta property="og:description" content="PPO 알고리즘을 활용해 KOSPI 200 미니 선물 시장에서 스윙 트레이더 에이전트를 개발했습니다. 실제 거래를 반영하기 위해 슬리피지와 수수료를 포함한 강화학습 환경을 구축하고, Sharpe Ratio 0.8과 최대 낙폭 -12%를 기록했습니다. 복합 보상 설계와 KL Pena...">
+  <meta property="og:image" content="">
+
+  <title>{&quot;ko&quot;=&gt;&quot;KRAFT: 코스피 선물 RL 트레이더&quot;, &quot;en&quot;=&gt;&quot;KRAFT: KOSPI 200 Reinforcement-learning Agent for Futures Trading&quot;}</title>
+  <meta name="description" content="PPO 알고리즘을 활용해 KOSPI 200 미니 선물 시장에서 스윙 트레이더 에이전트를 개발했습니다. 실제 거래를 반영하기 위해 슬리피지와 수수료를 포함한 강화학습 환경을 구축하고, Sharpe Ratio 0.8과 최대 낙폭 -12%를 기록했습니다. 복합 보상 설계와 KL Pena...">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<!--  -->
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed bg-themed navbar--fixed">
+
+  <a class="navbar-brand" href="/"><h5><b>tonnonssi</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/publication">Publication</a>
+
+      <a class="nav-item nav-link " href="/content">Content</a>
+
+      <a class="nav-item nav-link " href="/project/">Project</a>
+
+      <a class="nav-item nav-link " href="/article/">Article</a>
+
+      <a class="nav-item nav-link " href="https://github.com/tonnonssi"><i class="fab fa-1x fa-github"></i></a>
+
+      
+
+      <div class="nav-item language-toggle language-toggle--nav" data-lang-toggle-container="always">
+        <button type="button" class="language-toggle__btn" data-lang-switcher>View in English</button>
+      </div>
+
+      <span id="theme-toggler" class="nav-item nav-link d-none" aria-hidden="true"></span>
+    </div>
+  </div>
+
+</nav>
+
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  
+<div class="lang-content" data-lang="ko" data-lang-group="project-body">
+  
+<h1 id="kraft-코스피-선물-rl-트레이더">KRAFT: 코스피 선물 RL 트레이더</h1>
+
+<h2 id="1--프로젝트-개요--링크">1. 🔗 프로젝트 개요 &amp; 링크</h2>
+<p>PPO 알고리즘을 활용해 KOSPI 200 미니 선물 시장 스윙 트레이더 에이전트를 개발했습니다. 실제 거래 환경과 유사성을 높이기 위해 수수료와 슬리피지를 반영한 시뮬레이터를 기초부터 직접 구현했습니다.</p>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+        <span class="url-card__badge">01</span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">YOLO_Futures</h4>
+    
+      <p class="url-card__description">최초 구현 버전이지만 코드를 효과적으로 정리하고, xAI를 도입하고자 아래 KRAFT로 이전했습니다.</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/KanghwaSisters/YOLO-Futures.git" target="_blank" rel="noopener" class="url-card__link" aria-label="YOLO_Futures"></a>
+</div>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+        <span class="url-card__badge">02</span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">KRAFT</h4>
+    
+      <p class="url-card__description">라이브러리화, 자잘한 오류 수정 후 클린 코드 지향, xAI 도입한 코드</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/Tonnonssi/KRAFT.git" target="_blank" rel="noopener" class="url-card__link" aria-label="KRAFT"></a>
+</div>
+
+<h2 id="2--핵심-역량--문제-해결">2. ✨ 핵심 역량 &amp; 문제 해결</h2>
+<div class="callout callout--default">
+  <div class="callout__icon" aria-hidden="true">👩‍💻</div>
+  <div class="callout__body">
+    
+      <p class="callout__title">역할: 리더 · 강화시스터즈(25-1)</p>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li>단순 가격 예측을 넘어, 매수·매도 강도와 자산 운용 전략을 하나의 통합 정책으로 학습하는 강화학습 에이전트를 설계했습니다.</li>
+  <li>PPO 기반 알고리즘을 적용하고 CNN·Transformer·Informer·DLinear 등 다양한 네트워크 구조를 실험하며 시장 적용 가능성과 한계를 검토했습니다.</li>
+  <li>금융 시계열 데이터를 RL 환경에 적합하게 변환하기 위해 종료 조건, 데이터 흐름 구조를 다각도로 구현했습니다.</li>
+  <li>실제 거래에 가까운 시뮬레이션을 위해 슬리피지·수수료·만기일 로직을 추가했습니다.</li>
+  <li>수익·리스크·기회비용을 동시에 고려한 복합 보상 설계와 정책 안정화를 위한 KL Penalty를 도입해 성능을 개선했습니다.</li>
+  <li>코드 재사용성과 확장성을 고려한 구조를 설계하고 문서화를 강화했습니다.</li>
+  <li>리더로서 구현 범위 배분·코드 리뷰를 주도하며 협업 효율성을 높였습니다.</li>
+</ul>
+
+<h2 id="3-️-개발-과정">3. ⚙️ 개발 과정</h2>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+        <span class="url-card__badge">issue</span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">YOLO_Futures</h4>
+    
+      <p class="url-card__description">프로젝트를 진행하며 남긴 이슈</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/KanghwaSisters/YOLO-Futures/issues" target="_blank" rel="noopener" class="url-card__link" aria-label="YOLO_Futures"></a>
+</div>
+
+<p><br />
+<a class="m-1 btn btn-outline-primary btn-3 btn-block" href="../assets/images/archives/YOLO.pdf">
+  📄 Report
+</a></p>
+
+<h2 id="4--결과--성과">4. 📊 결과 &amp; 성과</h2>
+<ul>
+  <li>KL 기반 진입 규제를 적용한 CTTS 모델은 평균 수익률 6.5%, Sharpe Ratio 0.8, 최대 낙폭 -12%, 승률 48% 를 기록하며 수익성과 위험 관리 능력을 동시에 입증했습니다.</li>
+</ul>
+
+<h2 id="5--배운-점--다음-단계">5. 💡 배운 점 &amp; 다음 단계</h2>
+<ul>
+  <li>협업 과정에서 코드 리뷰의 중요성을 깊이 체감했습니다. 깃허브를 활용해 활발히 리뷰를 진행했으며, 다른 사람이 쉽게 이해할 수 있는 코드 작성 습관을 배웠습니다.</li>
+  <li>기존 게임과 달리 금융 시장은 고정된 정보와 에이전트로 인해 변하는 정보가 혼재하는 환경임을 경험했고, 이를 반영한 시뮬레이터 설계 과정에서 큰 즐거움을 느꼈습니다.</li>
+  <li>앞으로는 xAI 기법을 적용해 모델의 의사결정 과정을 해석하고, 금융 AI의 투명성과 신뢰성을 높일 계획입니다.</li>
+</ul>
+
+
+</div>
+
+<div class="lang-content" data-lang="en" data-lang-group="project-body">
+  
+<h1 id="kraft-kospi-200-reinforcement-learning-agent-for-futures-trading">KRAFT: KOSPI 200 Reinforcement-learning Agent for Futures Trading</h1>
+
+<h2 id="1--overview--links">1. 🔗 Overview &amp; Links</h2>
+<p>Developed a PPO-based swing trading agent for the KOSPI 200 mini futures market, complete with a custom simulator that mirrors real trading costs such as slippage and commissions.</p>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+        <span class="url-card__badge">01</span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">YOLO_Futures</h4>
+    
+      <p class="url-card__description">Initial implementation; later refactored and extended in KRAFT</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/KanghwaSisters/YOLO-Futures.git" target="_blank" rel="noopener" class="url-card__link" aria-label="YOLO_Futures"></a>
+</div>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+        <span class="url-card__badge">02</span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">KRAFT</h4>
+    
+      <p class="url-card__description">Library-style codebase with bug fixes, cleaner APIs, and xAI integration</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/Tonnonssi/KRAFT.git" target="_blank" rel="noopener" class="url-card__link" aria-label="KRAFT"></a>
+</div>
+
+<h2 id="2--core-strengths--problem-solving">2. ✨ Core Strengths &amp; Problem Solving</h2>
+<div class="callout callout--default">
+  <div class="callout__icon" aria-hidden="true">👩‍💻</div>
+  <div class="callout__body">
+    
+      <p class="callout__title">Role: Lead · Kanghwa Sisters (Spring 2025)</p>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li>Designed a reinforcement-learning policy that unifies entry signals, position sizing, and capital management instead of predicting price alone.</li>
+  <li>Experimented with CNN, Transformer, Informer, and DLinear architectures on top of PPO to evaluate what transfers to noisy market data.</li>
+  <li>Modeled trading episodes with realistic termination rules, data flows, and delivery schedules to reflect derivatives constraints.</li>
+  <li>Simulated slippage, commissions, and contract expiry so backtests match live trading conditions more closely.</li>
+  <li>Crafted a composite reward (return, risk, opportunity cost) and added KL-penalty based regulation to stabilize policy updates.</li>
+  <li>Structured the project for reusability with modular environments, logging utilities, and thorough documentation.</li>
+  <li>As team lead, coordinated task allocation, code reviews, and integration checkpoints for the club.</li>
+</ul>
+
+<h2 id="3-️-development-process">3. ⚙️ Development Process</h2>
+
+<div class="url-card url-card--github">
+  <div class="url-card__media">
+    
+      <span class="url-card__icon"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.086 3.293 9.39 7.864 10.915.575.12.786-.248.786-.555 0-.273-.01-1.155-.015-2.1-3.2.695-3.875-1.356-3.875-1.356a3.05 3.05 0 0 0-1.28-1.69c-1.047-.716.08-.702.08-.702a2.415 2.415 0 0 1 1.762 1.184 2.448 2.448 0 0 0 3.348.957 2.454 2.454 0 0 1 .732-1.54c-2.555-.293-5.242-1.278-5.242-5.69a4.467 4.467 0 0 1 1.194-3.1 4.151 4.151 0 0 1 .112-3.06s.967-.31 3.17 1.184a10.88 10.88 0 0 1 5.776 0c2.2-1.494 3.165-1.184 3.165-1.184a4.151 4.151 0 0 1 .112 3.06 4.466 4.466 0 0 1 1.194 3.1c0 4.424-2.693 5.392-5.257 5.677a2.756 2.756 0 0 1 .787 2.137c0 1.543-.014 2.786-.014 3.166 0 .31.206.68.792.554A11.507 11.507 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg></span>
+      
+        <span class="url-card__badge">issue</span>
+      
+    
+  </div>
+  <div class="url-card__content">
+    <h4 class="url-card__title">YOLO_Futures Issues</h4>
+    
+      <p class="url-card__description">Issue tracker capturing research questions and bug fixes</p>
+    
+  </div>
+  <span class="url-card__cta" aria-hidden="true">↗</span>
+  <a href="https://github.com/KanghwaSisters/YOLO-Futures/issues" target="_blank" rel="noopener" class="url-card__link" aria-label="YOLO_Futures Issues"></a>
+</div>
+
+<p><br />
+<a class="m-1 btn btn-outline-primary btn-3 btn-block" href="../assets/images/archives/YOLO.pdf">
+  📄 Report
+</a></p>
+
+<h2 id="4--results--outcomes">4. 📊 Results &amp; Outcomes</h2>
+<ul>
+  <li>The KL-regularized CTTS policy produced 6.5% average returns with a Sharpe ratio of 0.8, maximum drawdown of -12%, and a 48% win rate—balancing profitability and risk management.</li>
+</ul>
+
+<h2 id="5--learnings--next-steps">5. 💡 Learnings &amp; Next Steps</h2>
+<ul>
+  <li>Frequent peer reviews through GitHub underscored how much clearer, well-documented code accelerates collaboration.</li>
+  <li>Discovered how financial markets mix stationary references with non-stationary signals, making simulator design both challenging and fun.</li>
+  <li>Next steps include applying xAI techniques to interpret trade decisions and improve the transparency of financial AI systems.</li>
+</ul>
+
+</div>
+
+</div>
+
+<script src="https://utteranc.es/client.js"
+        repo="tonnonssi/tonnonssi.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Jimin Lee</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:tonnonssi@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.instagram.com/jiringsi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#405de6'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-instagram fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/tonnonssi"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<!-- Add LaTex function -->
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+
+<script src="/assets/js/lang.js" defer></script>
+</body>
+
+</html>

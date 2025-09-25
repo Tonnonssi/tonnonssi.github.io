@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 // Custom Fonts
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import "variables",
@@ -10,6 +10,7 @@
         "blog",
         "footer",
         "landing",
+        "elements.callout",
         "navbar",
         "markdown",
         "projects",
