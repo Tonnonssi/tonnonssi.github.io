@@ -66,14 +66,11 @@
         {% endif %}
 
         <div class="project-card__actions">
-          {% if project.article_link %}
-            <a href="{{ project.article_link }}" target="_blank" rel="noopener" class="project-card__action">Case Study</a>
-          {% endif %}
           {% if project.github %}
             <a href="{{ project.github }}" target="_blank" rel="noopener" class="project-card__action project-card__action--github">GitHub</a>
           {% endif %}
           {% if project.pdf %}
-            <a href="{{ project.pdf }}" target="_blank" rel="noopener" class="project-card__action project-card__action--pdf">PDF</a>
+            <a href="{{ project.pdf }}" target="_blank" rel="noopener" class="project-card__action project-card__action--pdf">Report</a>
           {% endif %}
         </div>
       </div>

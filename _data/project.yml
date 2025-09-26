@@ -1,7 +1,7 @@
 - title:
     ko: "KRAFT: 코스피 선물 RL 트레이더"
     en: "KRAFT: KOSPI 200 Reinforcement-learning Agent for Futures Trading"
-  article_link: "../projects/1-minesweeper"
+  article_link: "../projects/6-kraft"
   pinned: true
   year:
     ko: "2025년 6월 -"
@@ -18,14 +18,14 @@
       실제 거래를 반영하기 위해 슬리피지와 수수료를 포함한 강화학습 환경을 구축하고, Sharpe Ratio 0.8과 최대 낙폭 -12%를 기록했습니다.
       복합 보상 설계와 KL Penalty를 통해 정책 안정화를 구현했으며, 현재는 xAI 적용 및 성능 향상을 위한 개선을 진행 중입니다.
     en: "Developed a swing trader agent for the KOSPI 200 mini futures market using the PPO algorithm. Built a reinforcement learning environment that incorporates slippage and commissions to reflect actual trading conditions, achieving a Sharpe Ratio of 0.8 and a maximum drawdown of -12%. Implemented complex reward design and KL Penalty for policy stabilization, and currently working on xAI application and performance improvement."
-  github: "https://github.com/Tonnonssi/-RL-Minesweeper"
+  github: "https://github.com/Tonnonssi/KRAFT"
   image: "../assets/images/ProjectThumbnail/theFuturess.png" 
 
 
 - title:
     ko: "AiGO: CV·로보틱스 기반 오목 AI"
     en: "AiGO: End-to-End AI for Gomoku with Vision and Robotics"
-  article_link: "https://tonnonssi.github.io/projects/2-omok"
+  article_link: "../projects/5-AiGO"
   pinned: true
   year:
     ko: "2024년 10월 - 2025년 2월"
@@ -50,7 +50,7 @@
 - title:
     ko: "TicTacToeArtist: CV·로보틱스 기반 틱택토 AI"
     en: "TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics"
-  article_link: "https://tonnonssi.github.io/projects/3-tictactoe"
+  article_link: "../projects/4-TicTacToeArtist"
   year:
     ko: "2024년 10월 - 2025년 2월"
     en: "October 2024 - February 2025"
@@ -73,7 +73,7 @@
 - title:
     ko: "MineSolver: 지뢰찾기 DQN 에이전트"
     en: "MineSolver: DQN Agent for Minesweeper"
-  article_link: "https://tonnonssi.github.io/projects/1-minesweeper"
+  article_link: "../projects/3-MineSolver"
   pinned: true
   year:
     ko: "2024년 3월 - 2024년 7월"
@@ -96,7 +96,7 @@
 - title:
     ko: "리그오브레전드 전략 패턴 시각화"
     en: "LoL-StrategyInsight: Visual Analytics of League of Legends Strategy Patterns"
-  article_link: "https://tonnonssi.github.io/projects/portfolio-rl"
+  article_link: "../projects/2-LoLStrategyInsight"
   year:
     ko: "2023년"
     en: "2023"
@@ -122,7 +122,7 @@
 - title:
     ko: "DigitFusion: 필기 숫자 분류기"
     en: "DigitFusion: Handwritten Digit Classifier"
-  article_link: "/projects/1-digitfusion"
+  article_link: "../projects/1-digitfusion"
   year:
     ko: "2023년"
     en: "2023"
