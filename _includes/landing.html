@@ -342,7 +342,12 @@
         {% for post in site.posts limit:5 %}
         <br>
           <li>
-            <a href="{{ post.url }}">{{ post.title }}</a> &nbsp; 
+            {% assign post_title_ko = post.title.ko | default: post.title %}
+            {% assign post_title_en = post.title.en | default: post_title_ko %}
+            <a href="{{ post.url }}">
+              <span class="lang-content" data-lang="ko" data-lang-group="landing-recent-title-{{ forloop.index0 }}">{{ post_title_ko }}</span>
+              <span class="lang-content" data-lang="en" data-lang-group="landing-recent-title-{{ forloop.index0 }}">{{ post_title_en }}</span>
+            </a> &nbsp; 
             <span style="color: gray;">({{ post.date | date: "%Y-%m-%d" }})</span>
             <br>
           </li>

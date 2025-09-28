@@ -1,11 +1,17 @@
 ---
-title: "[DonkeyGym/01] mac m1 환경 설정"
-tags: [RL]
+title:
+  ko: '[DonkeyGym/01] mac m1 환경 설정'
+  en: '[DonkeyGym/01] mac m1 환경 설정'
+tags:
+- RL
 pages: papers
-style: border  # fill / border 
-color:  secondary # secondary / success / danger / warning / info / light / dark
+style: border
+color: secondary
 img: ../assets/images/DonkeyGym/Basic/image.png
-description: "Set up DonkeyGym, a useful simulator for getting started with autonomous driving, on an M1 Mac.<br>-<br>자율주행 입문용으로 유용한 DonkeyGym을 mac m1 환경에 세팅했다."
+description:
+  ko: 자율주행 입문용으로 유용한 DonkeyGym을 mac m1 환경에 세팅했다.
+  en: Set up DonkeyGym, a useful simulator for getting started with autonomous driving,
+    on an M1 Mac.
 ---
 
 <!-- 한국어 콘텐츠 -->

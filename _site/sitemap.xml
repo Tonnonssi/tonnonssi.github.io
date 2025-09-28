@@ -96,6 +96,13 @@
     
   
     <url>
+      <loc>http://localhost:4000/blog/transformer</loc>
+      <lastmod>2025-09-26T00:00:00+09:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+  
+    <url>
       <loc>http://localhost:4000/blog/ActorCritic</loc>
       <lastmod>2025-05-06T00:00:00+09:00</lastmod>
       <changefreq>weekly</changefreq>
@@ -255,7 +262,7 @@
     </url>
     
     <url>
-      <loc>http://localhost:4000/tags/paperreivew/</loc>
+      <loc>http://localhost:4000/tags/paperreview/</loc>
       <changefreq>monthly</changefreq>
       <priority>0.3</priority>
     </url>

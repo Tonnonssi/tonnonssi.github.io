@@ -60,6 +60,12 @@ PPO 알고리즘을 활용해 KOSPI 200 미니 선물 시장 스윙 트레이더
 
 ## 3. ⚙️ 개발 과정 
 {% include url.html
+     num="PR"
+     title="Transformer 논문리뷰"
+     description="'Attention Is All You Need' 논문을 리뷰하고 Attention, LayerNorm, Positional Encoding에 관한 세부사항을 보완한다."
+     url="../blog/transformer" %}  
+
+{% include url.html
      variant="github"
      num="issue"
      title="YOLO_Futures"
@@ -117,11 +123,19 @@ Developed a PPO-based swing trading agent for the KOSPI 200 mini futures market,
 
 ## 3. ⚙️ Development Process
 {% include url.html
+     num="PR"
+     title="Transformer Paper Review"
+     description="Review 'Attention Is All You Need' and fill details of Attention, LayerNorm, Positional Encoding."
+     url="../blog/transformer" %}  
+
+
+{% include url.html
      variant="github"
      num="issue"
      title="YOLO_Futures Issues"
      description="Issue tracker capturing research questions and bug fixes"
      url="https://github.com/KanghwaSisters/YOLO-Futures/issues" %}
+
 
 <br>
 {% include elements/button.html link="../assets/images/archives/YOLO.pdf" text="📄 Report" block=true %}

@@ -1,11 +1,17 @@
 ---
-title: "[ML] Naive Bayes Classifer"
-tags: [ML]
+title:
+  ko: '[ML] Naive Bayes Classifer'
+  en: '[ML] Naive Bayes Classifer'
+tags:
+- ML
 pages: papers
-style: fill  # fill / border 
-color:  success # secondary / success / danger / warning / info / light / dark
+style: fill
+color: success
 img: ../assets/images/ML/NBC/image.png
-description: " Review and Implementation of the Naive Bayes Classifer<br>-<br>Naive Bayes Classifer 이론 및 구현"
+description:
+  ko: ' Naive Bayes
+    Classifer 이론 및 구현'
+  en: ' Review and Implementation of the Naive Bayes Classifer'
 ---
 <!-- 한국어 콘텐츠 -->
 {% capture ko_content %}

@@ -1,11 +1,16 @@
 ---
-title: "[MineSolver] 개발 일지"
-tags: [Minesweeper]
+title:
+  ko: '[MineSolver] 개발 일지'
+  en: '[MineSolver] 개발 일지'
+tags:
+- Minesweeper
 pages: papers
-style: border  # fill / border 
+style: border
 color: dark
-img: "https://github.com/user-attachments/assets/2c5ea448-b6cb-4ae7-b8ee-a3bdaf0c4b3e"
-description: "'Minesweeper' Player Agent Development Log <br>-<br>'지뢰찾기' 플레이어 에이전트 개발 일지"
+img: https://github.com/user-attachments/assets/2c5ea448-b6cb-4ae7-b8ee-a3bdaf0c4b3e
+description:
+  ko: '''지뢰찾기'' 플레이어 에이전트 개발 일지'
+  en: '''Minesweeper'' Player Agent Development Log'
 ---
 <!-- 한국어 콘텐츠 -->
 {% capture ko_content %}

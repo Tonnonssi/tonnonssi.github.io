@@ -1,0 +1,112 @@
+{% assign raw_items = include.items | default: '' %}
+{% assign cleaned = raw_items | strip %}
+{% assign lines = cleaned | newline_to_br | split: '<br />' %}
+{% assign numbered = include.numbered | default: true %}
+{% assign collapsible = include.collapsible | default: false %}
+
+{% capture list_html %}
+  {% if numbered %}
+    <ol class="toc-card__list">
+      {% for line in lines %}
+        {% assign entry = line | strip %}
+        {% if entry != '' %}
+          {% assign parts = entry | split: '::' %}
+          {% assign raw_text = parts[0] | strip %}
+          {% assign cleaned_text = raw_text %}
+
+          {% assign prefix = raw_text | split: '. ' | first | strip %}
+          {% assign prefix_digits = prefix | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9' %}
+          {% if raw_text contains '. ' and prefix != '' and prefix_digits == '' %}
+            {% assign cleaned_text = raw_text | remove_first: prefix %}
+            {% assign cleaned_text = cleaned_text | remove_first: '. ' %}
+          {% endif %}
+
+          {% if cleaned_text == raw_text and raw_text contains ') ' %}
+            {% assign prefix_paren = raw_text | split: ') ' | first | strip %}
+            {% assign prefix_digits_paren = prefix_paren | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9' %}
+            {% if prefix_paren != '' and prefix_digits_paren == '' %}
+              {% assign cleaned_text = raw_text | remove_first: prefix_paren %}
+              {% assign cleaned_text = cleaned_text | remove_first: ') ' %}
+            {% endif %}
+          {% endif %}
+
+          {% assign anchor_source = parts[1] | default: raw_text %}
+          {% assign anchor = anchor_source | strip | slugify %}
+          {% if anchor == '' %}
+            {% assign anchor = 'section-' | append: forloop.index %}
+          {% endif %}
+
+          <li class="toc-card__item">
+            <a href="#{{ anchor }}" class="toc-card__link">{{ cleaned_text }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+  {% else %}
+    <ul class="toc-card__list toc-card__list--plain">
+      {% for line in lines %}
+        {% assign entry = line | strip %}
+        {% if entry != '' %}
+          {% assign parts = entry | split: '::' %}
+          {% assign raw_text = parts[0] | strip %}
+          {% assign cleaned_text = raw_text %}
+
+          {% assign prefix = raw_text | split: '. ' | first | strip %}
+          {% assign prefix_digits = prefix | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9' %}
+          {% if raw_text contains '. ' and prefix != '' and prefix_digits == '' %}
+            {% assign cleaned_text = raw_text | remove_first: prefix %}
+            {% assign cleaned_text = cleaned_text | remove_first: '. ' %}
+          {% endif %}
+
+          {% if cleaned_text == raw_text and raw_text contains ') ' %}
+            {% assign prefix_paren = raw_text | split: ') ' | first | strip %}
+            {% assign prefix_digits_paren = prefix_paren | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9' %}
+            {% if prefix_paren != '' and prefix_digits_paren == '' %}
+              {% assign cleaned_text = raw_text | remove_first: prefix_paren %}
+              {% assign cleaned_text = cleaned_text | remove_first: ') ' %}
+            {% endif %}
+          {% endif %}
+
+          {% assign anchor_source = parts[1] | default: raw_text %}
+          {% assign anchor = anchor_source | strip | slugify %}
+          {% if anchor == '' %}
+            {% assign anchor = 'section-' | append: forloop.index %}
+          {% endif %}
+
+          <li class="toc-card__item">
+            <a href="#{{ anchor }}" class="toc-card__link">{{ cleaned_text }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endcapture %}
+
+{% if collapsible %}
+  <details class="toc-card toc-card--collapsible" {% unless include.open == false or include.open == 'false' %}open{% endunless %}>
+    <summary class="toc-card__summary">
+      <div class="toc-card__summary-text">
+        <span class="toc-card__label">{{ include.title | default: 'Table of Contents' }}</span>
+        {% if include.subtitle %}
+          <span class="toc-card__subtitle">{{ include.subtitle }}</span>
+        {% endif %}
+      </div>
+      <span class="toc-card__chevron" aria-hidden="true">▾</span>
+    </summary>
+    <div class="toc-card__body">
+      {{ list_html }}
+    </div>
+  </details>
+{% else %}
+  <div class="toc-card">
+    <div class="toc-card__header">
+      <span class="toc-card__label">{{ include.title | default: 'Table of Contents' }}</span>
+      {% if include.subtitle %}
+        <span class="toc-card__subtitle">{{ include.subtitle }}</span>
+      {% endif %}
+    </div>
+    <div class="toc-card__body">
+      {{ list_html }}
+    </div>
+  </div>
+{% endif %}

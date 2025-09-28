@@ -1,10 +1,15 @@
 ---
-title: "[C++] Pointer & Reference"
-tags: [Cpp]
+title:
+  ko: '[C++] Pointer & Reference'
+  en: '[C++] Pointer & Reference'
+tags:
+- Cpp
 pages: papers
-style: fill  # fill / border 
-color:  danger # secondary / success / danger / warning / info / light / dark
-description: "Introductory of Pointer and Reference <br>-<br> 기초적인 포인터와 참조"
+style: fill
+color: danger
+description:
+  ko: 기초적인 포인터와 참조
+  en: Introductory of Pointer and Reference
 ---
 
 <!-- 한국어 콘텐츠 -->

@@ -2,32 +2,57 @@
 layout: page
 ---
 
+{% assign title_ko = page.title.ko | default: page.title %}
+{% assign title_en = page.title.en | default: title_ko %}
+{% assign description_ko = page.description.ko | default: page.description %}
+{% assign description_en = page.description.en | default: description_ko %}
+
+{% assign word_count = content | number_of_words %}
+{% assign read_minutes = word_count | plus: 179 | divided_by: 180 %}
+{% if read_minutes == 0 %}
+  {% assign read_minutes = 1 %}
+{% endif %}
+
 <div class="title-container">
-  <h1><b>{{ page.title }}</b></h1>
+  <h1>
+    <b>
+      <span class="lang-content" data-lang="ko" data-lang-group="post-title">{{ title_ko }}</span>
+      <span class="lang-content" data-lang="en" data-lang-group="post-title">{{ title_en }}</span>
+    </b>
+  </h1>
 </div>
 
-<p class="post-metadata text-muted">
-  {{ page.date | date_to_long_string }} -
-  <b>
-    {%- assign words = content | number_of_words -%}
-    {%- if words < 360 -%}
-      less than 1 min read time
-    {%- else -%}
-      {{ words | divided_by: 180 }} mins read time
-    {%- endif -%}
-  </b>
+<div class="post-metadata text-muted">
+  <span class="lang-content" data-lang="ko" data-lang-group="post-meta">
+    {{ page.date | date: "%Y년 %m월 %d일" }} · <b>약 {{ read_minutes }}분 소요</b>
+  </span>
+  <span class="lang-content" data-lang="en" data-lang-group="post-meta">
+    {{ page.date | date_to_long_string }} · <b>{{ read_minutes }} min read</b>
+  </span>
+</div>
 
-  <br>
+{% if description_ko or description_en %}
+  <div class="post-description">
+    {% if description_ko %}
+      <div class="lang-content" data-lang="ko" data-lang-group="post-description">{{ description_ko | markdownify }}</div>
+    {% endif %}
+    {% if description_en %}
+      <div class="lang-content" data-lang="en" data-lang-group="post-description">{{ description_en | markdownify }}</div>
+    {% endif %}
+  </div>
+{% endif %}
 
-  {%- if page.tags != empty -%}
-    Tags:
+{% if page.tags != empty %}
+  <div class="post-tags">
+    <span class="lang-content" data-lang="ko" data-lang-group="post-tags-label">태그:</span>
+    <span class="lang-content" data-lang="en" data-lang-group="post-tags-label">Tags:</span>
     {% for tag in page.tags %}
       <a class="text-decoration-none no-underline" href="{{ tag | slugify | prepend:'/blog/tags#' | relative_url }}">
         <span class="tag badge badge-pill text-primary border border-primary">{{ tag }}</span>
       </a>
     {% endfor %}
-  {%- endif -%}
-</p>
+  </div>
+{% endif %}
 
 <!-- 마크다운 내용 표시 -->
 {{ content | markdownify }}
@@ -55,17 +80,22 @@ layout: page
 <div class="post-navigation">
   {% if prev_post %}
     <a class="prev-post" href="{{ prev_post.url }}">
-      ← Previous: {{ prev_post.title }}
+      <span class="lang-content" data-lang="ko" data-lang-group="post-nav-prev">← 이전 글: {{ prev_post.title.ko | default: prev_post.title }}</span>
+      <span class="lang-content" data-lang="en" data-lang-group="post-nav-prev">← Previous: {{ prev_post.title.en | default: prev_post.title }}</span>
     </a>
   {% endif %}
   
   {% if next_post %}
     <a class="next-post" href="{{ next_post.url }}">
-      Next: {{ next_post.title }} →
+      <span class="lang-content" data-lang="ko" data-lang-group="post-nav-next">다음 글: {{ next_post.title.ko | default: next_post.title }} →</span>
+      <span class="lang-content" data-lang="en" data-lang-group="post-nav-next">Next: {{ next_post.title.en | default: next_post.title }} →</span>
     </a>
   {% endif %}
 </div>
 
 <br><br>
-<h3>Comments</h3>
+<h3>
+  <span class="lang-content" data-lang="ko" data-lang-group="post-comments">댓글</span>
+  <span class="lang-content" data-lang="en" data-lang-group="post-comments">Comments</span>
+</h3>
 <br>

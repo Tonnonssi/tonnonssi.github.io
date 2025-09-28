@@ -1,10 +1,15 @@
 ---
-title: "[TicTacToe/02] CNC Plotter 제어"
-tags: [TicTacToe]
+title:
+  ko: '[TicTacToe/02] CNC Plotter 제어'
+  en: '[TicTacToe/02] CNC Plotter 제어'
+tags:
+- TicTacToe
 pages: papers
-style: fill  # fill / border 
-color:  warning # secondary / success / danger / warning / info / light / dark
-description: "Implemented the library to control CNC plotter by using C++. <br>-<br> C++을 이용해 CNC Plotter을 제어하는 라이브러리를 구현했다."
+style: fill
+color: warning
+description:
+  ko: C++을 이용해 CNC Plotter을 제어하는 라이브러리를 구현했다.
+  en: Implemented the library to control CNC plotter by using C++.
 ---
 
 <!-- 한국어 콘텐츠 -->

@@ -1,11 +1,16 @@
 ---
-title: "[RL] Monte Carlo Tree Search"
-tags: [RL]
+title:
+  ko: '[RL] Monte Carlo Tree Search'
+  en: '[RL] Monte Carlo Tree Search'
+tags:
+- RL
 pages: papers
-style: fill  # fill / border 
-color:  info # secondary / success / danger / warning / info / light / dark
+style: fill
+color: info
 img: ../assets/images/RL/MCTS/node.png
-description: "Monte Carlo tree search structure used in AlphaGo and AlphaZero <br>-<br>알파고, 알파제로에 사용된 몬테카를로 트리 탐색 구조"
+description:
+  ko: 알파고, 알파제로에 사용된 몬테카를로 트리 탐색 구조
+  en: Monte Carlo tree search structure used in AlphaGo and AlphaZero
 ---
 <!-- 한국어 콘텐츠 -->
 {% capture ko_content %}

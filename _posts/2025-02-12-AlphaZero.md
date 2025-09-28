@@ -1,11 +1,18 @@
 ---
-title: "[RL] AlphaZero"
-tags: [RL, PaperReivew]
+title:
+  ko: '[RL] AlphaZero'
+  en: '[RL] AlphaZero'
+tags:
+- RL
+- PaperReview
 pages: papers
-style: fill  # fill / border 
-color:  info # secondary / success / danger / warning / info / light / dark
+style: fill
+color: info
 img: ../assets/images/RL/AlphaZero/image1.png
-description: " Review and Implementation of the AlphaZero Paper Published by Google DeepMind<br>-<br>Google DeepMind가 발표한 AlphaZero 논문 리뷰 및 구현"
+description:
+  ko: ' Google
+    DeepMind가 발표한 AlphaZero 논문 리뷰 및 구현'
+  en: ' Review and Implementation of the AlphaZero Paper Published by Google DeepMind'
 ---
 <!-- 한국어 콘텐츠 -->
 {% capture ko_content %}

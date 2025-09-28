@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "[DL/Timeseries] Transformer",
+      "category" : "",
+      "tags"     : "PaperReview",
+      "url"      : "/blog/transformer",
+      "date"     : "2025-09-26 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "[RL] Actor Critic",
       "category" : "",
       "tags"     : "RL",
@@ -9,7 +17,7 @@
     } ,
   
     {
-      "title"    : "[MARL/01] Multi Agent Reinforcement Learning 기초 ",
+      "title"    : "[MARL/01] Multi Agent Reinforcement Learning Basic ",
       "category" : "",
       "tags"     : "RL, MARL",
       "url"      : "/blog/MARL",
@@ -27,7 +35,7 @@
     {
       "title"    : "[TimeSeries] AR-Net",
       "category" : "",
-      "tags"     : "TimeSeries, PaperReivew",
+      "tags"     : "TimeSeries, PaperReview",
       "url"      : "/blog/ARNet",
       "date"     : "2025-03-20 00:00:00 +0900"
     } ,
@@ -43,7 +51,7 @@
     {
       "title"    : "[RL] AlphaZero",
       "category" : "",
-      "tags"     : "RL, PaperReivew",
+      "tags"     : "RL, PaperReview",
       "url"      : "/blog/AlphaZero",
       "date"     : "2025-02-12 00:00:00 +0900"
     } ,
@@ -91,7 +99,7 @@
     {
       "title"    : "[RL] DQN",
       "category" : "",
-      "tags"     : "RL, PaperReivew",
+      "tags"     : "RL, PaperReview",
       "url"      : "/blog/DQN",
       "date"     : "2024-10-13 00:00:00 +0900"
     } ,

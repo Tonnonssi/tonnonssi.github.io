@@ -1,0 +1,152 @@
+.toc-card {
+  margin: 2rem 0;
+  border-radius: 18px;
+  border: 1px solid rgba($dark, 0.06);
+  background: linear-gradient(135deg, rgba($light, 0.9), rgba(white, 0.9));
+  box-shadow: 0 18px 45px -32px rgba($dark, 0.4);
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.25rem 1.5rem 0;
+  }
+
+  &__label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: mix($primary, $dark, 45%);
+  }
+
+  &__subtitle {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: mix($dark, black, 70%);
+  }
+
+  &__body {
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: toc-counter;
+  }
+
+  &__item {
+    position: relative;
+    padding: 0.75rem 0 0.75rem 3.2rem;
+    border-bottom: 1px solid rgba($dark, 0.05);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &::before {
+      counter-increment: toc-counter;
+      content: counter(toc-counter, decimal-leading-zero);
+      position: absolute;
+      left: 0.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      background: rgba($primary, 0.1);
+      color: $primary;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: mix($dark, black, 70%);
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      color: $primary;
+      transform: translateX(4px);
+    }
+  }
+
+  @media (max-width: 576px) {
+    &__item {
+      padding-left: 2.75rem;
+    }
+  }
+}
+
+.toc-card__list--plain {
+  counter-reset: none !important;
+
+  .toc-card__item {
+    padding-left: 1.8rem;
+
+    &::before {
+      counter-increment: none;
+      content: '';
+      width: 0.45rem;
+      height: 0.45rem;
+      padding: 0;
+      border-radius: 50%;
+      background: rgba($primary, 0.5);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.toc-card--collapsible {
+  summary {
+    cursor: pointer;
+  }
+}
+
+.toc-card__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  list-style: none;
+  outline: none;
+  border: none;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.toc-card__summary::-webkit-details-marker {
+  display: none;
+}
+
+.toc-card__summary-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.toc-card__chevron {
+  font-size: 0.95rem;
+  color: mix($primary, $dark, 45%);
+  transition: transform 0.2s ease;
+}
+
+details.toc-card[open] .toc-card__chevron {
+  transform: rotate(180deg);
+}
+
+.toc-card--collapsible .toc-card__body {
+  padding-top: 0.75rem;
+}

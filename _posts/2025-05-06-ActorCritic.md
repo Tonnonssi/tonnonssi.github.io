@@ -1,10 +1,15 @@
 ---
-title: "[RL] Actor Critic"
-tags: [RL]
+title:
+  ko: '[RL] Actor Critic'
+  en: '[RL] Actor Critic'
+tags:
+- RL
 pages: papers
-style: border  # fill / border 
+style: border
 img: ../assets/images/RL/ActorCritic/image.png
-description: "Actor Critic 개념, A2C, A3C, 코드 구현<br>-<br>Actor Critic Notion, A2C, A3C, Code"
+description:
+  ko: Actor Critic 개념, A2C, A3C, 코드 구현
+  en: Actor Critic Notion, A2C, A3C, Code
 ---
 
 <!-- 한국어 콘텐츠 -->

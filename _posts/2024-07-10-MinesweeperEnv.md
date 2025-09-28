@@ -1,10 +1,16 @@
 ---
-title: "[Minesweeper/01] 환경"
-tags: [Minesweeper]
+title:
+  ko: '[Minesweeper/01] 환경'
+  en: '[Minesweeper/01] 환경'
+tags:
+- Minesweeper
 pages: papers
-style: border  # fill / border 
+style: border
 img: ../assets/images/Minesweeper/image-2.png
-description: "Resolved several issues with the Minesweeper environment implementation and implemented various states. <br>-<br>지뢰찾기 환경 구현에서 발생한 여러 문제점을 해결하고, 다양한 state를 구현했다."
+description:
+  ko: 지뢰찾기 환경 구현에서 발생한 여러 문제점을 해결하고, 다양한 state를 구현했다.
+  en: Resolved several issues with the Minesweeper environment implementation and
+    implemented various states.
 ---
 <!-- 한국어 콘텐츠 -->
 {% capture ko_content %}

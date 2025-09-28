@@ -1,0 +1,34 @@
+{% assign cols = include.columns | default: 3 %}
+<div class="media-grid media-grid--cols-{{ cols }}">
+  {% assign items = include.items | default: include.images %}
+  {% if items %}
+    {% for item in items %}
+      {% assign image = item.image | default: item.src %}
+      {% assign alt = item.alt | default: '' %}
+      <figure class="media-grid__item">
+        <img src="{{ image }}" alt="{{ alt }}" loading="lazy">
+        {% if item.caption %}
+          <figcaption class="media-grid__caption">{{ item.caption }}</figcaption>
+        {% endif %}
+      </figure>
+    {% endfor %}
+  {% else %}
+    {% assign max_items = include.count | default: 12 %}
+    {% for idx in (1..max_items) %}
+      {% assign image_key = 'image' | append: idx %}
+      {% assign image = include[image_key] %}
+      {% if image %}
+        {% assign alt_key = 'alt' | append: idx %}
+        {% assign caption_key = 'caption' | append: idx %}
+        {% assign alt = include[alt_key] | default: '' %}
+        {% assign caption = include[caption_key] %}
+        <figure class="media-grid__item">
+          <img src="{{ image }}" alt="{{ alt }}" loading="lazy">
+          {% if caption %}
+            <figcaption class="media-grid__caption">{{ caption }}</figcaption>
+          {% endif %}
+        </figure>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>

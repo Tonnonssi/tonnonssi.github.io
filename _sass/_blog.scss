@@ -42,3 +42,28 @@
 .post-navigation a:hover {
   text-decoration: underline;
 }
+
+.post-description {
+  margin: 1rem 0 1.75rem;
+  color: mix($dark, $secondary, 55%);
+  font-size: 0.95rem;
+
+  .lang-content {
+    margin: 0;
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.post-tags {
+  margin: 0.75rem 0 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .lang-content {
+    font-weight: 600;
+  }
+}

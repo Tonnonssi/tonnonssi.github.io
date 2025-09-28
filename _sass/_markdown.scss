@@ -96,11 +96,15 @@
     border-left: 0.3em solid rgba($primary, 0.8);
     background: rgba($primary, 0.05);
     color: mix($secondary, $dark, 60%);
-    padding: 0.75rem 1.25rem;
-    line-height: 1.6; /* 줄 간격을 줄여 한 줄 표현감을 맞춤 */
-    margin: 1rem 0; /* 인용문 주변 여백 조정 */
-    border-radius: 0 18px 18px 0;
+    padding: 0.65rem 1.1rem;
+    line-height: 1.55;
+    margin: 0.75rem 0;
+    border-radius: 0 14px 14px 0;
     box-shadow: inset 4px 0 0 rgba($primary, 0.2);
+
+    > :last-child {
+      margin-bottom: 0;
+    }
   }
 
   ul.task-list {

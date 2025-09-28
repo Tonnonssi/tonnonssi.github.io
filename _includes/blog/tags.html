@@ -45,7 +45,14 @@
       {%- else -%}
         {%- assign url = post.url | relative_url -%}
       {%- endif -%}
-      <a href="{{ url }}"><li>{{ post.title }}</li></a>
+      {% assign post_title_ko = post.title.ko | default: post.title %}
+      {% assign post_title_en = post.title.en | default: post_title_ko %}
+      <a href="{{ url }}">
+        <li>
+          <span class="lang-content" data-lang="ko" data-lang-group="tag-post-title-{{ forloop.index0 }}-{{ tag | slugify }}">{{ post_title_ko }}</span>
+          <span class="lang-content" data-lang="en" data-lang-group="tag-post-title-{{ forloop.index0 }}-{{ tag | slugify }}">{{ post_title_en }}</span>
+        </li>
+      </a>
       <small class="text-muted"> - {{ post.date | date_to_long_string }}</small>
       <br/>
     {%- endif -%}
