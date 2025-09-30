@@ -25,7 +25,7 @@
 - title:
     ko: "AiGO: CV·로보틱스 기반 오목 AI"
     en: "AiGO: End-to-End AI for Gomoku with Vision and Robotics"
-  article_link: "../projects/5-AiGO"
+  article_link: "../projects/5-aigo"
   pinned: true
   year:
     ko: "2024년 10월 - 2025년 2월"
@@ -50,7 +50,7 @@
 - title:
     ko: "TicTacToeArtist: CV·로보틱스 기반 틱택토 AI"
     en: "TicTacToeArtist: End-to-End AI for TicTacToe with Vision and Robotics"
-  article_link: "../projects/4-TicTacToeArtist"
+  article_link: "../projects/4-tictactoeartist"
   year:
     ko: "2024년 10월 - 2025년 2월"
     en: "October 2024 - February 2025"
@@ -73,7 +73,7 @@
 - title:
     ko: "MineSolver: 지뢰찾기 DQN 에이전트"
     en: "MineSolver: DQN Agent for Minesweeper"
-  article_link: "../projects/3-MineSolver"
+  article_link: "../projects/3-minesolver"
   pinned: true
   year:
     ko: "2024년 3월 - 2024년 7월"
@@ -96,7 +96,7 @@
 - title:
     ko: "리그오브레전드 전략 패턴 시각화"
     en: "LoL-StrategyInsight: Visual Analytics of League of Legends Strategy Patterns"
-  article_link: "../projects/2-LoLStrategyInsight"
+  article_link: "../projects/2-lolstrategyinsight"
   year:
     ko: "2023년"
     en: "2023"
